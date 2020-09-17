@@ -24,8 +24,6 @@ STATIC_ANALYSIS = cppcheck
 
 STYLE_CHECK = cpplint.py
 
-BROWSER = firefox
-
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
 
@@ -64,7 +62,6 @@ coverage: $(PROGRAM_TEST)
 	$(LCOV) --extract $(COVERAGE_RESULTS) "*/CardGame/src/*" -o $(COVERAGE_RESULTS)
 	genhtml $(COVERAGE_RESULTS) --output-directory $(COVERAGE_DIR)
 	rm -f *.gc*
-	$(BROWSER) $(COVERAGE_DIR)/index.html
 
 static: ${SRC_DIR}
 	cppcheck --verbose --enable=all --xml ${SRC_DIR} ${TEST_DIR} ${INCLUDE} --suppress=missingInclude
