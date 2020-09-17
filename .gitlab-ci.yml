@@ -6,33 +6,48 @@ build-game:
       paths:
          - cardGame
 
-build-test:
+build-tests:
    stage: build
    script:
-      - make testGame
+      - make test_game
    artifacts:
       paths:
-         - testGame
+         - test_game
 
-test-game:
+test:
    stage: test
    script:
       - testGame
-      - make memcheck-test
-      - make static
-      - make style
 
-pages:
-   stage: deploy
-   dependencies:
-      - test-game
+staticAnalysis:
+   stage: test
+   script:
+      - make static
+
+style:
+  stage: test
+  script:
+    - make style
+
+coverage:
+   stage: test
    script:
       - make coverage
-      - make docs
    artifacts:
       paths:
          - coverage
+      expire_in: 14 days
+
+memoryLeaks:
+   stage: test
+   script:
+      - make fullmemcheck
+
+docs:
+   stage: deploy
+   script:
+      - make docs
+   artifacts:
+      paths:
          - docs
       expire_in: 14 days
-   only:
-      - master
