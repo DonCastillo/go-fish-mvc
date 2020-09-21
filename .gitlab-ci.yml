@@ -1,23 +1,23 @@
 build-game:
    stage: build
    script:
-      - make cardGame
+      - make gofish
    artifacts:
       paths:
-         - cardGame
+         - gofish
 
 build-tests:
    stage: build
    script:
-      - make test_game
+      - make test_gofish
    artifacts:
       paths:
-         - test_game
+         - test_gofish
 
 test:
    stage: test
    script:
-      - testGame
+      - test_gofish
 
 staticAnalysis:
    stage: test

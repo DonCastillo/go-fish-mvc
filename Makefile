@@ -1,17 +1,20 @@
 # Directory that contains this project
-PROJECT_DIR =
-PROJECT = game
-GTEST = test_$(PROJECT)
+GAME_DIR = game
+GAME = gofish
+GTEST = test_$(GAME)
 
 # Compilation command and flags
 CXX=g++
 CXXVERSION= -std=c++11
 CXXFLAGS= $(CXXVERSION) -g -fprofile-arcs -ftest-coverage
-LINKFLAGS= -lgtest -lpthread
-GMOCK = /usr/src/gmock/gmock-all.cc
+GMOCK_GITLAB = /usr/src/gmock/gmock-all.cc
+GMOCK_LOCAL = -lgmock
+LINKFLAGS= -lgtest -lpthread $(GMOCK_GITLAB)
+LINKFLAGS_LOCAL= -lgtest -lpthread $(GMOCK_LOCAL)
 
 # Directories
 SRC_DIR = src
+GAME_SRC_DIR = $(SRC_DIR)/$(GAME_DIR)
 GTEST_DIR = test
 SRC_INCLUDE = include
 INCLUDE = -I ${SRC_INCLUDE}
@@ -29,7 +32,7 @@ STYLE_CHECK = cpplint.py
 DOXY_DIR = docs/code
 
 # Default goal, used by Atom for local compilation
-.DEFAULT_GOAL := tests
+.DEFAULT_GOAL := gofish
 
 # default rule for compiling .cpp to .o
 %.o: %.cpp
@@ -40,21 +43,36 @@ DOXY_DIR = docs/code
 clean:
 	rm -rf *~ $(SRC)/*.o $(GTEST_DIR)/output/*.dat \
 	*.gcov *.gcda *.gcno *.orig ???*/*.orig \
-	$(PROJECT) $(COVERAGE_RESULTS) \
+	$(GAME) $(COVERAGE_RESULTS) \
 	$(GTEST) $(MEMCHECK_RESULTS) $(COVERAGE_DIR)  \
-	$(DOXY_DIR)/html obj bin $(PROJECT).exe $(GTEST).exe
+	$(DOXY_DIR)/html obj bin $(GAME).exe $(GTEST).exe
 
 # compilation using the files in include, src, and test, but not src/project
 $(GTEST): $(GTEST_DIR) $(SRC_DIR)
 	$(CXX) $(CXXFLAGS) -o $(GTEST) $(INCLUDE) \
 	$(GTEST_DIR)/*.cpp $(SRC_DIR)/*.cpp $(LINKFLAGS)
 
-.PHONY: tests
-  tests: $(GTEST)
+	# compilation using the files in include, src, and test, but not src/project
+$(GTEST)-local: $(GTEST_DIR) $(SRC_DIR)
+	$(CXX) $(CXXFLAGS) -o $(GTEST) $(INCLUDE) \
+	$(GTEST_DIR)/*.cpp $(SRC_DIR)/*.cpp $(LINKFLAGS_LOCAL)
 
-# To perform all tests
-.PHONY: allTests
-	allTests: $(GTEST) memcheck coverage docs static style
+# compilation using the files in include, src, and src/project
+$(GAME): $(SRC_DIR) $(GAME_SRC_DIR)/main.cpp
+	$(CXX) $(CXXFLAGS) -o $(GAME) $(INCLUDE) \
+	$(GAME_SRC_DIR)/main.cpp $(SRC_DIR)/*.cpp
+
+# Build the interactive game
+.PHONY: game
+game: $(PROJECT)
+
+# Perform only unit tests - use locally if gtest/gmock installed
+.PHONY: tests
+tests: $(GTEST)
+
+# Perform only unit tests - use locally if gtest/gmock installed
+.PHONY: tests-local
+tests-local: $(GTEST)-local
 
 .PHONY: memcheck
 memcheck: $(GTEST)
@@ -81,8 +99,8 @@ static: ${SRC_DIR} ${GTEST_DIR}
 	${STATIC_ANALYSIS} --verbose --enable=all ${SRC_DIR} ${GTEST_DIR} ${SRC_INCLUDE} --suppress=missingInclude
 
 .PHONY: style
-style: ${SRC_DIR} ${GTEST_DIR} ${SRC_INCLUDE} ${PROJECT_SRC_DIR}
-	${STYLE_CHECK} ${SRC_DIR}/* ${GTEST_DIR}/* ${SRC_INCLUDE}/*
+style: ${SRC_DIR} ${GTEST_DIR} ${SRC_INCLUDE} ${GAME_SRC_DIR}
+	${STYLE_CHECK} ${SRC_DIR}/* ${GTEST_DIR}/* ${SRC_INCLUDE}/* ${GAME_SRC_DIR}/*
 
 .PHONY: docs
 docs: ${SRC_INCLUDE}
