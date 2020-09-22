@@ -2,4 +2,4 @@
 
 Please refer to the PDF for instructions.
 
-Deadline: Oct 9, 2020 @ 1600.
+## Deadline: Oct 9, 2020 @ 1600.
