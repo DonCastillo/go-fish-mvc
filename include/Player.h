@@ -23,7 +23,6 @@ class Player {
     int score = 0;
     std::vector<Card*> hand;
 
-
 };
 
 #endif // CARD_H_INCLUDED

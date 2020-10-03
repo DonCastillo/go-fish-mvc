@@ -20,5 +20,16 @@ int main()
     player->updateScore(1);
     player->updateScore(-12);
     std::cout << player->getScore() << std::endl;
-    //std::cout << "Heelo";
+    Card* a = new Card(0,1); // clubs, ace
+    Card* b = new Card(0,2); // clubs, 2
+    Card* c = new Card(0,3); // clubs, 3
+    Card* d = new Card(0,4); //clubs, 4
+    player->addCard(a);
+    player->addCard(b);
+    player->addCard(c);
+    player->addCard(d);
+    player->removeCard(new Card(0,3));
+    for(Card* h : player->getCards()){
+        std::cout << h->getSuit() << "--" << h->getRank() << std::endl;
+    }
 }

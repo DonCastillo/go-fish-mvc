@@ -8,7 +8,9 @@ Player::Player(std::string pName) {
 }
 
 Player::~Player() {
-
+    for(Card* h : hand) {
+        delete h;
+    }
 }
 
 void Player::updateScore(int adder) {
