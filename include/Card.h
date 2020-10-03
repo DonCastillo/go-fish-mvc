@@ -8,12 +8,15 @@ class Card {
  public:
     Card(int s, int r);
     ~Card();
+    std::string getSuit();
+    std::string getRank();
 
  private:
     std::string cSuit;
     std::string cRank;
-    int suitNum;
-    int rankNum;
+    std::string formatRank(int pRank);
+    std::string formatSuit(int pSuit);
+
 };
 
 #endif // CARD_H_INCLUDED
