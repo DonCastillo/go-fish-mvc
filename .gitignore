@@ -1,2 +1,4 @@
 go-fish.cbp
 go-fish.depend
+*.o
+*.exe
