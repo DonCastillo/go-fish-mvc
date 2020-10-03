@@ -40,4 +40,5 @@ void Deck::shuffle() {
 Card* Deck::getTopCard() {
   Card* frontCard = allCards.front();
   allCards.erase(allCards.begin());
+  return frontCard;
 }

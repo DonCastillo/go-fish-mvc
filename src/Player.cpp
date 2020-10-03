@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Card.h"
 #include <vector>
+#include <string>
 
 
 Player::Player(std::string pName) {

@@ -1,10 +1,12 @@
 #include "Card.h"
 #include <iostream>
+#include <string>
 
 Card::Card(int s, int r) {
     cRank = formatRank(r);
     cSuit = formatSuit(s);
-    rankNum = r;
+    std::cout << cSuit << " : " << cRank << std::endl;
+    //rankNum = r;
 }
 
 Card::~Card() { }

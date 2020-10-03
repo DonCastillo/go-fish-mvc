@@ -2,6 +2,7 @@
 #include "Card.h"
 #include "Deck.h"
 #include <vector>
+#include <map>
 
 GoFish::GoFish() {
     deck = new Deck();
@@ -30,7 +31,7 @@ std::vector<Player*> GoFish::getPlayers() {
 //
 //}
 //
-Card* GoFish::drawCard(Player* pPlayer) {
+void GoFish::drawCard(Player* pPlayer) {
     pPlayer->addCard(deck->getTopCard());
 }
 
@@ -56,10 +57,23 @@ void GoFish::deal() {
 
     // card distribution
     for(int i = 0; i < numOfCards; ++i) {
-
+        for(Player* p : players) {
+            drawCard(p);
+        }
     }
-
 }
+
+/// if yes, remove cards from hand, and returjnn true
+/// otherwise, return false
+bool GoFish::isThereABook(Player* pPlayer) {
+
+    std::map<int, std::vector<int>> board;
+    Deck* tempDeck = deck;
+    return true;
+}
+
+
+
 
 
 
