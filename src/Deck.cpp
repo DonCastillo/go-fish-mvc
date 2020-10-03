@@ -6,6 +6,7 @@
 
 Deck::Deck() {
     createDeck();
+    shuffle();
 }
 
 Deck::~Deck() {
@@ -33,5 +34,10 @@ void Deck::createDeck() {
 void Deck::shuffle() {
     std::srand(time(0));
     std::random_shuffle(allCards.begin(), allCards.end());
+}
 
+/// remove top card from the Deck
+Card* Deck::getTopCard() {
+  Card* frontCard = allCards.front();
+  allCards.erase(allCards.begin());
 }

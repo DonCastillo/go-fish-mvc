@@ -12,6 +12,7 @@ class Deck {
     ~Deck();
     std::vector<Card*> getDeck();
     void shuffle();
+    Card* getTopCard();
 
 
  private:
