@@ -1,11 +1,15 @@
 #include "Deck.h"
+#include <algorithm>
+#include <vector>
+#include <cstdlib>
+#include <time.h>
 
 Deck::Deck() {
     createDeck();
 }
 
 Deck::~Deck() {
-    for(int i = 0; i < allCards.size(); ++i) {
+    for(unsigned int i = 0; i < allCards.size(); ++i) {
         delete allCards[i];
     }
 }
@@ -23,4 +27,11 @@ void Deck::createDeck() {
             allCards.push_back(c);
         }
     }
+}
+
+///shuffle deck
+void Deck::shuffle() {
+    std::srand(time(0));
+    std::random_shuffle(allCards.begin(), allCards.end());
+
 }
