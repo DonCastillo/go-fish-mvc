@@ -4,6 +4,7 @@
 Card::Card(int s, int r) {
     cRank = formatRank(r);
     cSuit = formatSuit(s);
+    rankNum = r;
 }
 
 Card::~Card() { }
