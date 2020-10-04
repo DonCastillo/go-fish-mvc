@@ -51,19 +51,19 @@ TEST(TestCard, getRank) {
 TEST(TestCard, formatRank) {
 
     Card* DiamondAce = new Card(Diamond, Ace);
-    EXPECT_EQ(DiamondAce->formatRank(DiamondAce->getRank()), "Ace");
+    EXPECT_EQ(DiamondAce->formatRank(Ace), "Ace");
     delete DiamondAce;
 
     Card* DiamondTwo = new Card(Diamond, Two);
-    EXPECT_EQ(DiamondTwo->formatRank(DiamondTwo->getRank()), "2");
+    EXPECT_EQ(DiamondTwo->formatRank(Two), "2");
     delete DiamondTwo;
 
     Card* DiamondQueen = new Card(Diamond, Queen);
-    EXPECT_EQ(DiamondQueen->formatRank(DiamondQueen->getRank()), "Queen");
+    EXPECT_EQ(DiamondQueen->formatRank(Queen), "Queen");
     delete DiamondQueen;
 
     Card* DiamondKing = new Card(Diamond, King);
-    EXPECT_EQ(DiamondKing->formatRank(DiamondKing->getRank()), "King");
+    EXPECT_EQ(DiamondKing->formatRank(King)), "King");
     delete DiamondKing;
 }
 
@@ -71,19 +71,19 @@ TEST(TestCard, formatRank) {
 TEST(TestCard, formatSuit) {
 
     Card* DiamondAce = new Card(Diamond, Ace);
-    EXPECT_EQ(DiamondAce->formatSuit(DiamondAce->getSuit()), "Diamond");
+    EXPECT_EQ(DiamondAce->formatSuit(Diamond), "Diamond");
     delete DiamondAce;
 
     Card* ClubAce = new Card(Club, Ace);
-    EXPECT_EQ(ClubAce->formatSuit(ClubAce->getSuit()), "Club");
+    EXPECT_EQ(ClubAce->formatSuit(Club), "Club");
     delete ClubAce;
 
     Card* HeartAce = new Card(Heart, Ace);
-    EXPECT_EQ(HeartAce->formatSuit(HeartAce->getSuit()), "Heart");
+    EXPECT_EQ(HeartAce->formatSuit(Heart), "Heart");
     delete HeartAce;
 
     Card* SpadeAce = new Card(Spade, Ace);
-    EXPECT_EQ(SpadeAce->formatSuit(SpadeAce->getSuit()), "Spade");
+    EXPECT_EQ(SpadeAce->formatSuit(Spade), "Spade");
     delete SpadeAce;
 }
 
