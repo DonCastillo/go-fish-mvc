@@ -6,7 +6,6 @@
 #include "Card.h"
 
 class Player {
-
  public:
     Player(std::string pName);
     ~Player();
@@ -22,8 +21,6 @@ class Player {
     std::string name;
     int score = 0;
     std::vector<Card*> hand;
-
-
 };
 
 #endif // CARD_H_INCLUDED

@@ -1,9 +1,9 @@
 #include "Player.h"
 #include "Card.h"
+#include <time.h>
+#include <cstdlib>
 #include <vector>
 #include <string>
-#include <cstdlib>
-#include <time.h>
 #include <algorithm>
 
 
@@ -12,7 +12,7 @@ Player::Player(std::string pName) {
 }
 
 Player::~Player() {
-    for(Card* h : hand) {
+    for (Card* h : hand) {
         delete h;
     }
 }
@@ -35,9 +35,9 @@ void Player::addCardHand(Card* c) {
 
 Card* Player::removeCardHand(Card* c) {
     Card* cardTemp = nullptr;
-    for(int i = 0; i < hand.size(); ++i) {
-        if(hand[i]->getSuit() == c->getSuit()) {
-            if(hand[i]->getRank() == c->getRank()) {
+    for (int i = 0; i < hand.size(); ++i) {
+        if (hand[i]->getSuit() == c->getSuit()) {
+            if (hand[i]->getRank() == c->getRank()) {
                 cardTemp = hand[i];
                 hand.erase(hand.begin() + i);
             }
@@ -51,13 +51,13 @@ std::vector<Card*> Player::getCardHand() {
 }
 
 /// randomly select a card from the hand
+/// todo use rand_r instead of rand
 Card* Player::selectFromHand() {
     Card* tempCard = nullptr;
-    if(!hand.empty()) {
+    if (!hand.empty()) {
         std::srand(time(0));
         int randNum = rand()%hand.size();
         tempCard = hand[randNum];
-        //removeCardHand(hand[randNum]);
     }
     return tempCard;
 }

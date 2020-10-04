@@ -21,7 +21,8 @@ std::string Card::getRank() {
 
 std::string Card::formatRank(int pRank) {
     std::string temp;
-    switch(pRank) {
+
+    switch (pRank) {
         case 1:
             temp = "Ace";
             break;
@@ -71,7 +72,8 @@ std::string Card::formatRank(int pRank) {
 
 std::string Card::formatSuit(int pSuit) {
     std::string temp;
-    switch(pSuit) {
+
+    switch (pSuit) {
         case 0:
             temp = "Club";
             break;

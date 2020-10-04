@@ -4,7 +4,6 @@
 #include <string>
 
 class Card {
-
  public:
     Card(int s, int r);
     ~Card();

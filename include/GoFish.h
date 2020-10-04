@@ -8,19 +8,14 @@
 #include "Player.h"
 
 class GoFish {
-
  public:
     GoFish();
     ~GoFish();
-//    bool fish(Player* pPlayer, Deck* pDeck);
     void addPlayer(Player* pPlayer);
     void deal();
     void fish(Player* pPlayer);
     bool isThereABook(Player* pPlayer);
     bool askCard(Player* p1, Player* p2);
-
-
-    /// getters
     Deck* getDeck();
     std::vector<Player*> getPlayers();
 
@@ -28,8 +23,6 @@ class GoFish {
  private:
     Deck* deck;
     std::vector<Player*> players;
-
-
 };
 
 #endif // GOFISH_H_INCLUDED

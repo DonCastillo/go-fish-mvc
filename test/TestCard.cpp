@@ -9,7 +9,6 @@ enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
 
 
 TEST(TestCard, getSuit) {
-
     Card* ClubAce = new Card(Club, Ace);
     EXPECT_EQ(ClubAce->getSuit(), "Club");
     delete ClubAce;
@@ -29,7 +28,6 @@ TEST(TestCard, getSuit) {
 
 
 TEST(TestCard, getRank) {
-
     Card* ClubAce = new Card(Club, Ace);
     EXPECT_EQ(ClubAce->getRank(), "Ace");
     delete ClubAce;
@@ -49,7 +47,6 @@ TEST(TestCard, getRank) {
 
 
 TEST(TestCard, formatRank) {
-
     Card* DiamondAce = new Card(Diamond, Ace);
     EXPECT_EQ(DiamondAce->formatRank(Ace), "Ace");
     delete DiamondAce;
@@ -69,7 +66,6 @@ TEST(TestCard, formatRank) {
 
 
 TEST(TestCard, formatSuit) {
-
     Card* DiamondAce = new Card(Diamond, Ace);
     EXPECT_EQ(DiamondAce->formatSuit(Diamond), "Diamond");
     delete DiamondAce;

@@ -6,7 +6,6 @@
 #include <vector>
 
 class Deck {
-
  public:
     Deck();
     ~Deck();
@@ -17,7 +16,8 @@ class Deck {
 
  private:
     enum suits { Club, Diamond, Heart, Spade };
-    enum ranks { Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
+    enum ranks { Ace = 1, Two, Three, Four, Five, Six,
+                 Seven, Eight, Nine, Ten, Jack, Queen, King };
     void createDeck();
     std::vector<Card*> allCards;
 };

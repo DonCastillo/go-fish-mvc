@@ -3,11 +3,7 @@
 #include <vector>
 
 
-GoFishUI::GoFishUI() {
+GoFishUI::GoFishUI() {}
 
-}
-
-GoFishUI::~GoFishUI() {
-
-}
+GoFishUI::~GoFishUI() {}
 

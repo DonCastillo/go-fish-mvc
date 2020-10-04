@@ -8,15 +8,13 @@
 
 
 void printCards(std::vector<Card*> cards) {
-    for(Card* d : cards){
-
+    for (Card* d : cards) {
     std::cout << "---------------" << std::endl;
         std::cout << d->getSuit() << " : " << d->getRank() << std::endl;
     }
 }
 
-int main()
-{
+int main() {
 //    Deck* deck = new Deck();
 //    //std::cout << (deck->getDeck()).size();
 //    deck->shuffle();
@@ -69,8 +67,6 @@ int main()
 
     std::cout << std::boolalpha << gf->askCard(don, jane);
 
-
-
 //std::vector<int>nums;
 //nums.push_back(1);
 //nums.push_back(2);
@@ -80,5 +76,4 @@ int main()
 //for(int i : nums){
 //    std::cout << i << std::endl;
 //}
-
 }

@@ -1,8 +1,10 @@
 #include "Deck.h"
+#include <time.h>
+#include <cstdlib>
 #include <algorithm>
 #include <vector>
-#include <cstdlib>
-#include <time.h>
+
+
 
 Deck::Deck() {
     createDeck();
@@ -10,7 +12,7 @@ Deck::Deck() {
 }
 
 Deck::~Deck() {
-    for(unsigned int i = 0; i < allCards.size(); ++i) {
+    for (unsigned int i = 0; i < allCards.size(); ++i) {
         delete allCards[i];
     }
 }
@@ -22,8 +24,8 @@ std::vector<Card*> Deck::getDeck() {
 
 /// create a standard, unshuffled deck of cards
 void Deck::createDeck() {
-    for(int s = Club; s <= Spade; ++s) {
-        for(int r = Ace; r <= King; ++r) {
+    for (int s = Club; s <= Spade; ++s) {
+        for (int r = Ace; r <= King; ++r) {
             Card* c = new Card(s, r);
             allCards.push_back(c);
         }
@@ -38,7 +40,7 @@ void Deck::shuffle() {
 
 /// remove top card from the Deck
 Card* Deck::getTopCard() {
-  Card* frontCard = allCards.front();
-  allCards.erase(allCards.begin());
-  return frontCard;
+    Card* frontCard = allCards.front();
+    allCards.erase(allCards.begin());
+    return frontCard;
 }
