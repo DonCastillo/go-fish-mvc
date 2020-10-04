@@ -33,14 +33,17 @@ void Player::addCardHand(Card* c) {
     hand.push_back(c);
 }
 
-void Player::removeCardHand(Card* c) {
+Card* Player::removeCardHand(Card* c) {
+    Card* cardTemp = nullptr;
     for(int i = 0; i < hand.size(); ++i) {
         if(hand[i]->getSuit() == c->getSuit()) {
             if(hand[i]->getRank() == c->getRank()) {
+                cardTemp = hand[i];
                 hand.erase(hand.begin() + i);
             }
         }
     }
+    return cardTemp;
 }
 
 std::vector<Card*> Player::getCardHand() {
@@ -49,16 +52,13 @@ std::vector<Card*> Player::getCardHand() {
 
 /// randomly select a card from the hand
 Card* Player::selectFromHand() {
-    Card* tempCard;
+    Card* tempCard = nullptr;
     if(!hand.empty()) {
         std::srand(time(0));
         int randNum = rand()%hand.size();
         tempCard = hand[randNum];
-        removeCardHand(hand[randNum]);
-        return tempCard;
-    } else {
-        return nullptr;
+        //removeCardHand(hand[randNum]);
     }
-
+    return tempCard;
 }
 

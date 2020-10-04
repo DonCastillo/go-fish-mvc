@@ -14,10 +14,9 @@ class Player {
     int getScore();
     std::string getName();
     void addCardHand(Card* c);
-    void removeCardHand(Card* c);
+    Card* removeCardHand(Card* c);
     std::vector<Card*> getCardHand();
     Card* selectFromHand();
-
 
  private:
     std::string name;

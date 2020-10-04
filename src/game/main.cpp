@@ -67,6 +67,8 @@ int main()
     std::cout << "******" << std::endl;
     printCards(don->getCardHand());
 
+    std::cout << std::boolalpha << gf->askCard(don, jane);
+
 
 
 //std::vector<int>nums;

@@ -39,8 +39,22 @@ std::vector<Player*> GoFish::getPlayers() {
 //
 
 /// p1 = requestor, p2 = requestee
-void GoFish::askCard(Player* p1, Player* p2) {
+/// true if successful
+/// if not, player fishes
+bool GoFish::askCard(Player* p1, Player* p2) {
+    Card* p1RequestedCard;
+    Card* p2ProvidedCard;
 
+    p1RequestedCard = p1->selectFromHand();
+    if(p1RequestedCard == nullptr) {
+        return false;
+    }
+    p2ProvidedCard = p2->removeCardHand(p1RequestedCard);
+    if(p2ProvidedCard == nullptr) {
+        return false;
+    }
+    p1->addCardHand(p2ProvidedCard);
+    return true;
 }
 
 
