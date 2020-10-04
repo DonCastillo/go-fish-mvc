@@ -35,15 +35,16 @@ TEST(TestCard, getRank) {
     delete ClubAce;
 
     Card* ClubTwo = new Card(Club, Two);
-    EXPECT_EQ(ClubTwo->getSuit(), "Two");
+    EXPECT_EQ(ClubTwo->getRank(), "Two");
     delete ClubTwo;
 
     Card* ClubQueen = new Card(Club, Queen);
-    EXPECT_EQ(ClubQueen->getSuit(), "Queen");
+    EXPECT_EQ(ClubQueen->getRank(), "Queen");
     delete ClubQueen;
 
     Card* ClubKing = new Card(Club, King);
-    EXPECT_EQ(ClubKing->getSuit(), "King");
+    EXPECT_EQ(ClubKing->getRank(), "King");
     delete ClubKing;
 }
+
 
