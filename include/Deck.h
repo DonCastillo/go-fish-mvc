@@ -16,7 +16,7 @@ class Deck {
 
 
  private:
-    enum suits { Clubs, Diamonds, Hearts, Spades };
+    enum suits { Club, Diamond, Heart, Spade };
     enum ranks { Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
     void createDeck();
     std::vector<Card*> allCards;

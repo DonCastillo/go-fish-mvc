@@ -22,7 +22,7 @@ std::vector<Card*> Deck::getDeck() {
 
 /// create a standard, unshuffled deck of cards
 void Deck::createDeck() {
-    for(int s = Clubs; s <= Spades; ++s) {
+    for(int s = Club; s <= Spade; ++s) {
         for(int r = Ace; r <= King; ++r) {
             Card* c = new Card(s, r);
             allCards.push_back(c);

@@ -10,7 +10,7 @@ class Card {
     ~Card();
     std::string getSuit();
     std::string getRank();
-    int rankNum;
+    //int rankNum;
 
  private:
     std::string cSuit;
