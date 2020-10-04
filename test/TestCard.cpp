@@ -63,7 +63,7 @@ TEST(TestCard, formatRank) {
     delete DiamondQueen;
 
     Card* DiamondKing = new Card(Diamond, King);
-    EXPECT_EQ(DiamondKing->formatRank(King)), "King");
+    EXPECT_EQ(DiamondKing->formatRank(King), "King");
     delete DiamondKing;
 }
 
