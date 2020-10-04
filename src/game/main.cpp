@@ -51,15 +51,21 @@ int main()
 
     std::cout << "******" << std::endl;
     std::cout << don->getName() << std::endl;
-    printCards(don->getCards());
+    printCards(don->getCardHand());
     gf->isThereABook(don);
     std::cout << "******" << std::endl;
     std::cout << jane->getName() << std::endl;
-    printCards(jane->getCards());
+    printCards(jane->getCardHand());
     gf->isThereABook(jane);
     std::cout << "******" << std::endl;
     std::cout << "******" << std::endl;
+    Card* donCard = don->selectFromHand();
+    std::cout << donCard->getSuit() << std::endl;
+    std::cout << donCard->getRank() << std::endl;
 
+    std::cout << "******" << std::endl;
+    std::cout << "******" << std::endl;
+    printCards(don->getCardHand());
 
 
 

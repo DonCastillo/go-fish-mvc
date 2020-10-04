@@ -13,15 +13,17 @@ class Player {
     void updateScore(int adder);
     int getScore();
     std::string getName();
-    void addCard(Card* c);
-    void removeCard(Card* c);
-    std::vector<Card*> getCards();
+    void addCardHand(Card* c);
+    void removeCardHand(Card* c);
+    std::vector<Card*> getCardHand();
+    Card* selectFromHand();
 
 
  private:
     std::string name;
     int score = 0;
     std::vector<Card*> hand;
+
 
 };
 

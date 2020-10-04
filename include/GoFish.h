@@ -15,8 +15,10 @@ class GoFish {
 //    bool fish(Player* pPlayer, Deck* pDeck);
     void addPlayer(Player* pPlayer);
     void deal();
-    void drawCard(Player* pPlayer);
+    void fish(Player* pPlayer);
     bool isThereABook(Player* pPlayer);
+    void askCard(Player* p1, Player* p2);
+
 
     /// getters
     Deck* getDeck();

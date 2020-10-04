@@ -6,6 +6,9 @@
 #include <iostream>
 #include <string>
 #include <iterator>
+#include <algorithm>
+#include <cstdlib>
+#include <time.h>
 
 GoFish::GoFish() {
     deck = new Deck();
@@ -34,20 +37,29 @@ std::vector<Player*> GoFish::getPlayers() {
 //
 //}
 //
-void GoFish::drawCard(Player* pPlayer) {
-    pPlayer->addCard(deck->getTopCard());
+
+/// p1 = requestor, p2 = requestee
+void GoFish::askCard(Player* p1, Player* p2) {
+
+}
+
+
+/// player picks card on top of stack
+void GoFish::fish(Player* pPlayer) {
+    pPlayer->addCardHand(deck->getTopCard());
 }
 
 
 
-
+/// add player
 void GoFish::addPlayer(Player* pPlayer) {
     players.push_back(pPlayer);
 }
 
 
 
-// max players: 7
+
+/// distribute cards per player
 void GoFish::deal() {
     // how many cards to give per player
     int numOfPlayers = players.size();
@@ -61,10 +73,12 @@ void GoFish::deal() {
     // card distribution
     for(int i = 0; i < numOfCards; ++i) {
         for(Player* p : players) {
-            drawCard(p);
+            fish(p);
         }
     }
 }
+
+
 
 /// if yes, remove cards from hand, and returjnn true
 /// otherwise, return false
@@ -72,7 +86,7 @@ bool GoFish::isThereABook(Player* pPlayer) {
 
     std::map<std::string, std::vector<int>> board;
     std::map<std::string, std::vector<int>>::iterator itr;
-    std::vector<Card*> playerCards = pPlayer->getCards();
+    std::vector<Card*> playerCards = pPlayer->getCardHand();
     bool hasBook = false;
 
 
@@ -109,7 +123,7 @@ bool GoFish::isThereABook(Player* pPlayer) {
             //std::cout << itr->second.size();
             if(itr->second.size() == 2) {
                 for(int n : itr->second){
-                    pPlayer->removeCard(playerCards[n]);
+                    pPlayer->removeCardHand(playerCards[n]);
                 }
                 hasBook = true;
             }

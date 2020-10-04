@@ -20,7 +20,6 @@ class Deck {
     enum ranks { Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King };
     void createDeck();
     std::vector<Card*> allCards;
-    int randomizer();
 };
 
 #endif // DECK_H_INCLUDED
