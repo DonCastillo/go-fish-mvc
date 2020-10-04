@@ -31,13 +31,6 @@ std::vector<Player*> GoFish::getPlayers() {
 }
 
 
-/// check if the card picked from deck has a matching card in the player's hand
-/// true/false
-//bool GoFish::fish(Player* pPlayer, Deck* pDeck) {
-//
-//}
-//
-
 /// p1 = requestor, p2 = requestee
 /// true if successful
 /// if not, player fishes

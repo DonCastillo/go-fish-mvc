@@ -1,28 +1,16 @@
-#ifndef PLAYER_H_INCLUDED
-#define PLAYER_H_INCLUDED
+#ifndef GOFISHUI_H_INCLUDED
+#define GOFISHUI_H_INCLUDED
 
-#include <string>
-#include <vector>
-#include "Card.h"
 
-class Player {
+class GoFishUI {
 
  public:
-    Player(std::string pName);
-    ~Player();
-    void updateScore(int adder);
-    int getScore();
-    std::string getName();
-    void addCard(Card* c);
-    void removeCard(Card* c);
-    std::vector<Card*> getCards();
+    GoFishUI();
+    ~GoFishUI();
 
 
  private:
-    std::string name;
-    int score = 0;
-    std::vector<Card*> hand;
 
 };
 
-#endif // CARD_H_INCLUDED
+#endif // GOFISHUI_H_INCLUDED
