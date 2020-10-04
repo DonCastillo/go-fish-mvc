@@ -42,18 +42,29 @@ TEST(TestCard, shuffle) {
     }
 
     Card* a = new Card(Club, Ace);
+    Card* b = new Card(Club, Two);
+    Card* c = new Card(Club, Three);
+    Card* d = new Card(Club, Four);
+    Card* e = new Card(Club, Five);
+    Card* f = new Card(Club, Six);
+    Card* g = new Card(Club, Seven);
+    Card* h = new Card(Club, Eight);
+    Card* i = new Card(Club, Nine);
+    Card* j = new Card(Club, Ten);
+
     unshuffledCompare.push_back(a);
-//    unshuffledCompare.push_back(new Card(Club, Two));
-//    unshuffledCompare.push_back(new Card(Club, Three));
-//    unshuffledCompare.push_back(new Card(Club, Four));
-//    unshuffledCompare.push_back(new Card(Club, Five));
-//    unshuffledCompare.push_back(new Card(Club, Six));
-//    unshuffledCompare.push_back(new Card(Club, Seven));
-//    unshuffledCompare.push_back(new Card(Club, Eight));
-//    unshuffledCompare.push_back(new Card(Club, Nine));
+    unshuffledCompare.push_back(b);
+    unshuffledCompare.push_back(c);
+    unshuffledCompare.push_back(d);
+    unshuffledCompare.push_back(e);
+    unshuffledCompare.push_back(f);
+    unshuffledCompare.push_back(g);
+    unshuffledCompare.push_back(h);
+    unshuffledCompare.push_back(i);
+    unshuffledCompare.push_back(j);
 
     // compare unshuffled cards and unshuffle compare
-    for (int i = 0; i < 1; ++i) {
+    for (int i = 0; i < 10; ++i) {
         EXPECT_EQ(unshuffledCards[i]->getSuit(), unshuffledCompare[i]->getSuit());
         EXPECT_EQ(unshuffledCards[i]->getRank(), unshuffledCompare[i]->getRank());
     }
