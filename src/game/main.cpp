@@ -15,7 +15,7 @@ void printCards(std::vector<Card*> cards) {
 }
 
 int main() {
-//    Deck* deck = new Deck();
+      Deck* deck = new Deck();
 //    //std::cout << (deck->getDeck()).size();
 //    deck->shuffle();
 //    for(Card* c : deck->getDeck())
@@ -47,25 +47,28 @@ int main() {
     gf->addPlayer(jane);
     gf->deal();
 
-    std::cout << "******" << std::endl;
-    std::cout << don->getName() << std::endl;
-    printCards(don->getCardHand());
-    gf->isThereABook(don);
-    std::cout << "******" << std::endl;
-    std::cout << jane->getName() << std::endl;
-    printCards(jane->getCardHand());
-    gf->isThereABook(jane);
-    std::cout << "******" << std::endl;
-    std::cout << "******" << std::endl;
-    Card* donCard = don->selectFromHand();
-    std::cout << donCard->getSuit() << std::endl;
-    std::cout << donCard->getRank() << std::endl;
+//    std::cout << "******" << std::endl;
+//    std::cout << don->getName() << std::endl;
+//    printCards(don->getCardHand());
+//    gf->isThereABook(don);
+//    std::cout << "******" << std::endl;
+//    std::cout << jane->getName() << std::endl;
+//    printCards(jane->getCardHand());
+//    gf->isThereABook(jane);
+//    std::cout << "******" << std::endl;
+//    std::cout << "******" << std::endl;
+//    Card* donCard = don->selectFromHand();
+//    std::cout << donCard->getSuit() << std::endl;
+//    std::cout << donCard->getRank() << std::endl;
+//
+//    std::cout << "******" << std::endl;
+//    std::cout << "******" << std::endl;
+//    printCards(don->getCardHand());
 
-    std::cout << "******" << std::endl;
-    std::cout << "******" << std::endl;
-    printCards(don->getCardHand());
+//    std::cout << std::boolalpha << gf->askCard(don, jane) << std::endl;
+    std::cout << "==================" << std::endl;
+    printCards(deck->getDeck());
 
-    std::cout << std::boolalpha << gf->askCard(don, jane);
 
 //std::vector<int>nums;
 //nums.push_back(1);

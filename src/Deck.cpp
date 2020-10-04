@@ -24,6 +24,7 @@ std::vector<Card*> Deck::getDeck() {
 
 /// create a standard, unshuffled deck of cards
 void Deck::createDeck() {
+    clearDeck();
     for (int s = Club; s <= Spade; ++s) {
         for (int r = Ace; r <= King; ++r) {
             Card* c = new Card(s, r);
@@ -43,4 +44,9 @@ Card* Deck::getTopCard() {
     Card* frontCard = allCards.front();
     allCards.erase(allCards.begin());
     return frontCard;
+}
+
+/// clear or empty the deck
+void Deck::clearDeck() {
+    allCards.clear();
 }
