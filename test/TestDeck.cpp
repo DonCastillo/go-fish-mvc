@@ -57,6 +57,10 @@ TEST(TestCard, shuffle) {
         EXPECT_EQ(unshuffledCards[i]->getRank(), unshuffledCompare[i]->getRank());
     }
 
+    for (Card* c : unshuffledCompare) {
+        delete c;
+    }
+
     delete deck;
 }
 
