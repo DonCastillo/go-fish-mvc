@@ -38,7 +38,7 @@ TEST(TestCard, shuffle) {
 
     deck->createDeck();
     for (Card* c : deck->getDeck()) {
-        unshuffledCards(c);
+        unshuffledCards.push_back(c);
     }
 
     unshuffledCompare.push_back(new Card(Club, Ace));
