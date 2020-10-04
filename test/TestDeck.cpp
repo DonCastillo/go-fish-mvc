@@ -57,6 +57,13 @@ TEST(TestCard, shuffle) {
         EXPECT_EQ(unshuffledCards[i]->getRank(), unshuffledCompare[i]->getRank());
     }
 
+    // delete all object pointers
+    for (Card* c : unshuffledCards) {
+        delete c;
+    }
+    for (Card* c : unshuffledCompare) {
+        delete c;
+    }
     delete deck;
 }
 
