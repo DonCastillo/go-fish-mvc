@@ -6,7 +6,7 @@ Card::Card(int s, int r) {
     cRank = formatRank(r);
     cSuit = formatSuit(s);
     std::cout << cSuit << " : " << cRank << std::endl;
-    //rankNum = r;
+    rankNum = r;
 }
 
 Card::~Card() { }

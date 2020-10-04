@@ -3,6 +3,9 @@
 #include "Deck.h"
 #include <vector>
 #include <map>
+#include <iostream>
+#include <string>
+#include <iterator>
 
 GoFish::GoFish() {
     deck = new Deck();
@@ -67,10 +70,48 @@ void GoFish::deal() {
 /// otherwise, return false
 bool GoFish::isThereABook(Player* pPlayer) {
 
-    std::map<int, std::vector<int>> board;
-    Deck* tempDeck = deck;
+    std::map<std::string, std::vector<int>> board;
+    std::map<std::string, std::vector<int>>::iterator itr;
+    std::vector<Card*> playerCards = pPlayer->getCards();
+
+        for(Card* c : playerCards) {
+
+            bool proceed = true;
+
+            // check if c->getRank() is unique in the map
+            for(itr = board.begin(); itr != board.end(); ++itr) {
+                if( c->getRank() == itr->first ) {
+                    proceed = false;
+                    break;
+                } else {
+                    proceed = true;
+                }
+            }
+
+            // instert unique key to the map
+            if(proceed) {
+                std::vector<int> indexes;
+                for(int i = 0; i < playerCards.size(); ++i) {
+                    if( (c->getRank()).compare(playerCards[i]->getRank()) == 0){
+                        indexes.push_back(i);
+                    }
+                }
+                board.insert(std::pair<std::string, std::vector<int>>(c->getRank(), indexes));
+            }
+
+
+        }
+
+    std::cout << "+++++++++" << std::endl;
+    for(itr = board.begin(); itr != board.end(); ++itr){
+        std::cout << itr->first << ":" << itr->second.size() << std::endl;
+    }
+    //std::cout << board.size();
     return true;
+
 }
+
+
 
 
 

@@ -10,7 +10,8 @@
 void printCards(std::vector<Card*> cards) {
     for(Card* d : cards){
 
-        std::cout << d->getRank() << std::endl;
+    std::cout << "---------------" << std::endl;
+        std::cout << d->getSuit() << " : " << d->getRank() << std::endl;
     }
 }
 
@@ -49,6 +50,8 @@ int main()
     gf->deal();
 
     printCards(don->getCards());
+
+    gf->isThereABook(don);
 
 
 
