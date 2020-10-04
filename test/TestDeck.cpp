@@ -58,9 +58,9 @@ TEST(TestCard, shuffle) {
 //    }
 //
     // delete all object pointers
-    for (Card* c : unshuffledCards) {
-        delete c;
-    }
+//    for (Card* c : unshuffledCards) {
+//        delete c;
+//    }
 //    for (Card* c : unshuffledCompare) {
 //        delete c;
 //    }
