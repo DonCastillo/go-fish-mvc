@@ -26,3 +26,24 @@ TEST(TestCard, getSuit) {
     EXPECT_EQ(SpadeAce->getSuit(), "Spade");
     delete SpadeAce;
 }
+
+
+TEST(TestCard, getRank) {
+
+    Card* ClubAce = new Card(Club, Ace);
+    EXPECT_EQ(ClubAce->getRank(), "Ace");
+    delete ClubAce;
+
+    Card* ClubTwo = new Card(Club, Two);
+    EXPECT_EQ(ClubTwo->getSuit(), "Two");
+    delete ClubTwo;
+
+    Card* ClubQueen = new Card(Club, Queen);
+    EXPECT_EQ(ClubQueen->getSuit(), "Queen");
+    delete ClubQueen;
+
+    Card* ClubKing = new Card(Club, King);
+    EXPECT_EQ(ClubKing->getSuit(), "King");
+    delete ClubKing;
+}
+
