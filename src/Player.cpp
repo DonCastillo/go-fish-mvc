@@ -34,7 +34,7 @@ void Player::removeCard(Card* c) {
     for(int i = 0; i < hand.size(); ++i) {
         if(hand[i]->getSuit() == c->getSuit()) {
             if(hand[i]->getRank() == c->getRank()) {
-                hand.erase(hand.begin() + (i - 0));
+                hand.erase(hand.begin() + i);
             }
         }
     }

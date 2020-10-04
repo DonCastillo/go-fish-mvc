@@ -73,6 +73,8 @@ bool GoFish::isThereABook(Player* pPlayer) {
     std::map<std::string, std::vector<int>> board;
     std::map<std::string, std::vector<int>>::iterator itr;
     std::vector<Card*> playerCards = pPlayer->getCards();
+    bool hasBook = false;
+
 
         for(Card* c : playerCards) {
 
@@ -98,17 +100,24 @@ bool GoFish::isThereABook(Player* pPlayer) {
                 }
                 board.insert(std::pair<std::string, std::vector<int>>(c->getRank(), indexes));
             }
-
-
         }
 
-    std::cout << "+++++++++" << std::endl;
-    for(itr = board.begin(); itr != board.end(); ++itr){
-        std::cout << itr->first << ":" << itr->second.size() << std::endl;
-    }
-    //std::cout << board.size();
-    return true;
 
+        // check if there is a book
+        for(itr = board.begin(); itr != board.end(); ++itr) {
+            // if there are 4 cards with same ranks, remove card from player and add points
+            //std::cout << itr->second.size();
+            if(itr->second.size() == 2) {
+                for(int n : itr->second){
+                    pPlayer->removeCard(playerCards[n]);
+                }
+                hasBook = true;
+            }
+        }
+//        for (Card* g : pPlayer->getCards()) {
+//            std::cout << g->getSuit() << "...." << g->getRank() << std::endl;
+//        }
+        return hasBook;
 }
 
 

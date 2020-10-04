@@ -49,9 +49,17 @@ int main()
     gf->addPlayer(jane);
     gf->deal();
 
+    std::cout << "******" << std::endl;
+    std::cout << don->getName() << std::endl;
     printCards(don->getCards());
-
     gf->isThereABook(don);
+    std::cout << "******" << std::endl;
+    std::cout << jane->getName() << std::endl;
+    printCards(jane->getCards());
+    gf->isThereABook(jane);
+    std::cout << "******" << std::endl;
+    std::cout << "******" << std::endl;
+
 
 
 
