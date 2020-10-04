@@ -33,8 +33,11 @@ TEST(TestCard, createAndClearDeck) {
 
 TEST(TestCard, shuffle) {
     Deck* deck = new Deck();
+
+    // test unshuffled
     std::vector<Card*>unshuffledCards;
-    std::vector<Card*>unshuffledCompare;
+    std::vector<Card*>shuffledCards;
+    std::vector<Card*>original;
 
     deck->createDeck();
     for (Card* c : deck->getDeck()) {
@@ -52,24 +55,49 @@ TEST(TestCard, shuffle) {
     Card* i = new Card(Club, Nine);
     Card* j = new Card(Club, Ten);
 
-    unshuffledCompare.push_back(a);
-    unshuffledCompare.push_back(b);
-    unshuffledCompare.push_back(c);
-    unshuffledCompare.push_back(d);
-    unshuffledCompare.push_back(e);
-    unshuffledCompare.push_back(f);
-    unshuffledCompare.push_back(g);
-    unshuffledCompare.push_back(h);
-    unshuffledCompare.push_back(i);
-    unshuffledCompare.push_back(j);
+    original.push_back(a);
+    original.push_back(b);
+    original.push_back(c);
+    original.push_back(d);
+    original.push_back(e);
+    original.push_back(f);
+    original.push_back(g);
+    original.push_back(h);
+    original.push_back(i);
+    original.push_back(j);
 
     // compare unshuffled cards and unshuffle compare
     for (int i = 0; i < 10; ++i) {
-        EXPECT_EQ(unshuffledCards[i]->getSuit(), unshuffledCompare[i]->getSuit());
-        EXPECT_EQ(unshuffledCards[i]->getRank(), unshuffledCompare[i]->getRank());
+        EXPECT_EQ(unshuffledCards[i]->getSuit(),
+                  original[i]->getSuit());
+        EXPECT_EQ(unshuffledCards[i]->getRank(),
+                  original[i]->getRank());
     }
 
-    for (Card* c : unshuffledCompare) {
+
+    // test shuffled
+    deck->shuffle();
+    for (Card* c : deck->getDeck()) {
+        shuffledCards.push_back(c);
+    }
+
+
+    int numberOfTrues = 0;
+    for (int i = 0; i < 10; ++i) {
+
+        if (shuffledCards[i]->getSuit() !=
+            original[i]->getSuit() ||
+            shuffledCards[i]->getRank() !=
+            original[i]->getRank()) {
+            numberOfTrues++;
+        }
+
+    }
+
+    // should have 60% trues to be completely shuffled
+    EXPECT_GT(numberOfTrues, 4);
+
+    for (Card* c : original) {
         delete c;
     }
 
