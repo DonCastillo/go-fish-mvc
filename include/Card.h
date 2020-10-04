@@ -10,14 +10,12 @@ class Card {
     ~Card();
     std::string getSuit();
     std::string getRank();
-    //int rankNum;
+    std::string formatRank(int pRank);
+    std::string formatSuit(int pSuit);
 
  private:
     std::string cSuit;
     std::string cRank;
-    std::string formatRank(int pRank);
-    std::string formatSuit(int pSuit);
-
 };
 
 #endif // CARD_H_INCLUDED
