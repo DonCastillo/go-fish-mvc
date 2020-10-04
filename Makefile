@@ -7,7 +7,7 @@ GTEST = test_$(GAME)
 CXX=g++
 CXXVERSION= -std=c++11
 CXXFLAGS= $(CXXVERSION) -g -fprofile-arcs -ftest-coverage
-GMOCK_GITLAB = /usr/src/gmock/gmock-all.cc
+GMOCK_GITLAB = -lgmock
 GMOCK_LOCAL = -lgmock
 LINKFLAGS= -lgtest -lpthread $(GMOCK_GITLAB)
 LINKFLAGS_LOCAL= -lgtest -lpthread $(GMOCK_LOCAL)
