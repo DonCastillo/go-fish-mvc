@@ -12,7 +12,7 @@ TEST(TestCard, getSuit) {
 
     for (int s = Club; s <= Spade; ++s) {
 
-        int counter = 1
+        int counter = 1;
         for (int r = Ace; r <= King; ++r) {
             Card* c = new Card(s, r);
 
