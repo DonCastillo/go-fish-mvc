@@ -80,9 +80,9 @@ TEST(TestPlayer, getCardHand) {
 
     delete don;
     delete jane;
-    delete a;
-    delete b;
-    delete c;
-    delete d;
-    delete e;
+//    delete a;
+//    delete b;
+//    delete c;
+//    delete d;
+//    delete e;
 }
