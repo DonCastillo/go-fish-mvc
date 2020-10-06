@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "Player.h"
 #include "Deck.h"
-#include "GoFish.h"
+#include "Card.h"
 
 
 TEST(TestPlayer, getName) {
@@ -59,18 +59,30 @@ TEST(TestPlayer, getCardHand) {
     EXPECT_EQ(jane->getCardHand().size(), 0);
 
     // test for non empty card hand
-    GoFish* gf = new GoFish();
-    gf->addPlayer(don);
-    gf->addPlayer(jane);
-    gf->deal();
+    enum suits { Club, Diamond, Heart, Spade };
+    enum ranks { Ace = 1, Two, Three, Four, Five, Six,
+             Seven, Eight, Nine, Ten, Jack, Queen, King };
 
-    // Players should have 7 cards each
-//    EXPECT_EQ(don->getCardHand().size(), 7);
-//    EXPECT_EQ(jane->getCardHand().size(), 7);
+    Card* a = new Card(Club, Ace);
+    Card* b = new Card(Club, Two);
+    Card* c = new Card(Club, Three);
+    Card* d = new Card(Club, Four);
+    Card* e = new Card(Club, Five);
 
+    don->addCardHand(a);
+    don->addCardHand(b);
+    don->addCardHand(c);
+    jane->addCardHand(d);
+    jane->addCardHand(e);
 
-    delete gf;
-    delete jane;
+    EXPECT_EQ(don->getCardHand().size(), 3);
+    EXPECT_EQ(jane->getCardHand().size(), 2);
+
     delete don;
-
+    delete jane;
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    delete e;
 }

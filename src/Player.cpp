@@ -36,8 +36,7 @@ int Player::getScore() {
     return score;
 }
 
-/// get all the cards from the player's hands
-/// number of cards depends on the the type of card game
+/// add a card to the player's hand
 void Player::addCardHand(Card* c) {
     hand.push_back(c);
 }
@@ -55,6 +54,8 @@ Card* Player::removeCardHand(Card* c) {
     return cardTemp;
 }
 
+/// get all the cards from the player's hands
+/// number of cards depends on the the type of card game
 std::vector<Card*> Player::getCardHand() {
     return hand;
 }
