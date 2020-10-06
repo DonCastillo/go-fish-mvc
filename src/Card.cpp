@@ -62,9 +62,6 @@ std::string Card::formatRank(int pRank) {
         case 13:
             temp = "King";
             break;
-        default:
-            temp = "Joker";
-            break;
     }
     return temp;
 }
