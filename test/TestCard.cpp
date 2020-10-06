@@ -69,46 +69,69 @@ TEST(TestCard, getRank) {
             }
 
             ++counter;
-            std::cout << counter << std::endl;
+            delete c;
+        }
+    }
+}
+
+
+TEST(TestCard, formatRank) {
+
+    int counter = 1;
+
+    for (int r = Ace; r <= King; ++r) {
+        for (int s = Club; s <= Spade; ++s) {
+            Card* c = new Card(s, r);
+
+            if (counter <= 4) {
+                EXPECT_EQ(c->formatRank(Ace), "Ace");
+            } else if (counter <= 8) {
+                EXPECT_EQ(c->formatRank(Two), "2");
+            } else if (counter <= 12) {
+                EXPECT_EQ(c->formatRank(Three), "3");
+            } else if (counter <= 16) {
+                EXPECT_EQ(c->formatRank(Four), "4");
+            } else if (counter <= 20) {
+                EXPECT_EQ(c->formatRank(Five), "5");
+            } else if (counter <= 24) {
+                EXPECT_EQ(c->formatRank(Six), "6");
+            } else if (counter <= 28) {
+                EXPECT_EQ(c->formatRank(Seven), "7");
+            } else if (counter <= 32) {
+                EXPECT_EQ(c->formatRank(Eight), "8");
+            } else if (counter <= 36) {
+                EXPECT_EQ(c->formatRank(Nine), "9");
+            } else if (counter <= 40) {
+                EXPECT_EQ(c->formatRank(Ten), "10");
+            } else if (counter <= 44) {
+                EXPECT_EQ(c->formatRank(Jack), "Jack");
+            } else if (counter <= 48) {
+                EXPECT_EQ(c->formatRank(Queen), "Queen");
+            } else {
+                EXPECT_EQ(c->formatRank(King), "King");
+            }
+
+            ++counter;
             delete c;
         }
     }
 
 
-//    Card* ClubAce = new Card(Club, Ace);
-//    EXPECT_EQ(ClubAce->getRank(), "Ace");
-//    delete ClubAce;
+//    Card* DiamondAce = new Card(Diamond, Ace);
+//    EXPECT_EQ(DiamondAce->formatRank(Ace), "Ace");
+//    delete DiamondAce;
 //
-//    Card* ClubTwo = new Card(Club, Two);
-//    EXPECT_EQ(ClubTwo->getRank(), "2");
-//    delete ClubTwo;
+//    Card* DiamondTwo = new Card(Diamond, Two);
+//    EXPECT_EQ(DiamondTwo->formatRank(Two), "2");
+//    delete DiamondTwo;
 //
-//    Card* ClubQueen = new Card(Club, Queen);
-//    EXPECT_EQ(ClubQueen->getRank(), "Queen");
-//    delete ClubQueen;
+//    Card* DiamondQueen = new Card(Diamond, Queen);
+//    EXPECT_EQ(DiamondQueen->formatRank(Queen), "Queen");
+//    delete DiamondQueen;
 //
-//    Card* ClubKing = new Card(Club, King);
-//    EXPECT_EQ(ClubKing->getRank(), "King");
-//    delete ClubKing;
-}
-
-
-TEST(TestCard, formatRank) {
-    Card* DiamondAce = new Card(Diamond, Ace);
-    EXPECT_EQ(DiamondAce->formatRank(Ace), "Ace");
-    delete DiamondAce;
-
-    Card* DiamondTwo = new Card(Diamond, Two);
-    EXPECT_EQ(DiamondTwo->formatRank(Two), "2");
-    delete DiamondTwo;
-
-    Card* DiamondQueen = new Card(Diamond, Queen);
-    EXPECT_EQ(DiamondQueen->formatRank(Queen), "Queen");
-    delete DiamondQueen;
-
-    Card* DiamondKing = new Card(Diamond, King);
-    EXPECT_EQ(DiamondKing->formatRank(King), "King");
-    delete DiamondKing;
+//    Card* DiamondKing = new Card(Diamond, King);
+//    EXPECT_EQ(DiamondKing->formatRank(King), "King");
+//    delete DiamondKing;
 }
 
 
