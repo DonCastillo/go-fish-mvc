@@ -10,9 +10,8 @@ enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
 
 TEST(TestCard, getSuit) {
 
+    int counter = 1;
     for (int s = Club; s <= Spade; ++s) {
-
-        int counter = 1;
         for (int r = Ace; r <= King; ++r) {
             Card* c = new Card(s, r);
 
