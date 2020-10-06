@@ -3,6 +3,10 @@
 #include "Deck.h"
 #include "Card.h"
 
+enum suits { Club, Diamond, Heart, Spade };
+enum ranks { Ace = 1, Two, Three, Four, Five, Six,
+         Seven, Eight, Nine, Ten, Jack, Queen, King };
+
 
 TEST(TestPlayer, getName) {
 
@@ -59,10 +63,6 @@ TEST(TestPlayer, getCardHand) {
     EXPECT_EQ(jane->getCardHand().size(), 0);
 
     // test for non empty card hand
-    enum suits { Club, Diamond, Heart, Spade };
-    enum ranks { Ace = 1, Two, Three, Four, Five, Six,
-             Seven, Eight, Nine, Ten, Jack, Queen, King };
-
     Card* a = new Card(Club, Ace);
     Card* b = new Card(Club, Two);
     Card* c = new Card(Club, Three);
@@ -91,10 +91,6 @@ TEST(TestPlayer, selectFromHand) {
     EXPECT_EQ(don->getCardHand().size(), 0);
 
     // contains one card
-    enum suits { Club, Diamond, Heart, Spade };
-    enum ranks { Ace = 1, Two, Three, Four, Five, Six,
-             Seven, Eight, Nine, Ten, Jack, Queen, King };
-
     Card* a = new Card(Diamond, King);
     don->addCardHand(a);
 
@@ -115,8 +111,34 @@ TEST(TestPlayer, selectFromHand) {
 }
 
 
-//TEST(TestPlayer, selectFromHand) {
-//
-//}
+TEST(TestPlayer, removeCardHand) {
+    Player* don = new Player("Don");
+
+    // empty hand
+    EXPECT_EQ(don->getCardHand().size(), 0);
+    EXPECT_EQ(don->removeCardHand(), nullptr);
+
+    // contains card
+    Card* a = new Card(Spade, Five);
+    don->addCardHand(a);
+    EXPECT_EQ(don->getCardHand().size(), 1);
+    Card* removedCard = don->removeCardHand();
+    EXPECT_TRUE(removedCard->getRank() == "5" && removedCard->getSuit() == "Spade");
+    EXPECT_EQ(don->getCardHand().size(), 0);
+    EXPECT_EQ(don->removeCardHand(), nullptr);
+
+    // contains more than one card
+    Card* b = new Card(Spade, Six);
+    Card* c = new Card(Spade, Seven);
+    Card* d = new Card(Spade, Eight)
+    don->addCardHand(b);
+    don->addCardHand(c);
+    don->addCardHand(d);
+    EXPECT_EQ(don->getCardHand().size(), 3);
+    don->removeCardHand();
+    EXPECT_EQ(don->getCardHand().size(), 2);
+
+    delete don;
+}
 
 
