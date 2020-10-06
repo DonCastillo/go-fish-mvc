@@ -7,7 +7,7 @@ enum suits { Club, Diamond, Heart, Spade };
 enum ranks { Ace = 1, Two, Three, Four, Five, Six,
              Seven, Eight, Nine, Ten, Jack, Queen, King };
 
-TEST(TestCard, createAndClearDeck) {
+TEST(TestDeck, createAndClearDeck) {
     Deck* deck = new Deck();
     deck->createDeck();
 
@@ -31,7 +31,7 @@ TEST(TestCard, createAndClearDeck) {
 }
 
 
-TEST(TestCard, shuffle) {
+TEST(TestDeck, shuffle) {
     Deck* deck = new Deck();
 
     // test unshuffled
@@ -105,7 +105,7 @@ TEST(TestCard, shuffle) {
 }
 
 
-TEST(TestCard, getTopCard) {
+TEST(TestDeck, getTopCard) {
     Deck* deck = new Deck();
     deck->createDeck();
     Card* original = new Card(Club, Ace);
