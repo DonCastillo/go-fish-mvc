@@ -113,19 +113,18 @@ TEST(TestPlayer, selectFromHand) {
 
 TEST(TestPlayer, removeCardHand) {
     Player* don = new Player("Don");
+    Card* lookingFor = new Card(Spade, Seven)
 
     // empty hand
     EXPECT_EQ(don->getCardHand().size(), 0);
-    EXPECT_EQ(don->removeCardHand(), nullptr);
+    EXPECT_EQ(don->removeCardHand(lookingFor), nullptr);
 
     // contains card
     Card* a = new Card(Spade, Five);
     don->addCardHand(a);
     EXPECT_EQ(don->getCardHand().size(), 1);
-    Card* removedCard = don->removeCardHand();
-    EXPECT_TRUE(removedCard->getRank() == "5" && removedCard->getSuit() == "Spade");
-    EXPECT_EQ(don->getCardHand().size(), 0);
-    EXPECT_EQ(don->removeCardHand(), nullptr);
+    EXPECT_EQ(don->removeCardHand(lookingFor), nullptr);
+    EXPECT_EQ(don->getCardHand().size(), 1);
 
     // contains more than one card
     Card* b = new Card(Spade, Six);
@@ -134,9 +133,10 @@ TEST(TestPlayer, removeCardHand) {
     don->addCardHand(b);
     don->addCardHand(c);
     don->addCardHand(d);
+    EXPECT_EQ(don->getCardHand().size(), 4);
+    Card* removedCard = don->removeCardHand(lookingFor);
+    EXPECT_TRUE(removedCard->getRank() == "7" && removedCard->getSuit() == "Spade");
     EXPECT_EQ(don->getCardHand().size(), 3);
-    don->removeCardHand();
-    EXPECT_EQ(don->getCardHand().size(), 2);
 
     delete don;
 }
