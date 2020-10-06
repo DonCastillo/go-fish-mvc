@@ -115,42 +115,44 @@ TEST(TestCard, formatRank) {
             delete c;
         }
     }
-
-
-//    Card* DiamondAce = new Card(Diamond, Ace);
-//    EXPECT_EQ(DiamondAce->formatRank(Ace), "Ace");
-//    delete DiamondAce;
-//
-//    Card* DiamondTwo = new Card(Diamond, Two);
-//    EXPECT_EQ(DiamondTwo->formatRank(Two), "2");
-//    delete DiamondTwo;
-//
-//    Card* DiamondQueen = new Card(Diamond, Queen);
-//    EXPECT_EQ(DiamondQueen->formatRank(Queen), "Queen");
-//    delete DiamondQueen;
-//
-//    Card* DiamondKing = new Card(Diamond, King);
-//    EXPECT_EQ(DiamondKing->formatRank(King), "King");
-//    delete DiamondKing;
 }
 
 
 TEST(TestCard, formatSuit) {
-    Card* DiamondAce = new Card(Diamond, Ace);
-    EXPECT_EQ(DiamondAce->formatSuit(Diamond), "Diamond");
-    delete DiamondAce;
+    int counter = 1;
+    for (int s = Club; s <= Spade; ++s) {
+        for (int r = Ace; r <= King; ++r) {
+            Card* c = new Card(s, r);
 
-    Card* ClubAce = new Card(Club, Ace);
-    EXPECT_EQ(ClubAce->formatSuit(Club), "Club");
-    delete ClubAce;
+            if (counter <= 13) {
+                EXPECT_EQ(c->formatSuit(Club), "Club");
+            } else if (counter <= 26) {
+                EXPECT_EQ(c->formatSuit(Diamond), "Diamond");
+            } else if (counter <= 39) {
+                EXPECT_EQ(c->formatSuit(Heart), "Heart");
+            } else {
+                EXPECT_EQ(c->formatSuit(Spade), "Spade");
+            }
 
-    Card* HeartAce = new Card(Heart, Ace);
-    EXPECT_EQ(HeartAce->formatSuit(Heart), "Heart");
-    delete HeartAce;
-
-    Card* SpadeAce = new Card(Spade, Ace);
-    EXPECT_EQ(SpadeAce->formatSuit(Spade), "Spade");
-    delete SpadeAce;
+            ++counter;
+            delete c;
+        }
+    }
+//    Card* DiamondAce = new Card(Diamond, Ace);
+//    EXPECT_EQ(DiamondAce->formatSuit(Diamond), "Diamond");
+//    delete DiamondAce;
+//
+//    Card* ClubAce = new Card(Club, Ace);
+//    EXPECT_EQ(ClubAce->formatSuit(Club), "Club");
+//    delete ClubAce;
+//
+//    Card* HeartAce = new Card(Heart, Ace);
+//    EXPECT_EQ(HeartAce->formatSuit(Heart), "Heart");
+//    delete HeartAce;
+//
+//    Card* SpadeAce = new Card(Spade, Ace);
+//    EXPECT_EQ(SpadeAce->formatSuit(Spade), "Spade");
+//    delete SpadeAce;
 }
 
 
