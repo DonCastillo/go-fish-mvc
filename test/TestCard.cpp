@@ -26,45 +26,70 @@ TEST(TestCard, getSuit) {
             }
 
             ++counter;
+            delete c;
+        }
+    }
+}
+
+
+TEST(TestCard, getRank) {
+
+    int counter = 1;
+
+    for (int r = Ace; r <= King; ++r) {
+        for (int s = Club; s <= Spade; ++s) {
+            Card* c = new Card(s, r);
+
+            if (counter <= 4) {
+                EXPECT_EQ(c->getRank(), "Ace");
+            } else if (counter <= 8) {
+                EXPECT_EQ(c->getRank(), "2");
+            } else if (counter <= 12) {
+                EXPECT_EQ(c->getRank(), "3");
+            } else if (counter <= 16) {
+                EXPECT_EQ(c->getRank(), "4");
+            } else if (counter <= 20) {
+                EXPECT_EQ(c->getRank(), "5");
+            } else if (counter <= 24) {
+                EXPECT_EQ(c->getRank(), "6");
+            } else if (counter <= 28) {
+                EXPECT_EQ(c->getRank(), "7");
+            } else if (counter <= 32) {
+                EXPECT_EQ(c->getRank(), "8");
+            } else if (counter <= 36) {
+                EXPECT_EQ(c->getRank(), "9");
+            } else if (counter <= 40) {
+                EXPECT_EQ(c->getRank(), "10");
+            } else if (counter <= 44) {
+                EXPECT_EQ(c->getRank(), "Jack");
+            } else if (counter <= 48) {
+                EXPECT_EQ(c->getRank(), "Queen");
+            } else {
+                EXPECT_EQ(c->getRank(), "King");
+            }
+
+            ++counter;
             std::cout << counter << std::endl;
             delete c;
         }
     }
 
+
 //    Card* ClubAce = new Card(Club, Ace);
-//    EXPECT_EQ(ClubAce->getSuit(), "Club");
+//    EXPECT_EQ(ClubAce->getRank(), "Ace");
 //    delete ClubAce;
 //
-//    Card* DiamondAce = new Card(Diamond, Ace);
-//    EXPECT_EQ(DiamondAce->getSuit(), "Diamond");
-//    delete DiamondAce;
+//    Card* ClubTwo = new Card(Club, Two);
+//    EXPECT_EQ(ClubTwo->getRank(), "2");
+//    delete ClubTwo;
 //
-//    Card* HeartAce = new Card(Heart, Ace);
-//    EXPECT_EQ(HeartAce->getSuit(), "Heart");
-//    delete HeartAce;
+//    Card* ClubQueen = new Card(Club, Queen);
+//    EXPECT_EQ(ClubQueen->getRank(), "Queen");
+//    delete ClubQueen;
 //
-//    Card* SpadeAce = new Card(Spade, Ace);
-//    EXPECT_EQ(SpadeAce->getSuit(), "Spade");
-//    delete SpadeAce;
-}
-
-
-TEST(TestCard, getRank) {
-    Card* ClubAce = new Card(Club, Ace);
-    EXPECT_EQ(ClubAce->getRank(), "Ace");
-    delete ClubAce;
-
-    Card* ClubTwo = new Card(Club, Two);
-    EXPECT_EQ(ClubTwo->getRank(), "2");
-    delete ClubTwo;
-
-    Card* ClubQueen = new Card(Club, Queen);
-    EXPECT_EQ(ClubQueen->getRank(), "Queen");
-    delete ClubQueen;
-
-    Card* ClubKing = new Card(Club, King);
-    EXPECT_EQ(ClubKing->getRank(), "King");
-    delete ClubKing;
+//    Card* ClubKing = new Card(Club, King);
+//    EXPECT_EQ(ClubKing->getRank(), "King");
+//    delete ClubKing;
 }
 
 
