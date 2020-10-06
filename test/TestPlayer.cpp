@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "Player.h"
+#include "Deck.h"
+#include "GoFish.h"
 
 
 TEST(TestPlayer, getName) {
@@ -44,5 +46,31 @@ TEST(TestPlayer, scoring) {
     don->updateScore(1);
     EXPECT_EQ(don->getScore(), 21);
 
+    delete don;
 }
 
+
+TEST(TestPlayer, getCardHand) {
+    Player* don = new Player("Don");
+    Player* jane = new Player("Jane");
+
+    // should be empty card hand upon initialization
+    EXPECT_EQ(don->getCardHand().size(), 0);
+    EXPECT_EQ(jane->getCardHand().size(), 0);
+
+    // test for non empty card hand
+    GoFish* gf = new GoFish();
+    gf->addPlayers(don);
+    gf->addPlayers(jane);
+    gf->deal();
+
+    // Players should have 7 cards each
+    EXPECT_EQ(don->getCardHand().size(), 7);
+    EXPECT_EQ(jane->getCardHand().size(), 7);
+
+
+    delete gf;
+    delete jane;
+    delete don;
+
+}
