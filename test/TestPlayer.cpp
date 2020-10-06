@@ -113,7 +113,7 @@ TEST(TestPlayer, selectFromHand) {
 
 TEST(TestPlayer, removeCardHand) {
     Player* don = new Player("Don");
-    Card* lookingFor = new Card(Spade, Seven)
+    Card* lookingFor = new Card(Spade, Seven);
 
     // empty hand
     EXPECT_EQ(don->getCardHand().size(), 0);
@@ -129,7 +129,7 @@ TEST(TestPlayer, removeCardHand) {
     // contains more than one card
     Card* b = new Card(Spade, Six);
     Card* c = new Card(Spade, Seven);
-    Card* d = new Card(Spade, Eight)
+    Card* d = new Card(Spade, Eight);
     don->addCardHand(b);
     don->addCardHand(c);
     don->addCardHand(d);
