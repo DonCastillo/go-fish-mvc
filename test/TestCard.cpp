@@ -1,6 +1,5 @@
 #include "Card.h"
 #include "gtest/gtest.h"
-#include <iostream>
 
 enum suits { Club = 0, Diamond = 1, Heart = 2, Spade = 3 };
 enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
@@ -138,21 +137,6 @@ TEST(TestCard, formatSuit) {
             delete c;
         }
     }
-//    Card* DiamondAce = new Card(Diamond, Ace);
-//    EXPECT_EQ(DiamondAce->formatSuit(Diamond), "Diamond");
-//    delete DiamondAce;
-//
-//    Card* ClubAce = new Card(Club, Ace);
-//    EXPECT_EQ(ClubAce->formatSuit(Club), "Club");
-//    delete ClubAce;
-//
-//    Card* HeartAce = new Card(Heart, Ace);
-//    EXPECT_EQ(HeartAce->formatSuit(Heart), "Heart");
-//    delete HeartAce;
-//
-//    Card* SpadeAce = new Card(Spade, Ace);
-//    EXPECT_EQ(SpadeAce->formatSuit(Spade), "Spade");
-//    delete SpadeAce;
 }
 
 
