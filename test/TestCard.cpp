@@ -15,14 +15,16 @@ TEST(TestCard, getSuit) {
             Card* c = new Card(s, r);
 
             if (r <= 13) {
-                EXPECT_EQ(ClubAce->getSuit(), "Club");
+                EXPECT_EQ(c->getSuit(), "Club");
             } else if (r <= 26) {
-                EXPECT_EQ(ClubAce->getSuit(), "Diamond");
+                EXPECT_EQ(c->getSuit(), "Diamond");
             } else if (r <= 39) {
-                EXPECT_EQ(ClubAce->getSuit(), "Heart");
+                EXPECT_EQ(c->getSuit(), "Heart");
             } else {
-                EXPECT_EQ(ClubAce->getSuit(), "Spade");
+                EXPECT_EQ(c->getSuit(), "Spade");
             }
+
+            delete c;
         }
     }
 
