@@ -2,6 +2,7 @@
 #include "Card.h"
 #include "Deck.h"
 #include "GoFishUI.h"
+#include "Player.h"
 #include <time.h>
 #include <cstdlib>
 #include <vector>
@@ -11,7 +12,6 @@
 #include <iterator>
 #include <algorithm>
 #include <utility>
-#include "GoFishUI.h"
 
 
 GoFish::GoFish() {
@@ -33,20 +33,35 @@ void GoFish::startGame() {
     ui->printWelcome();
 
     // get num of players
-    numOfPlayers = ui->enterNumberOfPlayers();
-    //std::cout << numOfPlayers << std::endl;
+
+
+    do {
+        numOfPlayers = ui->enterNumberOfPlayers();
+    } while(numOfPlayers < 2 || numOfPlayers > 5);
 
     // get player info
-    int counter = 0;
-    while(counter < numOfPlayers) {
+    for(int i = 0; i < numOfPlayers; ++i) {
+        std::cout << "Hello" << std::endl;
         std::string name = ui->enterName();
         Player* p = new Player(name);
         addPlayer(p);
-        ++counter;
+    }
+
+    // initialize deck and shuffle deck
+    deck = new Deck();
+
+    // distribute cards to players
+    deal();
+
+    ui->printDeck(deck);
+
+
+    for(Player* p : players){
+        ui->printPlayerHand(p);
     }
 
 
-    std::cout << "...In Progress..." << std::endl;
+//    std::cout << "...In Progress..." << std::endl;
 }
 
 
@@ -98,10 +113,19 @@ void GoFish::deal() {
     // how many cards to give per player
     int numOfPlayers = players.size();
     int numOfCards;
-    if (numOfPlayers <= 3 && numOfPlayers >= 2) {
-        numOfCards = 7;
-    } else {
-        numOfCards = 5;
+
+    switch (numOfPlayers) {
+        case 2:
+        case 3:
+            numOfCards = 7;
+            break;
+        case 4:
+        case 5:
+            numOfCards = 5;
+            break;
+        default:
+            numOfCards = 5;
+            break;
     }
 
     // card distribution
@@ -153,8 +177,10 @@ bool GoFish::isThereABook(Player* pPlayer) {
     for (itr = board.begin(); itr != board.end(); ++itr) {
         // if there are 4 cards with same ranks, remove card
         // from player and add points
-        if (itr->second.size() == 2) {
+        if (itr->second.size() == 4) {
             for (int n : itr->second) {
+                Card* thisCard = playerCards[n];
+                books.push_back(thisCard);
                 pPlayer->removeCardHand(playerCards[n]);
             }
             hasBook = true;

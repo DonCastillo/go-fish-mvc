@@ -23,6 +23,7 @@ class GoFish {
 
  private:
     Deck* deck;
+    std::vector<Card*> books;
     std::vector<Player*> players;
     GoFishUI* ui;
 };

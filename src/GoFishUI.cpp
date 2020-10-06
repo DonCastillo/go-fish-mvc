@@ -32,10 +32,15 @@ void GoFishUI::printCongratulate(Player* pPlayer) {
 }
 
 void GoFishUI::printDeck(Deck* pDeck) {
+    std::cout << std::endl;
+    std::cout << "============== Current Deck ===============" << std::endl;
+    std::cout << "There are " << pDeck->getDeck().size() << " cards left." << std::endl;
     printCards(pDeck->getDeck());
 }
 
 void GoFishUI::printPlayerHand(Player* pPlayer) {
+    std::cout << std::endl;
+    std::cout << "============== Player Hand ===============" << std::endl;
     std::cout << pPlayer->getName() << "'s cards at hand:" << std::endl;
     printCards(pPlayer->getCardHand());
 }
