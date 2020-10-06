@@ -9,21 +9,38 @@ enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
 
 
 TEST(TestCard, getSuit) {
-    Card* ClubAce = new Card(Club, Ace);
-    EXPECT_EQ(ClubAce->getSuit(), "Club");
-    delete ClubAce;
 
-    Card* DiamondAce = new Card(Diamond, Ace);
-    EXPECT_EQ(DiamondAce->getSuit(), "Diamond");
-    delete DiamondAce;
+    for (int s = Club; s <= Spade; ++s) {
+        for (int r = Ace; r <= King; ++r) {
+            Card* c = new Card(s, r);
 
-    Card* HeartAce = new Card(Heart, Ace);
-    EXPECT_EQ(HeartAce->getSuit(), "Heart");
-    delete HeartAce;
+            if (r <= 13) {
+                EXPECT_EQ(ClubAce->getSuit(), "Club");
+            } else if (r <= 26) {
+                EXPECT_EQ(ClubAce->getSuit(), "Diamond");
+            } else if (r <= 39) {
+                EXPECT_EQ(ClubAce->getSuit(), "Heart");
+            } else {
+                EXPECT_EQ(ClubAce->getSuit(), "Spade");
+            }
+        }
+    }
 
-    Card* SpadeAce = new Card(Spade, Ace);
-    EXPECT_EQ(SpadeAce->getSuit(), "Spade");
-    delete SpadeAce;
+//    Card* ClubAce = new Card(Club, Ace);
+//    EXPECT_EQ(ClubAce->getSuit(), "Club");
+//    delete ClubAce;
+//
+//    Card* DiamondAce = new Card(Diamond, Ace);
+//    EXPECT_EQ(DiamondAce->getSuit(), "Diamond");
+//    delete DiamondAce;
+//
+//    Card* HeartAce = new Card(Heart, Ace);
+//    EXPECT_EQ(HeartAce->getSuit(), "Heart");
+//    delete HeartAce;
+//
+//    Card* SpadeAce = new Card(Spade, Ace);
+//    EXPECT_EQ(SpadeAce->getSuit(), "Spade");
+//    delete SpadeAce;
 }
 
 
