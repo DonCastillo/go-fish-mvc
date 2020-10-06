@@ -1,7 +1,9 @@
-#include "gtest/gtest.h"
+#include <vector>
 #include "Deck.h"
 #include "Card.h"
-#include <vector>
+#include "gtest/gtest.h"
+
+
 
 enum suits { Club, Diamond, Heart, Spade };
 enum ranks { Ace = 1, Two, Three, Four, Five, Six,
@@ -84,14 +86,12 @@ TEST(TestDeck, shuffle) {
 
     int numberOfTrues = 0;
     for (int i = 0; i < 10; ++i) {
-
         if (shuffledCards[i]->getSuit() !=
             original[i]->getSuit() ||
             shuffledCards[i]->getRank() !=
             original[i]->getRank()) {
             numberOfTrues++;
         }
-
     }
 
     // should have 60% trues to be completely shuffled

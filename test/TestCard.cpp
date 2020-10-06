@@ -8,7 +8,6 @@ enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
 
 
 TEST(TestCard, getSuit) {
-
     int counter = 1;
     for (int s = Club; s <= Spade; ++s) {
         for (int r = Ace; r <= King; ++r) {
@@ -32,9 +31,7 @@ TEST(TestCard, getSuit) {
 
 
 TEST(TestCard, getRank) {
-
     int counter = 1;
-
     for (int r = Ace; r <= King; ++r) {
         for (int s = Club; s <= Spade; ++s) {
             Card* c = new Card(s, r);
@@ -75,9 +72,7 @@ TEST(TestCard, getRank) {
 
 
 TEST(TestCard, formatRank) {
-
     int counter = 1;
-
     for (int r = Ace; r <= King; ++r) {
         for (int s = Club; s <= Spade; ++s) {
             Card* c = new Card(s, r);

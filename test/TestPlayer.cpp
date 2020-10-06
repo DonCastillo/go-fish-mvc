@@ -9,7 +9,6 @@ enum ranks { Ace = 1, Two, Three, Four, Five, Six,
 
 
 TEST(TestPlayer, getName) {
-
     Player* don = new Player("Don");
     EXPECT_EQ(don->getName(), "Don");
     delete don;
@@ -25,7 +24,6 @@ TEST(TestPlayer, getName) {
 
 
 TEST(TestPlayer, scoring) {
-
     Player* don = new Player("Don");
 
     // test if score is 0 upon initialization
@@ -135,7 +133,8 @@ TEST(TestPlayer, removeCardHand) {
     don->addCardHand(d);
     EXPECT_EQ(don->getCardHand().size(), 4);
     Card* removedCard = don->removeCardHand(lookingFor);
-    EXPECT_TRUE(removedCard->getRank() == "7" && removedCard->getSuit() == "Spade");
+    EXPECT_TRUE(removedCard->getRank() == "7" &&
+                removedCard->getSuit() == "Spade");
     EXPECT_EQ(don->getCardHand().size(), 3);
 
     delete don;

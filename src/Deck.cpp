@@ -43,7 +43,7 @@ void Deck::shuffle() {
 Card* Deck::getTopCard() {
     Card* topCard = nullptr;
 
-    if(!allCards.empty()) {
+    if (!allCards.empty()) {
         topCard = allCards.back();
         allCards.pop_back();
         return topCard;
