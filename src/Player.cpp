@@ -41,6 +41,7 @@ void Player::addCardHand(Card* c) {
     hand.push_back(c);
 }
 
+
 Card* Player::removeCardHand(Card* c) {
     Card* cardTemp = nullptr;
     for (int i = 0; i < hand.size(); ++i) {

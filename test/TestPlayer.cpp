@@ -88,6 +88,7 @@ TEST(TestPlayer, selectFromHand) {
 
     // empty hand
     EXPECT_EQ(don->selectFromHand(), nullptr);
+    EXPECT_EQ(don->getCardHand().size(), 0);
 
     // contains one card
     enum suits { Club, Diamond, Heart, Spade };
@@ -101,12 +102,21 @@ TEST(TestPlayer, selectFromHand) {
     EXPECT_EQ((don->selectFromHand())->getSuit(), "Diamond");
     EXPECT_EQ((don->selectFromHand())->getRank(), "King");
     EXPECT_NE(don->selectFromHand(), nullptr);
+    EXPECT_EQ(don->getCardHand().size(), 1);
 
     // contains more than one card
     Card* b = new Card(Diamond, Queen);
     don->addCardHand(b);
 
     EXPECT_NE(don->selectFromHand(), nullptr);
+    EXPECT_EQ(don->getCardHand().size(), 2);
 
     delete don;
 }
+
+
+TEST(TestPlayer, selectFromHand) {
+
+}
+
+
