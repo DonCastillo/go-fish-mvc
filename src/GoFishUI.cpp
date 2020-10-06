@@ -48,7 +48,6 @@ void GoFishUI::printPlayerHand(Player* pPlayer) {
 std::string GoFishUI::enterName() {
     std::string name;
     std::cout << "Enter Name:" << std::endl;
-    //std::getline(std::cin, name);
     std::cin >> name;
     return name;
 }
@@ -63,4 +62,17 @@ int GoFishUI::enterNumberOfPlayers() {
 void GoFishUI::printWelcome() {
     std::cout << "========== GO FISH ============" << std::endl;
     std::cout << "Program created by Don Castillo" << std::endl;
+}
+
+Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
+    int index = -1;
+    std::cout << "==== SELECT CARD FROM HAND ====" << std::endl;
+    std::cout << "Enter the card index:" << std::endl;
+
+    std::vector<Card*> playerCards = pPlayer->getCardHand();
+    for (int i = 0; i < playerCards.size(); ++i) {
+        std::cout << "[" << i << "] " << playerCards[i]->getSuit() << "..." << playerCards[i]->getRank() << std::endl;
+    }
+    std::cin >> index;
+    return playerCards[index];
 }

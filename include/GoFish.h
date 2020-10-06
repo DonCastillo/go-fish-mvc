@@ -19,6 +19,8 @@ class GoFish {
     Deck* getDeck();
     std::vector<Player*> getPlayers();
     void startGame();
+    bool anyoneHasCard();
+    Player* getRandomPlayer();
 
 
  private:

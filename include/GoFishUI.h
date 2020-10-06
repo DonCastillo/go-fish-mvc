@@ -18,6 +18,7 @@ class GoFishUI {
     std::string enterName();
     int enterNumberOfPlayers();
     void printWelcome();
+    Card* selectCardFromHand(Player* pPlayer);
 
  private:
     void printCards(std::vector<Card*> pCards);

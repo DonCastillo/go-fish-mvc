@@ -41,7 +41,7 @@ void GoFish::startGame() {
 
     // get player info
     for(int i = 0; i < numOfPlayers; ++i) {
-        std::cout << "Hello" << std::endl;
+        //std::cout << "Hello" << std::endl;
         std::string name = ui->enterName();
         Player* p = new Player(name);
         addPlayer(p);
@@ -53,17 +53,55 @@ void GoFish::startGame() {
     // distribute cards to players
     deal();
 
-    ui->printDeck(deck);
+    // keep playing while current deck isnt empty
+    // and at least 1 player still has cards
+    Player* currentPlayer = getRandomPlayer();
+    while(!deck->getDeck().empty() && anyoneHasCard()){
+        bool proceed = true;
+
+        while(proceed){
+
+            if (isThereABook(currentPlayer)) {
+
+                // if player has any book
+                currentPlayer->updateScore(1);
+                continue;
+
+            } else {
+
+                // if player does not have any book
+                // select from a card from hand
+                Card* cd = ui->selectCardFromHand(currentPlayer);
+                std::cout << cd->getSuit() << "..." << cd->getRank() << std::endl;
+
+            }
+
+        }
 
 
-    for(Player* p : players){
-        ui->printPlayerHand(p);
     }
+
+    //ui->printDeck(deck);
+
+
+    /*for(Player* p : players){
+        ui->printPlayerHand(p);
+    }*/
 
 
 //    std::cout << "...In Progress..." << std::endl;
 }
 
+
+Player* GoFish::getRandomPlayer() {
+    Player* tempPlayer = nullptr;
+    if (!players.empty()) {
+        std::srand(time(0));
+        int randPlayer = rand()%players.size();
+        tempPlayer = players[randPlayer];
+    }
+    return tempPlayer;
+}
 
 Deck* GoFish::getDeck() {
     return deck;
@@ -71,6 +109,15 @@ Deck* GoFish::getDeck() {
 
 std::vector<Player*> GoFish::getPlayers() {
     return players;
+}
+
+/// check if anybody has at least one card in their hands
+bool GoFish::anyoneHasCard(){
+    for (Player* p : players) {
+        if (!p->getCardHand().empty())
+            return true;
+    }
+    return false;
 }
 
 
