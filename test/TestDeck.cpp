@@ -107,6 +107,12 @@ TEST(TestDeck, shuffle) {
 
 TEST(TestDeck, getTopCard) {
     Deck* deck = new Deck();
+
+    // check empty deck
+    deck->clearDeck();
+    EXPECT_EQ(deck->getTopCard(), nullptr);
+
+    // check non empty deck
     deck->createDeck();
     Card* original = new Card(Spade, King);
     Card* topCard = deck->getTopCard();
@@ -114,7 +120,7 @@ TEST(TestDeck, getTopCard) {
     EXPECT_TRUE(original->getSuit() == topCard->getSuit());
     EXPECT_TRUE(original->getRank() == topCard->getRank());
 
-    delete topCard;
+    delete original;
     delete deck;
 }
 
