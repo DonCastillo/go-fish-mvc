@@ -11,19 +11,22 @@ enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
 TEST(TestCard, getSuit) {
 
     for (int s = Club; s <= Spade; ++s) {
+
+        int counter = 1
         for (int r = Ace; r <= King; ++r) {
             Card* c = new Card(s, r);
 
-            if (r <= 13) {
+            if (counter <= 13) {
                 EXPECT_EQ(c->getSuit(), "Club");
-            } else if (r <= 26) {
+            } else if (counter <= 26) {
                 EXPECT_EQ(c->getSuit(), "Diamond");
-            } else if (r <= 39) {
+            } else if (counter <= 39) {
                 EXPECT_EQ(c->getSuit(), "Heart");
             } else {
                 EXPECT_EQ(c->getSuit(), "Spade");
             }
 
+            ++counter;
             delete c;
         }
     }
