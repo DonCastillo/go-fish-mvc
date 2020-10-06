@@ -18,4 +18,31 @@ TEST(TestPlayer, getName) {
 }
 
 
+TEST(TestPlayer, scoring) {
+
+    Player* don = new Player("Don");
+
+    // test if score is 0 upon initialization
+    EXPECT_EQ(don->getScore(), 0);
+
+    don->updateScore(1);
+    EXPECT_EQ(don->getScore(), 1);
+
+    don->updateScore(19);
+    EXPECT_EQ(don->getScore(), 20);
+
+    // same value if negative or 0 is passed
+    don->updateScore(-1);
+    EXPECT_EQ(don->getScore(), 20);
+
+    don->updateScore(-19);
+    EXPECT_EQ(don->getScore(), 20);
+
+    don->updateScore(0);
+    EXPECT_EQ(don->getScore(), 20);
+
+    don->updateScore(1);
+    EXPECT_EQ(don->getScore(), 21);
+
+}
 

@@ -17,14 +17,21 @@ Player::~Player() {
     }
 }
 
+/// add/subtract score based on the adder
+/// if negative or 0, do nothing
+/// if positive, add score
 void Player::updateScore(int adder) {
-    score = score + adder;
+    if (adder > 0) {
+        score = score + adder;
+    }
 }
 
+/// get name
 std::string Player::getName() {
     return name;
 }
 
+/// get current score
 int Player::getScore() {
     return score;
 }
