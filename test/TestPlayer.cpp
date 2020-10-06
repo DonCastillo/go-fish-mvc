@@ -59,9 +59,9 @@ TEST(TestPlayer, getCardHand) {
     EXPECT_EQ(jane->getCardHand().size(), 0);
 
     // test for non empty card hand
-    GoFish* gf = new GoFish();
-    gf->addPlayer(don);
-    gf->addPlayer(jane);
+//    GoFish* gf = new GoFish();
+//    gf->addPlayer(don);
+//    gf->addPlayer(jane);
 //    gf->deal();
 
     // Players should have 7 cards each
@@ -69,7 +69,7 @@ TEST(TestPlayer, getCardHand) {
 //    EXPECT_EQ(jane->getCardHand().size(), 7);
 
 
-    delete gf;
+//    delete gf;
     delete jane;
     delete don;
 
