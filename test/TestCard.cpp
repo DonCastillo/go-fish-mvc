@@ -1,6 +1,6 @@
 #include "Card.h"
 #include "gtest/gtest.h"
-
+#include <iostream>
 
 enum suits { Club = 0, Diamond = 1, Heart = 2, Spade = 3 };
 enum ranks { Ace = 1, Two = 2, Three = 3, Four = 4, Five = 5,
@@ -27,6 +27,7 @@ TEST(TestCard, getSuit) {
             }
 
             ++counter;
+            std::cout << counter << std::endl;
             delete c;
         }
     }
