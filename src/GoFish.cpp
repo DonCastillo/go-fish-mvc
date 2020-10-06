@@ -1,6 +1,7 @@
 #include "GoFish.h"
 #include "Card.h"
 #include "Deck.h"
+#include "GoFishUI.h"
 #include <time.h>
 #include <cstdlib>
 #include <vector>
@@ -10,10 +11,11 @@
 #include <iterator>
 #include <algorithm>
 #include <utility>
+#include "GoFishUI.h"
 
 
 GoFish::GoFish() {
-    deck = new Deck();
+    //deck = new Deck();
 }
 
 
@@ -23,6 +25,30 @@ GoFish::~GoFish() {
         delete p;
     }
 }
+
+/// main game
+void GoFish::startGame() {
+    int numOfPlayers = 0;
+    ui = new GoFishUI();
+    ui->printWelcome();
+
+    // get num of players
+    numOfPlayers = ui->enterNumberOfPlayers();
+    //std::cout << numOfPlayers << std::endl;
+
+    // get player info
+    int counter = 0;
+    while(counter < numOfPlayers) {
+        std::string name = ui->enterName();
+        Player* p = new Player(name);
+        addPlayer(p);
+        ++counter;
+    }
+
+
+    std::cout << "...In Progress..." << std::endl;
+}
+
 
 Deck* GoFish::getDeck() {
     return deck;

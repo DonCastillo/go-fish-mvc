@@ -43,7 +43,8 @@ void GoFishUI::printPlayerHand(Player* pPlayer) {
 std::string GoFishUI::enterName() {
     std::string name;
     std::cout << "Enter Name:" << std::endl;
-    std::getline(std::cin, name);
+    //std::getline(std::cin, name);
+    std::cin >> name;
     return name;
 }
 
