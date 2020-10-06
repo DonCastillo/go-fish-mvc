@@ -108,13 +108,13 @@ TEST(TestDeck, shuffle) {
 TEST(TestDeck, getTopCard) {
     Deck* deck = new Deck();
     deck->createDeck();
-    Card* original = new Card(Club, Ace);
-    Card* firstCard = deck->getDeck().front();
+    Card* original = new Card(Spade, King);
+    Card* topCard = deck->getTopCard();
 
-    EXPECT_TRUE(original->getSuit() == firstCard->getSuit());
-    EXPECT_TRUE(original->getRank() == firstCard->getRank());
+    EXPECT_TRUE(original->getSuit() == topCard->getSuit());
+    EXPECT_TRUE(original->getRank() == topCard->getRank());
 
-    delete original;
+    delete topCard;
     delete deck;
 }
 

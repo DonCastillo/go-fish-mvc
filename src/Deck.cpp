@@ -41,9 +41,8 @@ void Deck::shuffle() {
 
 /// remove top card from the Deck
 Card* Deck::getTopCard() {
-    Card* frontCard = allCards.front();
-    allCards.erase(allCards.begin());
-    return frontCard;
+    Card* topCard = allCards.pop_back();
+    return topCard;
 }
 
 /// clear or empty the deck
