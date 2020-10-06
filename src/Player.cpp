@@ -36,6 +36,8 @@ int Player::getScore() {
     return score;
 }
 
+/// get all the cards from the player's hands
+/// number of cards depends on the the type of card game
 void Player::addCardHand(Card* c) {
     hand.push_back(c);
 }

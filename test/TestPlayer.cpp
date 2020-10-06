@@ -60,8 +60,8 @@ TEST(TestPlayer, getCardHand) {
 
     // test for non empty card hand
     GoFish* gf = new GoFish();
-    gf->addPlayers(don);
-    gf->addPlayers(jane);
+    gf->addPlayer(don);
+    gf->addPlayer(jane);
     gf->deal();
 
     // Players should have 7 cards each
