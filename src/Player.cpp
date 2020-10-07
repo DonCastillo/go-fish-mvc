@@ -47,7 +47,8 @@ void Player::addCardHand(Card* c) {
     hand.push_back(c);
 }
 
-
+/// return card the matches the card passed
+/// original card is removed and returned
 Card* Player::removeCardHand(Card* c) {
     Card* cardTemp = nullptr;
     for (int i = 0; i < hand.size(); ++i) {

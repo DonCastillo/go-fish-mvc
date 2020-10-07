@@ -11,6 +11,16 @@ GoFishUI::GoFishUI() {}
 
 GoFishUI::~GoFishUI() {}
 
+/// print any message
+void GoFishUI::print(std::string message) {
+    std::cout << message;
+}
+
+void GoFishUI::println(std::string message) {
+    std::cout << message
+              << std::endl;
+}
+
 /// format and print title
 void GoFishUI::setTitle(std::string title) {
     std::cout << std::endl;
@@ -70,45 +80,34 @@ void GoFishUI::printScores(std::vector<Player*> players) {
 
 /// print player turn notif
 void GoFishUI::printPlayerTurn(Player* pPlayer) {
-    std::cout << "It is your turn, "
-              << pPlayer->getName()
-              << "."
-              << std::endl;
+    println("It is your turn, " + pPlayer->getName() + ".");
 }
 
 
 /// print congratulatory message
 void GoFishUI::printCongratulate(Player* pPlayer) {
-    std::cout << "Congratulations! "
-              << pPlayer->getName()
-              << " wins ."
-              << std::endl;
+    println("Congratulations! " + pPlayer->getName() + " wins.");
 }
 
 
 /// print deck
 void GoFishUI::printDeck(Deck* pDeck) {
     setTitle("CURRENT DECK");
-    std::cout << "There are "
-              << pDeck->getDeck().size()
-              << " cards left."
-              << std::endl;
+    println("There are " + std::to_string(pDeck->getDeck().size()) + " cards left.");
     printCards(pDeck->getDeck());
 }
 
 /// print player hand
 void GoFishUI::printPlayerHand(Player* pPlayer) {
     setTitle("PLAYER HAND");
-    std::cout << pPlayer->getName()
-              << "'s cards at hand:"
-              << std::endl;
+    println(pPlayer->getName() + "'s cards at hand: ");
     printCards(pPlayer->getCardHand());
 }
 
 /// enter name
 std::string GoFishUI::enterName() {
     std::string name;
-    std::cout << "Enter Name: ";
+    print("Enter Name: ");
     std::cin >> name;
     return name;
 }
@@ -116,7 +115,7 @@ std::string GoFishUI::enterName() {
 /// enter number of players
 int GoFishUI::enterNumberOfPlayers() {
     int numOfPlayers = 0;
-    std::cout << "How many players in this game?: ";
+    print("How many players in this game?: ");
     std::cin >> numOfPlayers;
     return numOfPlayers;
 }
@@ -124,8 +123,7 @@ int GoFishUI::enterNumberOfPlayers() {
 /// print welcome message
 void GoFishUI::printWelcome() {
     setTitle("GO FISH");
-    std::cout << "Program created by Don Castillo"
-              << std::endl;
+    println("Program created by Don Castillo");
 }
 
 
@@ -133,6 +131,8 @@ void GoFishUI::printWelcome() {
 /// print card choices and get the chosen card
 Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
     setTitle("SELECT CARD FROM HAND");
+    println("Hand of " + pPlayer->getName() + ".");
+    println("Select a card from your hand that you want to asked from another player.");
 
     // variables
     std::vector<Card*> playerCards = pPlayer->getCardHand();
@@ -147,7 +147,7 @@ Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
 
     // keep looping while answer is invalid
     do {
-        std::cout << "Enter the card index: ";
+        print("Enter the card index: ");
         std::cin >> index;
     } while (index < minIndex || index > maxIndex);
 
@@ -178,7 +178,7 @@ Player* GoFishUI::selectPlayer(Player* currentPlayer,
 
     // keep looping while answer is invalid
     do {
-        std::cout << "Enter the player index: ";
+        print("Enter the player index: ");
         std::cin >> index;
     } while (currentPlayerIndex == index ||
             index < minIndex || index > maxIndex);

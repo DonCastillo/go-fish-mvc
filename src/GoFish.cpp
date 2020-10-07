@@ -33,15 +33,12 @@ void GoFish::startGame() {
     ui->printWelcome();
 
     // get num of players
-
-
     do {
         numOfPlayers = ui->enterNumberOfPlayers();
     } while(numOfPlayers < 2 || numOfPlayers > 5);
 
     // get player info
     for(int i = 0; i < numOfPlayers; ++i) {
-        //std::cout << "Hello" << std::endl;
         std::string name = ui->enterName();
         Player* p = new Player(i, name);
         addPlayer(p);
@@ -52,22 +49,28 @@ void GoFish::startGame() {
 
     // distribute cards to players
     deal();
+    ui->println("Cards have been dealt.");
     ui->printDeck(deck);
     ui->printScores(players);
 
     // keep playing while current deck isnt empty
     // and at least 1 player still has cards
     Player* currentPlayer = getRandomPlayer();
+    ui->printPlayerTurn(currentPlayer);
+
+
     while(!deck->getDeck().empty() && anyoneHasCard()){
+
         bool proceed = true;
 
-        while(proceed){
+
+        while (proceed) {
 
             if (isThereABook(currentPlayer)) {
 
                 // if player has any book
                 currentPlayer->updateScore(1);
-                continue;
+                continue;   // re-loop
 
             } else {
 
@@ -75,16 +78,23 @@ void GoFish::startGame() {
                 // select from a card from hand
                 Card* selectedCard;
                 selectedCard = ui->selectCardFromHand(currentPlayer);
+                ui->println(currentPlayer->getName() + " has chosen the card");
+                ui->setRow(selectedCard->getSuit(), selectedCard->getRank());
 
-                //select player
+                // select player
                 Player* selectedPlayer;
                 selectedPlayer = ui->selectPlayer(currentPlayer, players);
+                ui->println(currentPlayer->getName() + "chose " + selectedPlayer->getName());
 
-                std::cout << selectedPlayer->getID() << "..." << selectedPlayer->getName() << std::endl;
+                // ask the selectedPlayer for a card,
+                // add the matching cards to the currentPlayer
+                bool hasMatch = askCard(currentPlayer, selectedPlayer, selectedCard);
 
-
-
-                //std::cout << cd->getSuit() << "..." << cd->getRank() << std::endl;
+                if (hasMatch) {
+                    continue;
+                } else {
+                    break;
+                }
 
             }
 
@@ -147,20 +157,30 @@ bool GoFish::anyoneHasCard(){
 /// p1 = requestor, p2 = requestee
 /// true if successful
 /// if not, player fishes
-bool GoFish::askCard(Player* p1, Player* p2) {
-    Card* p1RequestedCard;
-    Card* p2ProvidedCard;
+bool GoFish::askCard(Player* p1, Player* p2, Card* targetCard) {
+    bool hasMatch = false;
+    std::vector<Card*> matchingCards;
 
-    p1RequestedCard = p1->selectFromHand();
-    if (p1RequestedCard == nullptr) {
-        return false;
+    // get all matching cards from requestee
+    for (Card* c : p2->getCardHand()) {
+        bool matchedSuit = c->getSuit() == targetCard->getSuit();
+        bool matchedRank = c->getRank() == targetCard->getRank();
+
+        if (matchedSuit && matchedRank) {
+           matchingCards.push_back(p2->removeCardHand(c));
+           hasMatch = true;
+        }
+
     }
-    p2ProvidedCard = p2->removeCardHand(p1RequestedCard);
-    if (p2ProvidedCard == nullptr) {
-        return false;
+
+    // add all matching cards to requestor's hand
+    for (Card* c : matchingCards) {
+        p1->addCardHand(c);
     }
-    p1->addCardHand(p2ProvidedCard);
-    return true;
+
+    ui->print(p1->getName() + " got " + std::to_string(matchingCards.size()) + " matching cards from " + p2->getName());
+
+    return hasMatch;
 }
 
 
@@ -258,21 +278,3 @@ bool GoFish::isThereABook(Player* pPlayer) {
     }
     return hasBook;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

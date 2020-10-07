@@ -15,7 +15,7 @@ class GoFish {
     void deal();
     void fish(Player* pPlayer);
     bool isThereABook(Player* pPlayer);
-    bool askCard(Player* p1, Player* p2);
+    bool askCard(Player* p1, Player* p2, Card* targetCard);
     Deck* getDeck();
     std::vector<Player*> getPlayers();
     void startGame();

@@ -10,6 +10,8 @@ class GoFishUI {
  public:
     GoFishUI();
     ~GoFishUI();
+    void print(std::string message);
+    void println(std::string message);
     void printScores(std::vector<Player*> players);
     void printPlayerTurn(Player* pPlayer);
     void printCongratulate(Player* pPlayer);
@@ -21,12 +23,12 @@ class GoFishUI {
     Card* selectCardFromHand(Player* pPlayer);
     Player* selectPlayer(Player* currentPlayer,
                          std::vector<Player*> allPlayers);
-
- private:
-    void printCards(std::vector<Card*> pCards);
     void setTitle(std::string title);
     void setRow(std::string left, std::string right);
     void setRow(int index, std::string left, std::string right);
+
+ private:
+    void printCards(std::vector<Card*> pCards);
     const int LINEWIDTH = 35;
     const char TITLEFILL = '=';
     const char LINEFILL = '.';
