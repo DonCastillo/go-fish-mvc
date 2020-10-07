@@ -7,7 +7,8 @@
 #include <algorithm>
 
 
-Player::Player(std::string pName) {
+Player::Player(int pID, std::string pName) {
+    id = pID;
     name = pName;
 }
 
@@ -29,6 +30,11 @@ void Player::updateScore(int adder) {
 /// get name
 std::string Player::getName() {
     return name;
+}
+
+/// getID
+int Player::getID() {
+    return id;
 }
 
 /// get current score

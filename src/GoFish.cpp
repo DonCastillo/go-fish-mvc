@@ -43,7 +43,7 @@ void GoFish::startGame() {
     for(int i = 0; i < numOfPlayers; ++i) {
         //std::cout << "Hello" << std::endl;
         std::string name = ui->enterName();
-        Player* p = new Player(name);
+        Player* p = new Player(i, name);
         addPlayer(p);
     }
 
@@ -52,6 +52,8 @@ void GoFish::startGame() {
 
     // distribute cards to players
     deal();
+    ui->printDeck(deck);
+    ui->printScores(players);
 
     // keep playing while current deck isnt empty
     // and at least 1 player still has cards
@@ -71,8 +73,18 @@ void GoFish::startGame() {
 
                 // if player does not have any book
                 // select from a card from hand
-                Card* cd = ui->selectCardFromHand(currentPlayer);
-                std::cout << cd->getSuit() << "..." << cd->getRank() << std::endl;
+                Card* selectedCard;
+                selectedCard = ui->selectCardFromHand(currentPlayer);
+
+                //select player
+                Player* selectedPlayer;
+                selectedPlayer = ui->selectPlayer(currentPlayer, players);
+
+                std::cout << selectedPlayer->getID() << "..." << selectedPlayer->getName() << std::endl;
+
+
+
+                //std::cout << cd->getSuit() << "..." << cd->getRank() << std::endl;
 
             }
 
@@ -92,7 +104,7 @@ void GoFish::startGame() {
 //    std::cout << "...In Progress..." << std::endl;
 }
 
-
+/// get any random player
 Player* GoFish::getRandomPlayer() {
     Player* tempPlayer = nullptr;
     if (!players.empty()) {
@@ -102,6 +114,17 @@ Player* GoFish::getRandomPlayer() {
     }
     return tempPlayer;
 }
+
+/// select player execept the one passed
+//std::vector<Player*> GoFish::playersSelection(Player* pPlayer){
+//    std::vector<Player*> tempPlayers;
+//    for (Player* p : players) {
+//        if (p->getID() != pPlayer->getID()) {
+//            tempPlayers.push_back(p);
+//        }
+//    }
+//    return tempPlayers;
+//}
 
 Deck* GoFish::getDeck() {
     return deck;

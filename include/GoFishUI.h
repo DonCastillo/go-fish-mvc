@@ -19,9 +19,17 @@ class GoFishUI {
     int enterNumberOfPlayers();
     void printWelcome();
     Card* selectCardFromHand(Player* pPlayer);
+    Player* selectPlayer(Player* currentPlayer,
+                         std::vector<Player*> allPlayers);
 
  private:
     void printCards(std::vector<Card*> pCards);
+    void setTitle(std::string title);
+    void setRow(std::string left, std::string right);
+    void setRow(int index, std::string left, std::string right);
+    const int LINEWIDTH = 35;
+    const char TITLEFILL = '=';
+    const char LINEFILL = '.';
 };
 
 #endif // GOFISHUI_H_INCLUDED

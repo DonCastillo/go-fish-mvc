@@ -9,22 +9,22 @@ enum ranks { Ace = 1, Two, Three, Four, Five, Six,
 
 
 TEST(TestPlayer, getName) {
-    Player* don = new Player("Don");
+    Player* don = new Player(1, "Don");
     EXPECT_EQ(don->getName(), "Don");
     delete don;
 
-    Player* jane = new Player("Jane");
+    Player* jane = new Player(2, "Jane");
     EXPECT_EQ(jane->getName(), "Jane");
     delete jane;
 
-    Player* michael = new Player("Michael");
+    Player* michael = new Player(3, "Michael");
     EXPECT_EQ(michael->getName(), "Michael");
     delete michael;
 }
 
 
 TEST(TestPlayer, scoring) {
-    Player* don = new Player("Don");
+    Player* don = new Player(1, "Don");
 
     // test if score is 0 upon initialization
     EXPECT_EQ(don->getScore(), 0);
@@ -53,8 +53,8 @@ TEST(TestPlayer, scoring) {
 
 
 TEST(TestPlayer, getCardHand) {
-    Player* don = new Player("Don");
-    Player* jane = new Player("Jane");
+    Player* don = new Player(1, "Don");
+    Player* jane = new Player(2, "Jane");
 
     // should be empty card hand upon initialization
     EXPECT_EQ(don->getCardHand().size(), 0);
@@ -82,7 +82,7 @@ TEST(TestPlayer, getCardHand) {
 
 
 TEST(TestPlayer, selectFromHand) {
-    Player* don = new Player("Don");
+    Player* don = new Player(1, "Don");
 
     // empty hand
     EXPECT_EQ(don->selectFromHand(), nullptr);
@@ -110,7 +110,7 @@ TEST(TestPlayer, selectFromHand) {
 
 
 TEST(TestPlayer, removeCardHand) {
-    Player* don = new Player("Don");
+    Player* don = new Player(1, "Don");
     Card* lookingFor = new Card(Spade, Seven);
 
     // empty hand
@@ -139,5 +139,3 @@ TEST(TestPlayer, removeCardHand) {
 
     delete don;
 }
-
-

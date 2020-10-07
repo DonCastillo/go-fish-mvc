@@ -7,11 +7,12 @@
 
 class Player {
  public:
-    Player(std::string pName);
+    Player(int pID, std::string pName);
     ~Player();
     void updateScore(int adder);
     int getScore();
     std::string getName();
+    int getID();
     void addCardHand(Card* c);
     Card* removeCardHand(Card* c);
     std::vector<Card*> getCardHand();
@@ -20,6 +21,7 @@ class Player {
  private:
     std::string name;
     int score = 0;
+    int id = -1;
     std::vector<Card*> hand;
 };
 
