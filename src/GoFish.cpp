@@ -42,6 +42,7 @@ void GoFish::startGame() {
         std::string name = ui->enterName();
         Player* p = new Player(i, name);
         addPlayer(p);
+        ui->println("Adding a player...");
     }
 
     // initialize deck and shuffle deck
@@ -56,63 +57,92 @@ void GoFish::startGame() {
     // keep playing while current deck isnt empty
     // and at least 1 player still has cards
     Player* currentPlayer = getRandomPlayer();
-    ui->printPlayerTurn(currentPlayer);
+    ui->println("Current player's been selected!");
 
 
     while(!deck->getDeck().empty() && anyoneHasCard()){
 
         bool proceed = true;
+        ui->printPlayerTurn(currentPlayer);
 
-
+        /*********/
         while (proceed) {
+
+            ui->println(currentPlayer->getName() + ": Checking for a book...");
 
             if (isThereABook(currentPlayer)) {
 
-                // if player has any book
+                /// IF THE PLAYER HAS A BOOK
                 currentPlayer->updateScore(1);
+                ui->println(currentPlayer->getName() + ": A book has been found!");
+                ui->println(currentPlayer->getName() + ": I earned a point");
+                ui->printScores(players);
+                proceed = true;
                 continue;   // re-loop
 
             } else {
 
-                // if player does not have any book
-                // select from a card from hand
+                /// IF THE PLAYER DOESNT HAVE ANY BOOK
+                ui->println(currentPlayer->getName() + ": No book found.");
+                // select a card from hand
                 Card* selectedCard;
                 selectedCard = ui->selectCardFromHand(currentPlayer);
-                ui->println(currentPlayer->getName() + " has chosen the card");
+                ui->println(currentPlayer->getName() + ": I have chosen the card:");
                 ui->setRow(selectedCard->getSuit(), selectedCard->getRank());
 
                 // select player
                 Player* selectedPlayer;
                 selectedPlayer = ui->selectPlayer(currentPlayer, players);
-                ui->println(currentPlayer->getName() + "chose " + selectedPlayer->getName());
+                ui->println(currentPlayer->getName() + ": I chose " + selectedPlayer->getName());
 
                 // ask the selectedPlayer for a card,
-                // add the matching cards to the currentPlayer
+                // add the matching cards to the currentPlayer's
+                ui->println(currentPlayer->getName() + ": Hey " + selectedPlayer->getName() + ", do you have...");
+                ui->setRow(selectedCard->getSuit(), selectedCard->getRank());
+
                 bool hasMatch = askCard(currentPlayer, selectedPlayer, selectedCard);
 
                 if (hasMatch) {
-                    continue;
+                    // with match
+                    ui->println(currentPlayer->getName() + ": I got at least one matching card from " + selectedPlayer->getName());
+                    proceed = true;
+                    continue; // re-loop
+
                 } else {
-                    break;
+                    // no match
+                    ui->println(currentPlayer->getName() + ": I got no matching card from " + selectedPlayer->getName());
+                    ui->println(selectedPlayer->getName() + ": " currentPlayer->getName + ", go fish!");
+
+                    // fish
+                    ui->println(currentPlayer->getName() + ": I'm fishing...");
+                    fish(currentPlayer);
+
+                    // todo: add more conditional code here
+                    proceed = false;
+                    continue; // re-loop
                 }
 
             }
 
         }
+        /*********/
 
+        // determine currentPlayer index from the players vector
+        int currentPlayerIndex = -1;
+        for (int i = 0; i < numOfPlayers; ++i) {
+            if (players[i]->getID() == currentPlayer->getID()) {
+                currentPlayerIndex = i;
+            }
+        }
 
+        // change player turn
+        int nextPlayerIndex = (currentPlayerIndex + 1) % numOfPlayers;
+        currentPlayer = players[nextPlayerIndex];
     }
-
-    //ui->printDeck(deck);
-
-
-    /*for(Player* p : players){
-        ui->printPlayerHand(p);
-    }*/
-
-
-//    std::cout << "...In Progress..." << std::endl;
 }
+
+
+
 
 /// get any random player
 Player* GoFish::getRandomPlayer() {
@@ -178,7 +208,7 @@ bool GoFish::askCard(Player* p1, Player* p2, Card* targetCard) {
         p1->addCardHand(c);
     }
 
-    ui->print(p1->getName() + " got " + std::to_string(matchingCards.size()) + " matching cards from " + p2->getName());
+    ui->println(p1->getName() + " got " + std::to_string(matchingCards.size()) + " matching cards from " + p2->getName());
 
     return hasMatch;
 }

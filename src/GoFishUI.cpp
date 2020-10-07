@@ -132,7 +132,7 @@ void GoFishUI::printWelcome() {
 Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
     setTitle("SELECT CARD FROM HAND");
     println("Hand of " + pPlayer->getName() + ".");
-    println("Select a card from your hand that you want to asked from another player.");
+    println("Select a card from your hand that you want \nto asked from another player.");
 
     // variables
     std::vector<Card*> playerCards = pPlayer->getCardHand();
@@ -160,7 +160,7 @@ Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
 Player* GoFishUI::selectPlayer(Player* currentPlayer,
                                std::vector<Player*> allPlayers) {
     setTitle("SELECT PLAYER");
-
+    println("Select who to ask for the card just selected:");
     // variables
     int index = -1;
     int minIndex = 0;
