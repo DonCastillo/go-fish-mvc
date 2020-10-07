@@ -76,6 +76,7 @@ void GoFishUI::printScores(std::vector<Player*> players) {
     for (Player* p : players) {
         setRow(p->getName(), std::to_string(p->getScore()));
     }
+    println("");
 }
 
 /// print player turn notif
@@ -132,7 +133,7 @@ void GoFishUI::printWelcome() {
 Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
     setTitle("SELECT CARD FROM HAND");
     println("Hand of " + pPlayer->getName() + ".");
-    println("Select a card from your hand that you want \nto asked from another player.");
+    println("Select a card from your hand that you want \nto ask from another player.");
 
     // variables
     std::vector<Card*> playerCards = pPlayer->getCardHand();
