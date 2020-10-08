@@ -1,3 +1,10 @@
+/*!
+   \file Card class implementation
+   \brief implements the member data and methods of Card class
+   \author Don Castillo
+   \date 07/10/2020
+*/
+
 #include "Card.h"
 #include <iostream>
 #include <string>
@@ -5,8 +12,6 @@
 Card::Card(int s, int r) {
     cRank = formatRank(r);
     cSuit = formatSuit(s);
-    //std::cout << cSuit << " : " << cRank << std::endl;
-    //rankNum = r;
 }
 
 Card::~Card() { }
