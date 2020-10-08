@@ -317,8 +317,13 @@ void GoFish::deal() {
 bool GoFish::isThereABook(Player* pPlayer) {
     std::map<std::string, std::vector<int>> board;
     std::map<std::string, std::vector<int>>::iterator itr;
-    std::vector<Card*> playerCards = pPlayer->getCardHand();
+    std::vector<Card*> playerCards;
     bool hasBook = false;
+
+    // make a copy of the player hand's
+    for (Card* c : pPlayer->getCardHand()) {
+        playerCards.push_back(c);
+    }
 
     // iterate through player's cards
     for (Card* c : playerCards) {
@@ -328,9 +333,10 @@ bool GoFish::isThereABook(Player* pPlayer) {
         for (itr = board.begin(); itr != board.end(); ++itr) {
             if ( c->getRank() == itr->first ) {
                 proceed = false;
-                break; // exit this look
+                break; // exit this loop
             } else {
                 proceed = true;
+                continue;
             }
         }
 
@@ -348,20 +354,25 @@ bool GoFish::isThereABook(Player* pPlayer) {
         }
     }
 
-
+    /// THERE IS A BUG HERE
     // check if there is a book
     for (itr = board.begin(); itr != board.end(); ++itr) {
         // if there are 4 cards with same ranks, remove card
         // from player and add points
         if (itr->second.size() == 4) {
             for (int n : itr->second) {
-                //Card* thisCard = playerCards[n];[*]
+                // Card* thisCard = playerCards[n];
+                // pPlayer->removeCardHand(thisCard);
                 Card* thisCard = pPlayer->removeCardHand(playerCards[n]);
-                books.push_back(thisCard);
+                if (thisCard != nullptr) {
+                    books.push_back(thisCard);
+                }
                 //pPlayer->removeCardHand(playerCards[n]);[*]
             }
             hasBook = true;
         }
     }
+
+    /// THERE IS A BUG HERE
     return hasBook;
 }
