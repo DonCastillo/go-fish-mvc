@@ -18,6 +18,7 @@ class GoFish {
     bool askCard(Player* p1, Player* p2, Card* targetCard);
     Deck* getDeck();
     std::vector<Player*> getPlayers();
+    std::vector<Player*> getWinner();
     void startGame();
     bool anyoneHasCard();
     Player* getRandomPlayer();

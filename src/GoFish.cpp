@@ -179,10 +179,35 @@ void GoFish::startGame() {
         int nextPlayerIndex = (currentPlayerIndex + 1) % numOfPlayers;
         currentPlayer = players[nextPlayerIndex];
     }
+
+    // identify winners
+    for(Player* p : getWinner()) {
+        ui->printCongratulate(p);
+    }
+
 }
 
 
+std::vector<Player*> GoFish::getWinner() {
+    int maxScore = -1;
+    std::vector<Player*> winners;
 
+    // determine highest scores
+    for (Player* p : players) {
+        if (p->getScore() > maxScore) {
+            maxScore = p->getScore();
+        }
+    }
+
+    // determine who gets the highest scores
+    for (Player* p : players) {
+        if (p->getScore() == maxScore) {
+            winners.push_back(p);
+        }
+    }
+
+    return winners;
+}
 
 /// get any random player
 Player* GoFish::getRandomPlayer() {
