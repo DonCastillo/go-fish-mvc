@@ -65,10 +65,14 @@ void GoFish::startGame() {
         bool proceed = true;
         bool hasNotFished = true;
         ui->printPlayerTurn(currentPlayer);
+        ui->println("Current deck has " + std::to_string(deck->getDeck().size()) + " cards left.");
 
         /*********/
         while (proceed) {
 
+            /// todo: check first to see if player's hand is not empty
+            /// if yes, proceed
+            /// it no, fish, then proceed
             ui->println(currentPlayer->getName() + ": Checking for a book...");
 
             if (isThereABook(currentPlayer)) {
@@ -106,8 +110,8 @@ void GoFish::startGame() {
 
                         // ask the selectedPlayer for a card,
                         // add the matching cards to the currentPlayer's
-                        ui->println(currentPlayer->getName() + ": Hey " + selectedPlayer->getName() + ", do you have...");
-                        ui->setRow(selectedCard->getSuit(), selectedCard->getRank());
+                        ui->println(currentPlayer->getName() + ": Hey " + selectedPlayer->getName() + ", do you have a");
+                        ui->println("card with a rank of " + selectedCard->getRank());
 
                         bool hasMatch = askCard(currentPlayer, selectedPlayer, selectedCard);
 
@@ -277,7 +281,7 @@ bool GoFish::isThereABook(Player* pPlayer) {
     std::vector<Card*> playerCards = pPlayer->getCardHand();
     bool hasBook = false;
 
-
+    // iterate through player's cards
     for (Card* c : playerCards) {
         bool proceed = true;
 
@@ -285,7 +289,7 @@ bool GoFish::isThereABook(Player* pPlayer) {
         for (itr = board.begin(); itr != board.end(); ++itr) {
             if ( c->getRank() == itr->first ) {
                 proceed = false;
-                break;
+                break; // exit this look
             } else {
                 proceed = true;
             }

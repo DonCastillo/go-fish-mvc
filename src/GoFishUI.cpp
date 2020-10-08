@@ -102,6 +102,7 @@ void GoFishUI::printDeck(Deck* pDeck) {
 void GoFishUI::printPlayerHand(Player* pPlayer) {
     setTitle("PLAYER HAND");
     println(pPlayer->getName() + "'s cards at hand: ");
+    println(pPlayer->getName() + " has " + std::to_string(pPlayer->getCardHand().size()) + " cards.");
     printCards(pPlayer->getCardHand());
 }
 
@@ -161,7 +162,9 @@ Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
 Player* GoFishUI::selectPlayer(Player* currentPlayer,
                                std::vector<Player*> allPlayers) {
     setTitle("SELECT PLAYER");
-    println("Select who to ask for the card just selected:");
+    println("Select the player you want to ask.");
+    println("That player should have at least one card");
+    println("that matches the rank of card you just selected from your hand.");
     // variables
     int index = -1;
     int minIndex = 0;
