@@ -1,3 +1,10 @@
+/*!
+   \file Randomize class implementation
+   \brief implements the member data and methods of Randomize class
+   \author Don Castillo
+   \date 07/10/2020
+*/
+
 #include "Randomize.h"
 #include <time.h>
 #include <vector>
