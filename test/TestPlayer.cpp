@@ -8,6 +8,21 @@ enum ranks { Ace = 1, Two, Three, Four, Five, Six,
          Seven, Eight, Nine, Ten, Jack, Queen, King };
 
 
+TEST(TestPlayer, getID) {
+    Player* don = new Player(1, "Don");
+    EXPECT_EQ(don->getID(), 1);
+    delete don;
+
+    Player* jane = new Player(2, "Jane");
+    EXPECT_EQ(jane->getID(), 2);
+    delete jane;
+
+    Player* michael = new Player(3, "Michael");
+    EXPECT_EQ(michael->getID(), 3);
+    delete michael;
+}
+
+
 TEST(TestPlayer, getName) {
     Player* don = new Player(1, "Don");
     EXPECT_EQ(don->getName(), "Don");
