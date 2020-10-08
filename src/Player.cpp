@@ -76,7 +76,7 @@ Card* Player::selectFromHand() {
     Card* tempCard = nullptr;
     if (!hand.empty()) {
         std::srand(time(0));
-        int randNum = rand()%hand.size();
+        int randNum = rand() % hand.size();
         tempCard = hand[randNum];
     }
     return tempCard;

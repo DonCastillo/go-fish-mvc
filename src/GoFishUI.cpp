@@ -94,7 +94,9 @@ void GoFishUI::printCongratulate(Player* pPlayer) {
 /// print deck
 void GoFishUI::printDeck(Deck* pDeck) {
     setTitle("CURRENT DECK");
-    println("There are " + std::to_string(pDeck->getDeck().size()) + " cards left.");
+    println("There are " +
+            std::to_string(pDeck->getDeck().size()) +
+            " cards left.");
     printCards(pDeck->getDeck());
 }
 
@@ -102,7 +104,9 @@ void GoFishUI::printDeck(Deck* pDeck) {
 void GoFishUI::printPlayerHand(Player* pPlayer) {
     setTitle("PLAYER HAND");
     println(pPlayer->getName() + "'s cards at hand: ");
-    println(pPlayer->getName() + " has " + std::to_string(pPlayer->getCardHand().size()) + " cards.");
+    println(pPlayer->getName() + " has " +
+            std::to_string(pPlayer->getCardHand().size()) +
+            " cards.");
     printCards(pPlayer->getCardHand());
 }
 
@@ -134,7 +138,8 @@ void GoFishUI::printWelcome() {
 Card* GoFishUI::selectCardFromHand(Player* pPlayer) {
     setTitle("SELECT CARD FROM HAND");
     println("Hand of " + pPlayer->getName() + ".");
-    println("Select a card from your hand that you want \nto ask from another player.");
+    println("Select a card from your hand that you want");
+    println("to ask from another player.");
 
     // variables
     std::vector<Card*> playerCards = pPlayer->getCardHand();
