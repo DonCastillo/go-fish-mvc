@@ -70,76 +70,85 @@ void GoFish::startGame() {
         /*********/
         while (proceed) {
 
-            /// todo: check first to see if player's hand is not empty
-            /// if yes, proceed
-            /// it no, fish, then proceed
-            ui->println(currentPlayer->getName() + ": Checking for a book...");
+            if (!(currentPlayer->getCardHand()).empty()) {
+                // proceed as normal
 
-            if (isThereABook(currentPlayer)) {
+                /// todo: check first to see if player's hand is not empty
+                /// if yes, proceed
+                /// it no, fish, then proceed
+                ui->println(currentPlayer->getName() + ": Checking for a book...");
 
-                /// IF THE PLAYER HAS A BOOK
-                currentPlayer->updateScore(1);
-                ui->println(currentPlayer->getName() + ": A book has been found!");
-                ui->println(currentPlayer->getName() + ": I earned a point");
-                ui->printScores(players);
-                proceed = true;
-                continue;   // re-loop
+                if (isThereABook(currentPlayer)) {
 
-            } else {
+                    /// IF THE PLAYER HAS A BOOK
+                    currentPlayer->updateScore(1);
+                    ui->println(currentPlayer->getName() + ": A book has been found!");
+                    ui->println(currentPlayer->getName() + ": I earned a point");
+                    ui->printScores(players);
+                    proceed = true;
+                    continue;   // re-loop
 
-                /// IF THE PLAYER DOESNT HAVE ANY BOOK
-                ui->println(currentPlayer->getName() + ": No book found.");
-
-                if (hasNotFished) {
-                        // print all players hands (for testing)
-                        ui->println("Showing all player's hands...");
-                        for (Player* p : players) {
-                            ui->printPlayerHand(p);
-                        }
-
-                        // select a card from hand
-                        Card* selectedCard;
-                        selectedCard = ui->selectCardFromHand(currentPlayer);
-                        ui->println(currentPlayer->getName() + ": I have chosen the card:");
-                        ui->setRow(selectedCard->getSuit(), selectedCard->getRank());
-
-                        // select player
-                        Player* selectedPlayer;
-                        selectedPlayer = ui->selectPlayer(currentPlayer, players);
-                        ui->println(currentPlayer->getName() + ": I chose " + selectedPlayer->getName());
-
-                        // ask the selectedPlayer for a card,
-                        // add the matching cards to the currentPlayer's
-                        ui->println(currentPlayer->getName() + ": Hey " + selectedPlayer->getName() + ", do you have a");
-                        ui->println("card with a rank of " + selectedCard->getRank());
-
-                        bool hasMatch = askCard(currentPlayer, selectedPlayer, selectedCard);
-
-                        if (hasMatch) {
-                            // with match
-                            ui->println(currentPlayer->getName() + ": I got at least one matching card from " + selectedPlayer->getName());
-                            proceed = true;
-                            continue; // re-loop
-
-                        } else {
-                            // no match
-                            ui->println(currentPlayer->getName() + ": I got no matching card from " + selectedPlayer->getName());
-                            ui->println(selectedPlayer->getName() + ": " + currentPlayer->getName() + ", go fish!");
-
-                            // fish
-                            ui->println(currentPlayer->getName() + ": I'm fishing...");
-                            fish(currentPlayer);
-
-                            hasNotFished = false;
-                            proceed = true;
-                            continue; // re-loop
-                        }
                 } else {
-                    // if the has fished and no more books are found
-                    proceed = false;
-                    break;
+
+                    /// IF THE PLAYER DOESNT HAVE ANY BOOK
+                    ui->println(currentPlayer->getName() + ": No book found.");
+
+                    if (hasNotFished) {
+                            // print all players hands (for testing)
+                            ui->println("Showing all player's hands...");
+                            for (Player* p : players) {
+                                ui->printPlayerHand(p);
+                            }
+
+                            // select a card from hand
+                            Card* selectedCard;
+                            selectedCard = ui->selectCardFromHand(currentPlayer);
+                            ui->println(currentPlayer->getName() + ": I have chosen the card:");
+                            ui->setRow(selectedCard->getSuit(), selectedCard->getRank());
+
+                            // select player
+                            Player* selectedPlayer;
+                            selectedPlayer = ui->selectPlayer(currentPlayer, players);
+                            ui->println(currentPlayer->getName() + ": I chose " + selectedPlayer->getName());
+
+                            // ask the selectedPlayer for a card,
+                            // add the matching cards to the currentPlayer's
+                            ui->println(currentPlayer->getName() + ": Hey " + selectedPlayer->getName() + ", do you have a");
+                            ui->println("card with a rank of " + selectedCard->getRank());
+
+                            bool hasMatch = askCard(currentPlayer, selectedPlayer, selectedCard);
+
+                            if (hasMatch) {
+                                // with match
+                                ui->println(currentPlayer->getName() + ": I got at least one matching card from " + selectedPlayer->getName());
+                                proceed = true;
+                                continue; // re-loop
+
+                            } else {
+                                // no match
+                                ui->println(currentPlayer->getName() + ": I got no matching card from " + selectedPlayer->getName());
+                                ui->println(selectedPlayer->getName() + ": " + currentPlayer->getName() + ", go fish!");
+
+                                // fish
+                                ui->println(currentPlayer->getName() + ": I'm fishing...");
+                                fish(currentPlayer);
+
+                                hasNotFished = false;
+                                proceed = true;
+                                continue; // re-loop
+                            }
+                    } else {
+                        // if the has fished and no more books are found
+                        proceed = false;
+                        break;
+                    }
                 }
+                // proceed as normal
+            } else {
+                fish(currentPlayer);
+                continue;
             }
+
         }
         /*********/
 
@@ -299,12 +308,13 @@ bool GoFish::isThereABook(Player* pPlayer) {
         if (proceed) {
             std::vector<int> indexes;
             for (int i = 0; i < playerCards.size(); ++i) {
-                if (c->getRank().compare(playerCards[i]->getRank()) == 0) {
+                if (c->getRank() == playerCards[i]->getRank()) {
                     indexes.push_back(i);
                 }
             }
             board.insert(std::pair<std::string,
                          std::vector<int>>(c->getRank(), indexes));
+            indexes.clear();
         }
     }
 
@@ -315,9 +325,10 @@ bool GoFish::isThereABook(Player* pPlayer) {
         // from player and add points
         if (itr->second.size() == 4) {
             for (int n : itr->second) {
-                Card* thisCard = playerCards[n];
+                //Card* thisCard = playerCards[n];[*]
+                Card* thisCard = pPlayer->removeCardHand(playerCards[n]);
                 books.push_back(thisCard);
-                pPlayer->removeCardHand(playerCards[n]);
+                //pPlayer->removeCardHand(playerCards[n]);[*]
             }
             hasBook = true;
         }
