@@ -21,7 +21,6 @@ class GoFish {
     void startGame();
     bool anyoneHasCard();
     Player* getRandomPlayer();
-    //std::vector<Player*> playersSelection(Player* pPlayer);
 
 
  private:

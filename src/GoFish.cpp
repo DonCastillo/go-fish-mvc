@@ -3,7 +3,9 @@
 #include "Deck.h"
 #include "GoFishUI.h"
 #include "Player.h"
+#include "Randomize.h"
 #include <time.h>
+#include <stdlib.h>
 #include <cstdlib>
 #include <vector>
 #include <map>
@@ -186,23 +188,12 @@ void GoFish::startGame() {
 Player* GoFish::getRandomPlayer() {
     Player* tempPlayer = nullptr;
     if (!players.empty()) {
-        std::srand(time(0));
-        int randPlayer = rand() % players.size();
+        int randPlayer = Randomize::randomize(0, players.size() - 1);
         tempPlayer = players[randPlayer];
     }
     return tempPlayer;
 }
 
-/// select player execept the one passed
-//std::vector<Player*> GoFish::playersSelection(Player* pPlayer){
-//    std::vector<Player*> tempPlayers;
-//    for (Player* p : players) {
-//        if (p->getID() != pPlayer->getID()) {
-//            tempPlayers.push_back(p);
-//        }
-//    }
-//    return tempPlayers;
-//}
 
 Deck* GoFish::getDeck() {
     return deck;

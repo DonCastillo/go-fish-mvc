@@ -72,13 +72,13 @@ std::vector<Card*> Player::getCardHand() {
 /// todo use rand_r instead of rand
 /// not randomly
 /// choice based on card as parameter
-Card* Player::selectFromHand() {
-    Card* tempCard = nullptr;
-    if (!hand.empty()) {
-        std::srand(time(0));
-        int randNum = rand() % hand.size();
-        tempCard = hand[randNum];
-    }
-    return tempCard;
-}
+//Card* Player::selectFromHand() {
+//    Card* tempCard = nullptr;
+//    if (!hand.empty()) {
+//        std::srand(time(0));
+//        int randNum = rand() % hand.size();
+//        tempCard = hand[randNum];
+//    }
+//    return tempCard;
+//}
 
