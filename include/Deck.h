@@ -54,15 +54,15 @@ class Deck {
     void clearDeck();
 
  private:
-   /** collection of suit names */
-   enum suits { Club, Diamond, Heart, Spade };
+    /** collection of suit names */
+    enum suits { Club, Diamond, Heart, Spade };
 
-   /** collection of rank names */
-   enum ranks { Ace = 1, Two, Three, Four, Five, Six,
+    /** collection of rank names */
+    enum ranks { Ace = 1, Two, Three, Four, Five, Six,
                  Seven, Eight, Nine, Ten, Jack, Queen, King };
 
-   /** collection of cards in the deck */
-   std::vector<Card*> allCards;
+    /** collection of cards in the deck */
+    std::vector<Card*> allCards;
 };
 
 #endif // DECK_H_INCLUDED
