@@ -181,10 +181,9 @@ void GoFish::startGame() {
     }
 
     // identify winners
-    for(Player* p : getWinner()) {
+    for (Player* p : getWinner()) {
         ui->printCongratulate(p);
     }
-
 }
 
 
