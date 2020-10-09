@@ -2,7 +2,7 @@
    \file Deck class implementation
    \brief implements the member data and methods of Deck class
    \author Don Castillo
-   \date 07/10/2020
+   \date 08/10/2020
 */
 
 #include "Deck.h"

@@ -59,12 +59,13 @@ void Player::addCardHand(Card* c) {
 Card* Player::removeCardHand(Card* c) {
     Card* cardTemp = nullptr;
     for (int i = 0; i < hand.size(); ++i) {
-        //if (hand[i]->getSuit() == c->getSuit()) {
+        if (hand[i]->getSuit() == c->getSuit()) {
             if (hand[i]->getRank() == c->getRank()) {
                 cardTemp = hand[i];
                 hand.erase(hand.begin() + i);
+                break; // once a match is found, stop iteration
             }
-        //}
+        }
     }
     return cardTemp;
 }

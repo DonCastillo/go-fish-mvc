@@ -59,7 +59,7 @@ void GoFish::startGame() {
     Player* currentPlayer = getRandomPlayer();
     ui->println("Current player's been selected!");
 
-    while (!deck->getDeck().empty() && anyoneHasCard()) {
+    while (anyoneHasCard()) {
         bool proceed = true;
         bool hasNotFished = true;
         ui->printPlayerTurn(currentPlayer);
@@ -161,8 +161,14 @@ void GoFish::startGame() {
                 }
                 // proceed as normal
             } else {
-                fish(currentPlayer);
-                continue;
+                if (!(deck->getDeck()).empty()) {
+                    fish(currentPlayer);
+                    proceed = true;
+                    continue;
+                } else {
+                    proceed = false;
+                    break;
+                }
             }
         }
         /*********/
@@ -320,59 +326,36 @@ bool GoFish::isThereABook(Player* pPlayer) {
     std::vector<Card*> playerCards;
     bool hasBook = false;
 
-    // make a copy of the player hand's
-    for (Card* c : pPlayer->getCardHand()) {
-        playerCards.push_back(c);
-    }
 
-    // iterate through player's cards
-    for (Card* c : playerCards) {
-        bool proceed = true;
+    // copy vector to temp container
+    playerCards = pPlayer->getCardHand();
 
-        // check if c->getRank() is unique in the map
-        for (itr = board.begin(); itr != board.end(); ++itr) {
-            if ( c->getRank() == itr->first ) {
-                proceed = false;
-                break; // exit this loop
-            } else {
-                proceed = true;
-                continue;
+    // insert pair to the board: card rank(KEY) => indexes(VALUE)
+    for (int i = 0; i < playerCards.size(); ++i) {
+        std::vector<int> indexes;
+
+        for (int j = 0; j < playerCards.size(); ++j) {
+            bool same = playerCards[i]->getRank() == playerCards[j]->getRank();
+            if (same) {
+                indexes.push_back(j);
             }
         }
 
-        // instert unique key to the map
-        if (proceed) {
-            std::vector<int> indexes;
-            for (int i = 0; i < playerCards.size(); ++i) {
-                if (c->getRank() == playerCards[i]->getRank()) {
-                    indexes.push_back(i);
-                }
-            }
-            board.insert(std::pair<std::string,
-                         std::vector<int>>(c->getRank(), indexes));
-            indexes.clear();
-        }
+        board.insert(std::pair<std::string,
+                     std::vector<int>>(playerCards[i]->getRank(), indexes));
     }
 
-    /// THERE IS A BUG HERE
+
     // check if there is a book
     for (itr = board.begin(); itr != board.end(); ++itr) {
-        // if there are 4 cards with same ranks, remove card
-        // from player and add points
-        if (itr->second.size() == 4) {
-            for (int n : itr->second) {
-                // Card* thisCard = playerCards[n];
-                // pPlayer->removeCardHand(thisCard);
-                Card* thisCard = pPlayer->removeCardHand(playerCards[n]);
-                if (thisCard != nullptr) {
-                    books.push_back(thisCard);
-                }
-                //pPlayer->removeCardHand(playerCards[n]);[*]
-            }
+        // if there's a book
+        if ( itr->second.size() == 4 ) {
             hasBook = true;
+            for (int i = 0; i < itr->second.size(); ++i) {
+                int index = itr->second[i];
+                books.push_back(pPlayer->removeCardHand(playerCards[index]));
+            }
         }
     }
-
-    /// THERE IS A BUG HERE
     return hasBook;
 }
