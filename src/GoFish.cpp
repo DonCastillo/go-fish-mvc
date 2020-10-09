@@ -21,8 +21,12 @@ GoFish::GoFish() {}
 
 GoFish::~GoFish() {
     delete deck;
+    delete ui;
     for (Player* p : players) {
         delete p;
+    }
+    for (Card* c : books) {
+      delete c;
     }
 }
 

@@ -9,25 +9,106 @@
 
 class GoFish {
  public:
+   /*!
+      \brief constructor
+   */
     GoFish();
+
+    /*!
+       \brief destructor
+       \brief deletes all GoFish pointers (i.e. deck, ui, players, books)
+    */
     ~GoFish();
+
+    /*!
+       \brief adds player to the game
+       \param pPlayer player
+    */
     void addPlayer(Player* pPlayer);
+
+    /*!
+       \brief distributes cards to players
+              2 - 3 players get 7 cards each
+              4 - 5 players get 5 cards each
+    */
     void deal();
+
+    /*!
+       \brief lets the player draw a card from the deck
+       \param pPlayer player
+    */
     void fish(Player* pPlayer);
+
+    /*!
+       \brief finds out if there is a book in the player's hands
+       \brief if there is a book, removed the cards from the
+              player's hands and put them into the books container
+       \param pPlayer player
+       \return true if there is a book, otherwise false
+    */
     bool isThereABook(Player* pPlayer);
+
+    /*!
+       \brief asks player from the other player if he has a card
+       \param p1  requestor
+              p2  requestee
+              targetCard  card that is asked
+       \return true if there is at least one matching card
+               from the requestee that matches the targetCard (the rank)
+               asked by the requestor, otherwise false
+    */
     bool askCard(Player* p1, Player* p2, Card* targetCard);
+
+    /*!
+       \brief gets the current deck of the game
+       \return game's deck
+    */
     Deck* getDeck();
+
+    /*!
+       \brief returns all the players of the game
+       \param all players
+    */
     std::vector<Player*> getPlayers();
+
+    /*!
+       \brief returns all the winners
+       \return winners
+    */
     std::vector<Player*> getWinner();
+
+    /*!
+       \brief main game
+    */
     void startGame();
+
+    /*!
+       \brief finds out if at least one player has at least one
+              card in his hand
+       \return true if at least one player has at least one card
+               in his hand, otherwise false
+    */
     bool anyoneHasCard();
+
+    /*!
+       \brief finds out who gets to play first
+       \return random player
+    */
     Player* getRandomPlayer();
 
 
  private:
+    /** game deck */
     Deck* deck;
+
+    /** collection of books, cards with same ranks
+    removed from the player's hands */
     std::vector<Card*> books;
+
+    /** players in the game */
     std::vector<Player*> players;
+
+    /** user interface of GoFish */
     GoFishUI* ui;
 };
 

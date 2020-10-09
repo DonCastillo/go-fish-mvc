@@ -74,10 +74,17 @@ class Player {
     //Card* selectFromHand();
 
  private:
+    /** player's name */
     std::string name;
+
+    /** player's score */
     int score = 0;
+
+    /** player's unique identification */
     int id = -1;
+
+    /** collection of cards currently in the player's hand */
     std::vector<Card*> hand;
 };
 
-#endif // CARD_H_INCLUDED
+#endif // PLAYER_H_INCLUDED
