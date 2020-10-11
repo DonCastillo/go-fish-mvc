@@ -64,6 +64,7 @@ class GoFish {
        \return game's deck
     */
     virtual Deck* getDeck();
+    virtual void setDeck(Deck* pDeck);
 
     /*!
        \brief returns all the players of the game

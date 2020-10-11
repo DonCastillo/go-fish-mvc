@@ -7,6 +7,7 @@
 #include "GoFishUITesting.h"
 #include "GoFish.h"
 #include "Player.h"
+#include "Deck.h"
 
 using ::testing::_;
 using ::testing::Return;
@@ -36,6 +37,11 @@ TEST(TestGoFish, gettingDeck) {
     // should have an uninitialized deck
     EXPECT_EQ(gf->getDeck(), nullptr);
     delete gf;
+
+    // after initializing the deck
+    Deck* deck = new Deck();
+    gf->setDeck(deck);
+    EXPECT_NE(gf->getDeck(), nullptr);
 }
 
 
@@ -77,3 +83,13 @@ TEST(TestGoFish, getWinner) {
 }
 
 
+
+TEST(TestGoFish, deal) {
+
+    // 3 players, each one gets 7 cards
+//    GoFish* gf = new GoFish(new GoFishUITesting());
+//
+//    Player
+//
+//    delete gf;
+}

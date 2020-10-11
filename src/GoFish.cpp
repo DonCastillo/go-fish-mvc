@@ -237,6 +237,10 @@ Deck* GoFish::getDeck() {
     return deck;
 }
 
+void GoFish::setDeck(Deck* pDeck) {
+    deck = pDeck;
+}
+
 std::vector<Player*> GoFish::getPlayers() {
     return players;
 }
