@@ -36,12 +36,12 @@ TEST(TestGoFish, gettingDeck) {
 
     // should have an uninitialized deck
     EXPECT_EQ(gf->getDeck(), nullptr);
-    delete gf;
 
     // after initializing the deck
     Deck* deck = new Deck();
     gf->setDeck(deck);
     EXPECT_NE(gf->getDeck(), nullptr);
+    delete gf;
 }
 
 
