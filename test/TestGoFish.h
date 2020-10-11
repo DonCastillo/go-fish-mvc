@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "gmock/gmock.h"
+#include "gtest/gtest.h"
 #include "GoFish.h"
 #include "Player.h"
 
@@ -40,6 +41,5 @@ TEST(TestGoFish, addingAndGettingPlayers) {
     delete player1;
     delete player2;
     delete gf;
-
 }
 #endif // TESTGOFISH_H_INCLUDED
