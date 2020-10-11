@@ -4,7 +4,9 @@
 #include "MockGoFish.h"
 #include "GoFishUITesting.h"
 
-using ::testing;
+using ::testing::_;
+using ::testing::Return;
+using ::testing::Expectation;
 
 TEST(TestGoFish, addingAndGettingPlayers) {
     MockGoFish* gf = new MockGoFish(new GoFishUITesting());
@@ -15,7 +17,7 @@ TEST(TestGoFish, addingAndGettingPlayers) {
     EXPECT_CALL(gf, getPlayers)
     .Times(1)
     .After(e)
-    .WillOnce(Return(100))
+    .WillOnce(Return(100));
 
     gf->addPlayer(new Player(0, "Player 1"));
     gf->addPlayer(new Player(1, "Player 2"));
