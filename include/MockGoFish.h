@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "gmock/gmock.h"
-#include "gtest/gtest.h"
 #include "GoFish.h"
 #include "Player.h"
 #include "GoFishUITesting.h"
