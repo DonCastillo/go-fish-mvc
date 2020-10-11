@@ -24,20 +24,20 @@ class GoFish {
        \brief adds player to the game
        \param pPlayer player
     */
-    void addPlayer(Player* pPlayer);
+    virtual void addPlayer(Player* pPlayer);
 
     /*!
        \brief distributes cards to players
               2 - 3 players get 7 cards each
               4 - 5 players get 5 cards each
     */
-    void deal();
+    virtual void deal();
 
     /*!
        \brief lets the player draw a card from the deck
        \param pPlayer player
     */
-    void fish(Player* pPlayer);
+    virtual void fish(Player* pPlayer);
 
     /*!
        \brief finds out if there is a book in the player's hands
@@ -46,7 +46,7 @@ class GoFish {
        \param pPlayer player
        \return true if there is a book, otherwise false
     */
-    bool isThereABook(Player* pPlayer);
+    virtual bool isThereABook(Player* pPlayer);
 
     /*!
        \brief asks player from the other player if he has a card
@@ -57,30 +57,30 @@ class GoFish {
                from the requestee that matches the targetCard (the rank)
                asked by the requestor, otherwise false
     */
-    bool askCard(Player* p1, Player* p2, Card* targetCard);
+    virtual bool askCard(Player* p1, Player* p2, Card* targetCard);
 
     /*!
        \brief gets the current deck of the game
        \return game's deck
     */
-    Deck* getDeck();
+    virtual Deck* getDeck();
 
     /*!
        \brief returns all the players of the game
        \param all players
     */
-    std::vector<Player*> getPlayers();
+    virtual std::vector<Player*> getPlayers();
 
     /*!
        \brief returns all the winners
        \return winners
     */
-    std::vector<Player*> getWinner();
+    virtual std::vector<Player*> getWinner();
 
     /*!
        \brief main game
     */
-    void startGame();
+    virtual void startGame();
 
     /*!
        \brief finds out if at least one player has at least one
@@ -88,13 +88,13 @@ class GoFish {
        \return true if at least one player has at least one card
                in his hand, otherwise false
     */
-    bool anyoneHasCard();
+    virtual bool anyoneHasCard();
 
     /*!
        \brief finds out who gets to play first
        \return random player
     */
-    Player* getRandomPlayer();
+    virtual Player* getRandomPlayer();
 
 
  private:
