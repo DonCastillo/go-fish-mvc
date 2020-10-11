@@ -4,6 +4,7 @@
 #include <vector>
 #include "gmock/gmock.h"
 #include "GoFish.h"
+#include "Player.h"
 
 
 using ::testing;
@@ -26,4 +27,19 @@ class MockGoFish : public GoFish {
     MOCK_METHOD0(getRandomPlayer, Player*());
 }
 
+TEST(TestGoFish, addingAndGettingPlayers) {
+    Player* player1 = new Player(0, "Player 1");
+    Player* player2 = new Player(1, "Player 2");
+
+    MockGoFish gf = new MockGoFish();
+
+    // no player added
+    EXPECT_EQ(gf->getPlayers().size(), 0);
+    //gf->addPlayer(player1);
+    //gf->addPlayer(player2);
+    delete player1;
+    delete player2;
+    delete gf;
+
+}
 #endif // TESTGOFISH_H_INCLUDED
