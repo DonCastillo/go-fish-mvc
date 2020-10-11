@@ -6,6 +6,7 @@
 #include "MockPlayer.h"
 #include "GoFishUITesting.h"
 #include "GoFish.h"
+#include "Player.h"
 
 using ::testing::_;
 using ::testing::Return;
