@@ -28,3 +28,14 @@ TEST(TestGoFish, addingAndGettingPlayers) {
 
     delete gf;
 }
+
+TEST(TestGoFish, gettingDeck) {
+    GoFish* gf = new GoFish(new GoFishUITesting());
+
+    // should have an uninitialized deck
+    EXPECT_EQ(gf->getDeck(), nullptr);
+
+    // after initializing the deck
+    gf->startGame();
+    EXPECT_NE(gf->getDeck(), nullptr);
+}
