@@ -29,29 +29,29 @@ class Deck {
        \brief returns the current deck, creted and shuffled
        \return vector<Card*> collection of cards in the deck
     */
-    std::vector<Card*> getDeck();
+    virtual std::vector<Card*> getDeck();
 
     /*!
        \brief shuffles the current cards in the deck
     */
-    void shuffle();
+    virtual void shuffle();
 
     /*!
        \brief creates a complete deck of unshuffled cards
     */
-    void createDeck();
+    virtual void createDeck();
 
     /*!
        \brief pick a card from the deck
        \return  Card* returns the card on the top of the stack
     */
-    Card* getTopCard();
+    virtual Card* getTopCard();
 
     /*!
        \brief removes all the cards from the deck
        \brief results to an empty deck
     */
-    void clearDeck();
+    virtual void clearDeck();
 
  private:
     /** collection of suit names */

@@ -31,31 +31,31 @@ class Player {
        \param adder if the value is negative or zero, score remains unchanged
                     if the value is positive, it is added to the current score
     */
-    void updateScore(int adder);
+    virtual void updateScore(int adder);
 
     /*!
        \brief get the player's score
        \return current player's score
     */
-    int getScore();
+    virtual int getScore();
 
     /*!
        \brief get the player's name
        \return player's name
     */
-    std::string getName();
+    virtual std::string getName();
 
     /*!
        \brief get the player's ID
        \return player's ID
     */
-    int getID();
+    virtual int getID();
 
     /*!
        \brief adds a card to the player's hand
        \param c Card object to be added
     */
-    void addCardHand(Card* c);
+    virtual void addCardHand(Card* c);
 
     /*!
        \brief removes card from the player's hand
@@ -63,14 +63,14 @@ class Player {
        \return card removed from the player's hand
        \return  nullptr if no card is returned
     */
-    Card* removeCardHand(Card* c);
+    virtual Card* removeCardHand(Card* c);
 
     /*!
        \brief get all the cards from the player's hand
        \return vector<Card*> collection of cards
                currently in the player's hand
     */
-    std::vector<Card*> getCardHand();
+    virtual std::vector<Card*> getCardHand();
     //Card* selectFromHand();
 
  private:
