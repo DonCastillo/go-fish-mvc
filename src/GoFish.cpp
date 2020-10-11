@@ -17,6 +17,8 @@
 
 
 GoFish::GoFish(GoFishUI* pUI) {
+    deck = nullptr;
+    ui = nullptr;
     ui = pUI;
 }
 
