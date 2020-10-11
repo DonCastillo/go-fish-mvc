@@ -7,9 +7,9 @@
 #include "GoFish.h"
 #include "Player.h"
 
-using ::testing::_;
-using ::testing::Return;
-using ::testing::Expectation;
+//using ::testing::_;
+//using ::testing::Return;
+//using ::testing::Expectation;
 
 TEST(TestGoFish, addingAndGettingPlayers) {
     GoFish* gf = new GoFish(new GoFishUITesting);
