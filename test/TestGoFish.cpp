@@ -2,23 +2,30 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "MockGoFish.h"
+#include "MockDeck.h"
+#include "MockPlayer.h"
 #include "GoFishUITesting.h"
+#include "GoFish.h"
 
 using ::testing::_;
 using ::testing::Return;
 using ::testing::Expectation;
 
 TEST(TestGoFish, addingAndGettingPlayers) {
-//    MockGoFish gf(new GoFishUITesting());
-//
-//    Expectation e = EXPECT_CALL(gf, addPlayer(_))
-//    .Times(2);
-//
-//    EXPECT_CALL(gf, getPlayers())
-//    .Times(1)
-//    .After(e);
-//
-//    gf.addPlayer(new Player(0, "Player 1"));
-//    gf.addPlayer(new Player(1, "Player 2"));
-//    gf.getPlayers();
+    GoFish* gf = new GoFish(new GoFishUITesting);
+    Player* jane = new Player(0, "Jane");
+    Player* don = new Player(1, "Don");
+
+    // check for empty player in player's vector
+    EXPECT_EQ(gf->getPlayers().size(), 0);
+
+    gf->addPlayer(jane);
+    gf->addPlayer(don);
+
+    // check non empty player vector
+    EXPECT_EQ(gf->getPlayers().size(), 2);
+
+    delete gf;
+    delete jane;
+    delete don;
 }

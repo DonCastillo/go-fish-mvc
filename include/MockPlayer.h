@@ -8,7 +8,6 @@
 #include "Player.h"
 
 
-
 class MockPlayer : public Player {
  public:
     explicit MockPlayer(int pID, std::string);
