@@ -47,7 +47,7 @@ TEST(TestGoFish, getWinner) {
 
     // one player
     MockPlayer michael(0, "Michael");
-    michael->updateScore(1);
+    michael.updateScore(1);
 
     EXPECT_CALL(michael, getScore())
     .Times(AtLeast(2))
