@@ -94,11 +94,11 @@ TEST(TestGoFish, deal) {
 
     // 3 players, each one gets 7 cards
     GoFish* game1 = new GoFish(new GoFishUITesting());
-    gf->addPlayer(phyllis);
-    gf->addPlayer(creed);
-    gf->addPlayer(andy);
-    gf->setDeck(deck);
-    gf->deal();
+    game1->addPlayer(phyllis);
+    game1->addPlayer(creed);
+    game1->addPlayer(andy);
+    game1->setDeck(deck);
+    game1->deal();
 
     EXPECT_EQ(phyllis->getCardHand().size(), 7);
     EXPECT_EQ(creed->getCardHand().size(), 7);
@@ -107,11 +107,13 @@ TEST(TestGoFish, deal) {
 
     // 5 player, each one gets 5 cards each
     GoFish* game2 = new GoFish(new GoFishUITesting());
-    gf->addPlayer(phyllis);
-    gf->addPlayer(creed);
-    gf->addPlayer(andy);
-    gf->addPlayer(ryan);
-    gf->addPlayer(ryan);
+    game2->addPlayer(phyllis);
+    game2->addPlayer(creed);
+    game2->addPlayer(andy);
+    game2->addPlayer(ryan);
+    game2->addPlayer(ryan);
+    game2->setDeck(deck);
+    game2->deal();
     EXPECT_EQ(phyllis->getCardHand().size(), 5);
     EXPECT_EQ(creed->getCardHand().size(), 5);
     EXPECT_EQ(andy->getCardHand().size(), 5);
