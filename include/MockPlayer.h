@@ -11,7 +11,7 @@
 class MockPlayer : public Player {
  public:
     explicit MockPlayer(int pID, std::string pName) {
-        Player(pId, pName);
+        Player(pID, pName);
     }
     virtual ~MockPlayer() {}
 
