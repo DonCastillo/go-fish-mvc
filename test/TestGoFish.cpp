@@ -7,12 +7,12 @@
 #include "GoFish.h"
 #include "Player.h"
 
-//using ::testing::_;
-//using ::testing::Return;
-//using ::testing::Expectation;
+using ::testing::_;
+using ::testing::Return;
+using ::testing::Expectation;
 
 TEST(TestGoFish, addingAndGettingPlayers) {
-    GoFish* gf = new GoFish(new GoFishUITesting);
+    GoFish* gf = new GoFish(new GoFishUITesting());
     Player* jane = new Player(0, "Jane");
     Player* don = new Player(1, "Don");
 
