@@ -6,6 +6,10 @@
 
 using ::testing;
 
-class MockGoFish : public GoFish {}
+class MockGoFish : public GoFish {
+ public:
+    explicit MockGoFish() {}
+    virtual ~MockGoFish() {}
+}
 
 #endif // TESTGOFISH_H_INCLUDED
