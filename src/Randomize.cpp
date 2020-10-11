@@ -34,3 +34,15 @@ int Randomize::randomize(int minInt, int maxInt) {
         return integers.back();
     }
 }
+
+int Randomize::randomize(std::vector<int> integers) {
+    if (!integers.empty()) {
+        std::srand(time(0));
+        std::random_shuffle(integers.begin(), integers.end());
+        std::random_shuffle(integers.begin(), integers.end());
+        std::random_shuffle(integers.begin(), integers.end());
+        return integers.back();
+    } else {
+        return -1;
+    }
+}

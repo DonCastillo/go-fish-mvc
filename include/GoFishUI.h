@@ -64,14 +64,14 @@ class GoFishUI {
        \brief retrieves player's name from the input
        \return player's name
     */
-    std::string enterName();
+    virtual std::string enterName();
 
     /*!
        \brief retrieves an integer indicating the number of
              players in the game
        \return number of players in the game
     */
-    int enterNumberOfPlayers();
+    virtual int enterNumberOfPlayers();
 
     /*!
        \brief prints welcome message at the start of the game
@@ -85,7 +85,7 @@ class GoFishUI {
                       be selected
        \return card that is selected
     */
-    Card* selectCardFromHand(Player* pPlayer);
+    virtual Card* selectCardFromHand(Player* pPlayer);
 
     /*!
        \brief asks the player to select another player to
@@ -94,7 +94,7 @@ class GoFishUI {
               allPlayers  all players in the game
        \return player selected
     */
-    Player* selectPlayer(Player* currentPlayer,
+    virtual Player* selectPlayer(Player* currentPlayer,
                          std::vector<Player*> allPlayers);
 
    /*!
@@ -127,7 +127,7 @@ class GoFishUI {
     */
     void printCards(std::vector<Card*> pCards);
 
- private:
+ protected:
     /** line width */
     const int LINEWIDTH = 35;
 

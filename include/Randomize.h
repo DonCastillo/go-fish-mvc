@@ -7,6 +7,7 @@
 
 #ifndef RANDOMIZE_H_INCLUDED
 #define RANDOMIZE_H_INCLUDED
+#include <vector>
 
 class Randomize {
  public:
@@ -27,6 +28,8 @@ class Randomize {
        \return random integer between minInt and maxInt
     */
     static int randomize(int minInt, int maxInt);
+
+    static int randomize(std::vector<int> integers);
 };
 
 #endif // RANDOMIZE_H_INCLUDED

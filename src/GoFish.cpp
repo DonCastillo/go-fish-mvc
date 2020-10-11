@@ -16,7 +16,9 @@
 #include <utility>
 
 
-GoFish::GoFish() {}
+GoFish::GoFish(GoFishUI* pUI) {
+    ui = pUI;
+}
 
 
 GoFish::~GoFish() {
@@ -33,7 +35,7 @@ GoFish::~GoFish() {
 /// main game
 void GoFish::startGame() {
     int numOfPlayers = 0;
-    ui = new GoFishUI();
+    //ui = new GoFishUI();
     ui->printWelcome();
 
     // get num of players

@@ -12,7 +12,7 @@ class GoFish {
    /*!
       \brief constructor
    */
-    GoFish();
+    GoFish(GoFishUI* pUI);
 
     /*!
        \brief destructor
