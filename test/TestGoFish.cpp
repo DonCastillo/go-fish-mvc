@@ -17,8 +17,8 @@ TEST(TestGoFish, addingAndGettingPlayers) {
     // check for empty player in player's vector
     EXPECT_EQ(gf->getPlayers().size(), 0);
 
-    gf->addPlayer(new Player(0, "Jane"););
-    gf->addPlayer(new Player(1, "Don"););
+    gf->addPlayer(new Player(0, "Jane"));
+    gf->addPlayer(new Player(1, "Don"));
 
     // check non empty player vector
     EXPECT_EQ(gf->getPlayers().size(), 2);
