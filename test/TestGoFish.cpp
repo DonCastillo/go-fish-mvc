@@ -9,7 +9,7 @@ using ::testing::Return;
 using ::testing::Expectation;
 
 TEST(TestGoFish, addingAndGettingPlayers) {
-    MockGoFish gf(new GoFishUITesting();
+    MockGoFish gf(new GoFishUITesting());
 
     Expectation e = EXPECT_CALL(gf, addPlayer(_))
     .Times(2);
@@ -23,5 +23,4 @@ TEST(TestGoFish, addingAndGettingPlayers) {
     gf.addPlayer(new Player(1, "Player 2"));
     gf.getPlayers();
 
-    delete gf;
 }
