@@ -40,24 +40,38 @@ TEST(TestGoFish, gettingDeck) {
 
 
 TEST(TestGoFish, getWinner) {
+    //    MockPlayer michael(0, "Michael");
+//    michael.updateScore(1);
+//
+//    EXPECT_CALL(michael, getScore())
+//    .Times(AtLeast(2))
+//    .WillOnce(Return(1))
+//    .WillRepeatedly(Return(1));
     GoFish* gf = new GoFish(new GoFishUITesting());
 
     // no player
     EXPECT_TRUE(gf->getWinner().empty());
 
     // one player
-    MockPlayer michael(0, "Michael");
-    michael.updateScore(1);
-
-    EXPECT_CALL(michael, getScore())
-    .Times(AtLeast(2))
-    .WillOnce(Return(1))
-    .WillRepeatedly(Return(1));
+    Player* michael = new Player(0, "Michael");
+    michael->updateScore(1);
+    gf->addPlayer(michael);
 
     for (Player* p : gf->getWinner()) {
         EXPECT_EQ(p->getName(), "Michael");
     }
 
+    // three players
+    Player* jim = new Player(1, "Jim");
+    Player* pam = new Player(2, "Pam");
+    jim->updateScore(4);
+    pam->updateScore(2);
+    gf->addPlayer(jim);
+    gf->addPlayer(pam);
+
+    for (Player* p : gf->getWinner()) {
+        EXPECT_EQ(p->getName(), "Jim");
+    }
 
     delete gf;
 }

@@ -11,7 +11,8 @@
 
 class MockGoFish : public GoFish {
  public:
-    explicit MockGoFish(GoFishUI* pUI);
+    explicit MockGoFish(GoFishUI* pUI) :
+        GoFish(pUi) {}
     virtual ~MockGoFish() {}
 
     MOCK_METHOD1(addPlayer, void(Player* pPlayer));
