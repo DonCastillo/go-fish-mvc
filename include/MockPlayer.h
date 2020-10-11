@@ -10,7 +10,9 @@
 
 class MockPlayer : public Player {
  public:
-    explicit MockPlayer(int pID, std::string);
+    explicit MockPlayer(int pID, std::string pName) {
+        Player(pId, pName);
+    }
     virtual ~MockPlayer() {}
 
     MOCK_METHOD1(updateScore, void(int adder));
