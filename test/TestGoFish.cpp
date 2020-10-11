@@ -16,7 +16,7 @@ TEST(TestGoFish, addingAndGettingPlayers) {
 
     EXPECT_CALL(gf, getPlayers())
     .Times(1)
-    .After(e)
+    .After(e);
 
     gf.addPlayer(new Player(0, "Player 1"));
     gf.addPlayer(new Player(1, "Player 2"));
