@@ -118,7 +118,7 @@ TEST(TestGoFish, deal) {
     game2->deal();
 
     for (Player* p : game2->getPlayers()) {
-        EXPECT_EQ(p->getCardHand().size(), 7);
+        EXPECT_EQ(p->getCardHand().size(), 5);
     }
 //    EXPECT_EQ(phyllis->getCardHand().size(), 5);
 //    EXPECT_EQ(creed->getCardHand().size(), 5);
