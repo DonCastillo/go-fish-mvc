@@ -46,13 +46,6 @@ TEST(TestGoFish, gettingDeck) {
 
 
 TEST(TestGoFish, getWinner) {
-    //    MockPlayer michael(0, "Michael");
-//    michael.updateScore(1);
-//
-//    EXPECT_CALL(michael, getScore())
-//    .Times(AtLeast(2))
-//    .WillOnce(Return(1))
-//    .WillRepeatedly(Return(1));
     GoFish* gf = new GoFish(new GoFishUITesting());
 
     // no player
@@ -85,7 +78,6 @@ TEST(TestGoFish, getWinner) {
 
 
 TEST(TestGoFish, deal) {
-
     // 3 players, each one gets 7 cards
     GoFish* game1 = new GoFish(new GoFishUITesting());
     game1->addPlayer(new Player(0, "Phyllis"));
