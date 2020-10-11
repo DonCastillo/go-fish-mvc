@@ -26,7 +26,7 @@ TEST(TestGoFish, addingAndGettingPlayers) {
     // check non empty player vector
     EXPECT_EQ(gf->getPlayers().size(), 2);
 
-    delete gf;
-    delete jane;
     delete don;
+    delete jane;
+    delete gf;
 }
