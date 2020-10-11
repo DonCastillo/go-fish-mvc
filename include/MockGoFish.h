@@ -10,11 +10,9 @@
 #include "GoFishUI.h"
 
 
-using ::testing;
-
 class MockGoFish : public GoFish {
  public:
-    explicit MockGoFish(GoFishUI* pUI) {}
+    explicit MockGoFish(GoFishUI* pUI);
     virtual ~MockGoFish() {}
 
     MOCK_METHOD1(addPlayer, void(Player* pPlayer));
@@ -28,6 +26,6 @@ class MockGoFish : public GoFish {
     MOCK_METHOD0(startGame, void());
     MOCK_METHOD0(anyoneHasCard, bool());
     MOCK_METHOD0(getRandomPlayer, Player*());
-}
+};
 
 #endif // MOCKGOFISH_H_INCLUDED

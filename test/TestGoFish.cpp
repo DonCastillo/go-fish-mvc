@@ -2,7 +2,9 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "MockGoFish.h"
+#include "GoFishUITesting.h"
 
+using ::testing;
 
 TEST(TestGoFish, addingAndGettingPlayers) {
     MockGoFish* gf = new MockGoFish(new GoFishUITesting());
