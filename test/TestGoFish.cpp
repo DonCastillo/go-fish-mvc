@@ -242,10 +242,10 @@ TEST(TestGoFish, askCard) {
     // asking someone with one matching card rank
     pam.addCardHand(&e);
     EXPECT_CALL(pam, getCardHand())
-    .Times(1)
+    .Times(1);
 
     EXPECT_CALL(jim, addCardHand(&e))
-    .Times(1)   // executed once, one card rank matches
+    .Times(1);   // executed once, one card rank matches
 
     EXPECT_TRUE(gf->askCard(&jim, &pam, &a));
     delete gf;
