@@ -53,7 +53,7 @@ class Deck {
     */
     virtual void clearDeck();
 
- private:
+ protected:
     /** collection of suit names */
     enum suits { Club, Diamond, Heart, Spade };
 

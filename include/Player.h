@@ -73,7 +73,7 @@ class Player {
     virtual std::vector<Card*> getCardHand();
     //Card* selectFromHand();
 
- private:
+ protected:
     /** player's name */
     std::string name;
 

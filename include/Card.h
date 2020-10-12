@@ -28,29 +28,29 @@ class Card {
        \brief get the card's suit identifier
        \return card suit identifier
     */
-    std::string getSuit();
+    virtual std::string getSuit();
 
     /*!
        \brief get the card's rank identifier
        \return card rank identifier
     */
-    std::string getRank();
+    virtual std::string getRank();
 
     /*!
        \brief formats rank from integer to string equivalent
        \param pRank card rank in integer
        \return string equivalent of the rank in integer
     */
-    std::string formatRank(int pRank);
+    virtual std::string formatRank(int pRank);
 
     /*!
        \brief formats suit from integer to string equivalent
        \param pSuit card suit in integer
        \return  string equivalent of the suit in integer
     */
-    std::string formatSuit(int pSuit);
+    virtual std::string formatSuit(int pSuit);
 
- private:
+ protected:
     /** card suit */
     std::string cSuit;
 

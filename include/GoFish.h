@@ -98,7 +98,7 @@ class GoFish {
     virtual Player* getRandomPlayer();
 
 
- private:
+ protected:
     /** game deck */
     Deck* deck;
 
