@@ -244,7 +244,7 @@ TEST(TestGoFish, askCard) {
 //    EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
 
     // asking someone with one matching card rank
-    pam.addCardHand(e);
+    pam.addCardHand(&e);
     EXPECT_CALL(pam, getCardHand())
     .Times(1);
 
@@ -254,7 +254,7 @@ TEST(TestGoFish, askCard) {
     EXPECT_CALL(jim, addCardHand(_))
     .Times(1);   // executed once, one card rank matches
 
-    EXPECT_TRUE(gf.askCard(jim, pam, a));
+    EXPECT_TRUE(gf.askCard(&jim, &pam, &a));
 }
 
 
