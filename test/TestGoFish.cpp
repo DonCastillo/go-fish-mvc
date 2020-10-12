@@ -218,7 +218,7 @@ TEST(TestGoFish, fish) {
 
 
 TEST(TestGoFish, askCard) {
-    GoFish* gf = new GoFish(new GoFishUITesting());
+    MockGoFish gf(new GoFish(new GoFishUITesting()));
     //Player* jim = new Player(0, "Jim");
     //Player* pam = new Player(1, "Pam");
     MockPlayer jim(0, "Jim");
@@ -233,31 +233,28 @@ TEST(TestGoFish, askCard) {
     jim.addCardHand(&a);
 
     // asking someone with an empty hand
-    EXPECT_CALL(pam, getCardHand())
-    .Times(1)
-    .RetiresOnSaturation();
-
-    EXPECT_CALL(jim, addCardHand(_))
-    .Times(0)  // never executed since no card is to be inserted
-    .RetiresOnSaturation();
-
-    EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
+//    EXPECT_CALL(pam, getCardHand())
+//    .Times(1)
+//    .RetiresOnSaturation();
+//
+//    EXPECT_CALL(jim, addCardHand(_))
+//    .Times(0)  // never executed since no card is to be inserted
+//    .RetiresOnSaturation();
+//
+//    EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
 
     // asking someone with one matching card rank
     pam.addCardHand(&e);
     EXPECT_CALL(pam, getCardHand())
-    .Times(1)
-    .RetiresOnSaturation();
+    .Times(1);
 
     EXPECT_CALL(pam, removeCardHand(_))
-    .Times(1)
-    .RetiresOnSaturation();
+    .Times(1);
 
     EXPECT_CALL(jim, addCardHand(_))
-    .Times(1)   // executed once, one card rank matches
-    .RetiresOnSaturation();
+    .Times(1);   // executed once, one card rank matches
 
-    EXPECT_TRUE(gf->askCard(&jim, &pam, &a));
+    EXPECT_TRUE(gf.askCard(&jim, &pam, &a));
     delete gf;
 }
 
