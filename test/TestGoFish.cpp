@@ -4,6 +4,7 @@
 #include "MockDeck.h"
 #include "MockPlayer.h"
 #include "MockCard.h"
+#include "MockGoFishUITesting.h"
 #include "GoFishUI.h"
 #include "GoFishUITesting.h"
 #include "GoFish.h"
@@ -271,6 +272,15 @@ TEST(TestGoFish, isThereABook) {
 }
 
 TEST(TestGoFish, startGame) {
+    MockGoFishUITesting uiTesting;
+    MockDeck deck;
 
-    GoFish* gf = new GoFish(new GoFishUITesting());
+    // enter number of players
+    EXPECT_CALL(uiTesting, enterNumberOfPlayers())
+    .Times(1);
+    .Return(2);
+
+    GoFish* gf = new GoFish(&uiTesting);
+    gf->setDeck(&deck);
+    gf->startGame();
 }
