@@ -272,7 +272,7 @@ TEST(TestGoFish, isThereABook) {
 }
 
 TEST(TestGoFish, startGame) {
-    GoFishUI* ui = new GoFishUI();
+    GoFishUITesting* ui = new GoFishUITesting();
     MockDeck deck;
 
     // enter number of players

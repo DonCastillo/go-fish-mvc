@@ -54,7 +54,7 @@ void GoFish::startGame() {
     }
 
     // initialize deck and shuffle deck
-    deck = new Deck();
+    //deck = new Deck();
 
     // distribute cards to players
     deal();
