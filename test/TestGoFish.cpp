@@ -233,7 +233,7 @@ TEST(TestGoFish, askCard) {
     EXPECT_CALL(pam, getCardHand())
     .Times(0);
 
-    EXPECT_CALL(jim, addCardHand())
+    EXPECT_CALL(jim, addCardHand(_))
     .Times(0);
 
     //EXPECT_CALL(a, )
