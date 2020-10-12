@@ -260,7 +260,8 @@ TEST(TestGoFish, isThereABook_CompleteBook) {
     EXPECT_CALL(jim, getCardHand())
     .Times(1);
 
-    gf->isThereABook(&jim);
+
+    EXPECT_TRUE(gf->isThereABook(&jim));
     delete gf;
 }
 
