@@ -78,6 +78,18 @@ TEST(TestGoFish, getWinner) {
 
 
 TEST(TestGoFish, deal) {
+    // 1 player, gets 5 cards
+    GoFish* game0 = new GoFish(new GoFishUITesting());
+    game0->addPlayer(new Player(0, "Vance"));
+    game0->setDeck(new Deck());
+    game0->deal();
+
+    for (Player* p : game0->getPlayers()) {
+        EXPECT_EQ(p->getCardHand().size(), 5);
+    }
+
+    delete game0;
+
     // 3 players, each one gets 7 cards
     GoFish* game1 = new GoFish(new GoFishUITesting());
     game1->addPlayer(new Player(0, "Phyllis"));
@@ -107,4 +119,19 @@ TEST(TestGoFish, deal) {
     }
 
     delete game2;
+}
+
+
+TEST(TestGoFish, gettingRandomPlayer) {
+    GoFish* gf = new GoFish(new GoFishUITesting());
+
+    // empty player
+    EXPECT_EQ(gf->getRandomPlayer(), nullptr);
+
+    // nonempty player
+    gf->addPlayer(new Player(0, "Karen"));
+    gf->addPlayer(new Player(1, "Roy"));
+
+    EXPECT_NE(gf->getRandomPlayer(), nullptr);
+    delete gf;
 }
