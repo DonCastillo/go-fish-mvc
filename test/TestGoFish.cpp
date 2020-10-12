@@ -9,7 +9,6 @@
 #include "GoFish.h"
 #include "Player.h"
 #include "Deck.h"
-#include <iostream>
 
 using ::testing::_;
 using ::testing::Return;
