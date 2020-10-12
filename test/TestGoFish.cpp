@@ -14,6 +14,13 @@ using ::testing::Return;
 using ::testing::Expectation;
 using ::testing::AtLeast;
 
+/** collection of suit names */
+enum suits { Club, Diamond, Heart, Spade };
+
+/** collection of rank names */
+enum ranks { Ace = 1, Two, Three, Four, Five, Six,
+             Seven, Eight, Nine, Ten, Jack, Queen, King };
+
 TEST(TestGoFish, addingAndGettingPlayers) {
     GoFish* gf = new GoFish(new GoFishUITesting());
     Player* jane = new Player(0, "Jane");
@@ -135,3 +142,49 @@ TEST(TestGoFish, gettingRandomPlayer) {
     EXPECT_NE(gf->getRandomPlayer(), nullptr);
     delete gf;
 }
+
+
+TEST(TestGoFish, anyoneHasCard) {
+    GoFish* gf = new GoFish(new GoFishUITesting());
+
+    // empty player
+    EXPECT_FALSE(gf->anyoneHasCard());
+
+    Player* jan = new Player(0, "Jan");
+    Player* carol = new Player(1, "Carol");
+    Player* holly = new Player(2, "Holly");
+    Player* donna = new Player(3, "Donna");
+    Player* helene = new Player(4, "Helene");
+
+    gf->addPlayer(jan);
+    gf->addPlayer(carol);
+    gf->addPlayer(holly);
+    gf->addPlayer(donna);
+    gf->addPlayer(helene);
+
+    // non empty player, no one has card
+    EXPECT_FALSE(gf->anyoneHasCard());
+
+    // at least one player has card
+    jan->addCardHand(new Card(Club, Ace));
+
+    EXPECT_TRUE(gf->anyoneHasCard());
+
+    carol->addCardHand(new Card(Club, Diamond));
+    donna->addCardHand(new Card(Club, King));
+
+    EXPECT_TRUE(gf->anyoneHasCard());
+
+    // remove all cards previously held
+    jan->removeCardHand(new Card(Club, Ace));
+    carol->removeCardHand(new Card(Club, Diamond));
+    donna->removeCardHand(new Card(Club, King));
+
+    EXPECT_FALSE(gf->anyoneHasCard());
+
+    delete gf;
+}
+
+
+
+
