@@ -273,11 +273,11 @@ TEST(TestGoFish, isThereABook) {
 
 TEST(TestGoFish, startGame) {
     GoFishUITesting* ui = new GoFishUITesting();
-    MockDeck deck;
+    Deck* deck = new Deck();
 
     // enter number of players
     GoFish* gf = new GoFish(ui);
-    gf->setDeck(&deck);
+    gf->setDeck(deck);
     gf->startGame();
     delete gf;
 }
