@@ -231,7 +231,7 @@ TEST(TestGoFish, askCard) {
 
     // check if removecard is called
     EXPECT_CALL(pam, getCardHand())
-    .Times(0);
+    .Times(1);
 
     EXPECT_CALL(jim, addCardHand(_))
     .Times(0);
