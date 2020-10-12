@@ -230,7 +230,7 @@ TEST(TestGoFish, askCard) {
     MockCard e(Diamond, Ace);
 
     InSequence seq;
-    jim.addCardHand(&a);
+    //jim.addCardHand(&a);
 
     // asking someone with an empty hand
 //    EXPECT_CALL(pam, getCardHand())
