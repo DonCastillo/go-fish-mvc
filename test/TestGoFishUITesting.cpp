@@ -29,11 +29,11 @@ TEST(TestRandomize, selectCardFromHand) {
     EXPECT_EQ(ui->selectCardFromHand(dummy), nullptr);
 
     // one element
-    dummy->addCard(new Card(Club, Ace));
+    dummy->addCardHand(new Card(Club, Ace));
     EXPECT_NE(ui->selectCardFromHand(dummy), nullptr);
 
     // more elements
-    dummy->addCard(new Card(Diamond, Two));
+    dummy->addCardHand(new Card(Diamond, Two));
     Card* returnedCard = ui->selectCardFromHand(dummy);
     EXPECT_TRUE(returnedCard->getSuit() == "Club" ||
                 returnedCard->getSuit() == "Diamond");
