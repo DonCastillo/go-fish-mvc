@@ -276,9 +276,13 @@ TEST(TestGoFish, startGame) {
     MockDeck deck;
 
     // enter number of players
-    EXPECT_CALL(uiTesting, enterNumberOfPlayers())
-    .Times(1)
-    .WillOnce(Return(2));
+//    EXPECT_CALL(uiTesting, enterNumberOfPlayers())
+//    .Times(1)
+//    .WillOnce(Return(2));
+
+    EXPECT_CALL(uiTesting, enterName())
+    .Times(2)
+    .WillOnce(Return("Dummy"));
 
     GoFish* gf = new GoFish(&uiTesting);
     gf->setDeck(&deck);
