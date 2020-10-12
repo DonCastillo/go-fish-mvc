@@ -215,7 +215,21 @@ TEST(TestGoFish, fish) {
 }
 
 
+TEST(TestGoFish, askCard) {
+    GoFish* gf = new GoFish(new GoFishUITesting());
+    //Player* jim = new Player(0, "Jim");
+    //Player* pam = new Player(1, "Pam");
+    Player jim(0, "Jim");
+    Player pam(1, "Pam");
 
+    // check if removecard is called
+
+    // asking someone with empty hand
+    //jim.addCardHand()
+
+
+    delete gf;
+}
 
 
 
