@@ -221,18 +221,9 @@ TEST(TestGoFish, askCard) {
     GoFish* gf = new GoFish(new GoFishUITesting());
     Player* jim = new Player(0, "Jim");
     Player* pam = new Player(1, "Pam");
-//    MockPlayer jim(0, "Jim");
-//    MockPlayer pam(1, "Pam");
-//    MockCard a(Club, Ace);
-//    MockCard b(Club, Two);
-//    MockCard c(Club, Three);
-//    MockCard d(Club, Four);
-//    MockCard e(Diamond, Ace);
-
 
     // asking someone with an empty hand
     EXPECT_FALSE(gf->askCard(jim, pam, new Card(Club, Ace)));
-
 
     // asking someone with one matching card at hand
     pam->addCardHand(new Card(Diamond, Ace));
@@ -249,6 +240,27 @@ TEST(TestGoFish, askCard) {
     pam->addCardHand(new Card(Club, Three));
     pam->addCardHand(new Card(Club, Four));
     EXPECT_FALSE(gf->askCard(jim, pam, new Card(Club, Ace)));
+    delete gf;
+}
+
+
+TEST(TestGoFish, isThereABook_CompleteBook) {
+    GoFish* gf = new GoFish(new GoFishUITesting());
+    MockPlayer jim(0, "Jim");
+    MockCard c1(Club, Ace);
+    MockCard c2(Diamond, Ace);
+    MockCard c3(Spade, Ace);
+    MockCard c4(Heart, Ace);
+
+    jim.addCardHand(&c1);
+    jim.addCardHand(&c2);
+    jim.addCardHand(&c3);
+    jim.addCardHand(&c4);
+
+    EXPECT_CALL(jim, getCardHand())
+    .Times(1);
+
+    gf->isThereABook(&jim);
     delete gf;
 }
 
