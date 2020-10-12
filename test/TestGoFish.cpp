@@ -158,29 +158,23 @@ TEST(TestGoFish, anyoneHasCard) {
 
     gf->addPlayer(jan);
     gf->addPlayer(carol);
-    gf->addPlayer(holly);
     gf->addPlayer(donna);
-    gf->addPlayer(helene);
+    //gf->addPlayer(helene);
 
     // non empty player, no one has card
     EXPECT_FALSE(gf->anyoneHasCard());
 
     // at least one player has card
-    jan->addCardHand(new Card(Club, Ace));
+    holly->addCardHand(new Card(Club, Ace));
+    gf->addPlayer(holly);
 
     EXPECT_TRUE(gf->anyoneHasCard());
 
-    carol->addCardHand(new Card(Club, Diamond));
-    donna->addCardHand(new Card(Club, King));
+    // two players
+    helene->addCardHand(new Card(Club, Diamond));
+    gf->addPlayer(helene);
 
     EXPECT_TRUE(gf->anyoneHasCard());
-
-    // remove all cards previously held
-    jan->removeCardHand(new Card(Club, Ace));
-    carol->removeCardHand(new Card(Club, Diamond));
-    donna->removeCardHand(new Card(Club, King));
-
-    EXPECT_FALSE(gf->anyoneHasCard());
 
     delete gf;
 }
