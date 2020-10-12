@@ -192,18 +192,18 @@ TEST(TestGoFish, fish) {
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 52);
 
     // player fishes one card
-    gf->fish(gf->getPlayers[0]);
+    gf->fish(gf->getPlayers()[0]);
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 51);
 
     // player fishes 10 times
     for (int i = 0; i < 10; ++i) {
-        gf->fish(gf->getPlayers[0]);
+        gf->fish(gf->getPlayers()[0]);
     }
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 41);
 
     // player fishes all card left
     for (int i = 0; i < 41; ++i) {
-        gf->fish(gf->getPlayers[0]);
+        gf->fish(gf->getPlayers()[0]);
     }
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
 
