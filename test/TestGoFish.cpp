@@ -218,21 +218,25 @@ TEST(TestGoFish, fish) {
 
 
 TEST(TestGoFish, askCard) {
-    MockGoFish gf(new GoFishUITesting());
-    //Player* jim = new Player(0, "Jim");
-    //Player* pam = new Player(1, "Pam");
-    MockPlayer jim(0, "Jim");
-    MockPlayer pam(1, "Pam");
-    MockCard a(Club, Ace);
-    MockCard b(Club, Two);
-    MockCard c(Club, Three);
-    MockCard d(Club, Four);
-    MockCard e(Diamond, Ace);
+    GoFish* gf = new GoFish(new GoFishUITesting());
+    Player* jim = new Player(0, "Jim");
+    Player* pam = new Player(1, "Pam");
+//    MockPlayer jim(0, "Jim");
+//    MockPlayer pam(1, "Pam");
+//    MockCard a(Club, Ace);
+//    MockCard b(Club, Two);
+//    MockCard c(Club, Three);
+//    MockCard d(Club, Four);
+//    MockCard e(Diamond, Ace);
 
-    InSequence seq;
-    //jim.addCardHand(&a);
 
     // asking someone with an empty hand
+    EXPECT_FALSE(gf->askCard(jim, pam, new Card(Club, Ace)));
+
+
+
+
+
 //    EXPECT_CALL(pam, getCardHand())
 //    .Times(1)
 //    .RetiresOnSaturation();
@@ -244,17 +248,17 @@ TEST(TestGoFish, askCard) {
 //    EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
 
     // asking someone with one matching card rank
-    pam.addCardHand(&e);
-    EXPECT_CALL(pam, getCardHand())
-    .Times(1);
-
-    EXPECT_CALL(pam, removeCardHand(_))
-    .Times(1);
-
-    EXPECT_CALL(jim, addCardHand(_))
-    .Times(1);   // executed once, one card rank matches
-
-    EXPECT_TRUE(gf.askCard(&jim, &pam, &a));
+//    pam->addCardHand(&e);
+//    EXPECT_CALL(pam, getCardHand())
+//    .Times(1);
+//
+//    EXPECT_CALL(pam, removeCardHand(_))
+//    .Times(1);
+//
+//    EXPECT_CALL(jim, addCardHand(_))
+//    .Times(1);   // executed once, one card rank matches
+//
+//    EXPECT_TRUE(gf.askCard(&jim, pam, &a));
 }
 
 
