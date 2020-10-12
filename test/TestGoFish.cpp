@@ -232,23 +232,28 @@ TEST(TestGoFish, askCard) {
 
     // asking someone with an empty hand
     EXPECT_CALL(pam, getCardHand())
-    .Times(1);
+    .Times(1)
+    .RetiresOnSaturation();
 
     EXPECT_CALL(jim, addCardHand(_))
-    .Times(0);  // never executed since no card is to be inserted
+    .Times(0)  // never executed since no card is to be inserted
+    .RetiresOnSaturation();
 
     EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
 
     // asking someone with one matching card rank
     pam.addCardHand(&e);
     EXPECT_CALL(pam, getCardHand())
-    .Times(1);
+    .Times(1)
+    .RetiresOnSaturation();
 
     EXPECT_CALL(pam, removeCardHand(_))
-    .Times(1);
+    .Times(1)
+    .RetiresOnSaturation();
 
     EXPECT_CALL(jim, addCardHand(_))
-    .Times(1);   // executed once, one card rank matches
+    .Times(1)   // executed once, one card rank matches
+    .RetiresOnSaturation();
 
     EXPECT_TRUE(gf->askCard(&jim, &pam, &a));
     delete gf;
