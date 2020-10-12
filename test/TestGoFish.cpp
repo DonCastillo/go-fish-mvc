@@ -226,24 +226,28 @@ TEST(TestGoFish, askCard) {
     MockCard b(Club, Two);
     MockCard c(Club, Three);
     MockCard d(Club, Four);
+    MockCard e(Diamond, Ace);
 
     jim.addCardHand(&a);
 
-    // check if removecard is called
+    // asking someone with an empty hand
     EXPECT_CALL(pam, getCardHand())
     .Times(1);
 
     EXPECT_CALL(jim, addCardHand(_))
-    .Times(0);
-
-    //EXPECT_CALL(a, )
+    .Times(0);  // never executed since no card is to be inserted
 
     EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
 
-    // asking someone with empty hand
-    //jim.addCardHand()
+    // asking someone with one matching card rank
+    pam.addCardHand(&e);
+    EXPECT_CALL(pam, getCardHand())
+    .Times(1)
 
+    EXPECT_CALL(jim, addCardHand(&e))
+    .Times(1)   // executed once, one card rank matches
 
+    EXPECT_TRUE(gf->askCard(&jim, &pam, &a));
     delete gf;
 }
 
