@@ -159,7 +159,6 @@ TEST(TestGoFish, anyoneHasCard) {
     gf->addPlayer(jan);
     gf->addPlayer(carol);
     gf->addPlayer(donna);
-    //gf->addPlayer(helene);
 
     // non empty player, no one has card
     EXPECT_FALSE(gf->anyoneHasCard());
@@ -178,6 +177,53 @@ TEST(TestGoFish, anyoneHasCard) {
 
     delete gf;
 }
+
+
+
+TEST(TestGoFish, fish) {
+    GoFish* gf = new GoFish(new GoFishUITesting());
+    gf->setDeck(new Deck());
+
+    // no player has not fished yet
+    EXPECT_EQ((gf->getDeck())->getDeck().size(), 52);
+
+    // player fishes one card
+    gf->fish(new Player(0, "Deangelo"));
+    EXPECT_EQ((gf->getDeck())->getDeck().size(), 51);
+
+    // player fishes 10 times
+    for (int i = 0; i < 10; ++i) {
+        gf->fish(new Player(1, "Rose"));
+    }
+    EXPECT_EQ((gf->getDeck())->getDeck().size(), 41);
+
+    // player fishes all card left
+    for (int i = 0; i < (gf->getDeck())->getDeck().size(); ++i) {
+        gf->fish(new Player(2, "Robert"));
+    }
+    EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
+
+    // fish to an empty deck
+    gf->fish(new Player(3, "Gabe"));
+    EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
+    delete gf;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
