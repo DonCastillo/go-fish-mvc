@@ -245,43 +245,28 @@ TEST(TestGoFish, askCard) {
 }
 
 
-TEST(TestGoFish, isThereABook_CompleteBook) {
+TEST(TestGoFish, isThereABook) {
     GoFish* gf = new GoFish(new GoFishUITesting());
-    MockPlayer jim(0, "Jim");
-    MockCard c1(Club, Ace);
-    MockCard c2(Diamond, Ace);
-    MockCard c3(Spade, Ace);
-    MockCard c4(Heart, Ace);
+    Player* jim = new Player(0, "Jim");
+    Card* c1 = new Card(Club, Ace);
+    Card* c2 = new Card(Diamond, Ace);
+    Card* c3 = new Card(Spade, Ace);
+    Card* c4 = new Card(Heart, Ace);
 
-    jim.addCardHand(&c1);
-    jim.addCardHand(&c2);
-    jim.addCardHand(&c3);
-    jim.addCardHand(&c4);
+    // empty hand
+    EXPECT_FALSE(gf->isThereABook(jim));
 
-    std::cout << jim.getCardHand().size() << std::endl;
+    // three cards
+    jim->addCardHand(c1);
+    jim->addCardHand(c2);
+    jim->addCardHand(c3);
 
-    EXPECT_CALL(jim, getCardHand())
-    .Times(1);
+    EXPECT_FALSE(gf->isThereABook(jim));
 
+    // complete book
+    jim->addCardHand(c4);
+    EXPECT_TRUE(gf->isThereABook(jim));
 
-
-    //EXPECT_TRUE(gf->isThereABook(&jim));
+    delete jim;
     delete gf;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
