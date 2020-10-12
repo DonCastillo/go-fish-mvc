@@ -71,7 +71,6 @@ class Player {
                currently in the player's hand
     */
     virtual std::vector<Card*> getCardHand();
-    //Card* selectFromHand();
 
  protected:
     /** player's name */
