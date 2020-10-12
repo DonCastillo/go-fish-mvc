@@ -20,14 +20,14 @@ class GoFishUITesting : public GoFishUI {
        \brief retrieves player's name from the input
        \return player's name
     */
-    std::string enterName();
+    virtual std::string enterName();
 
     /*!
        \brief retrieves an integer indicating the number of
              players in the game
        \return number of players in the game
     */
-    int enterNumberOfPlayers();
+    virtual int enterNumberOfPlayers();
 
     /*!
        \brief asks the player to select card from his hand based
@@ -36,7 +36,7 @@ class GoFishUITesting : public GoFishUI {
                       be selected
        \return card that is selected
     */
-    Card* selectCardFromHand(Player* pPlayer);
+    virtual Card* selectCardFromHand(Player* pPlayer);
 
     /*!
        \brief asks the player to select another player to
@@ -45,7 +45,7 @@ class GoFishUITesting : public GoFishUI {
               allPlayers  all players in the game
        \return player selected
     */
-    Player* selectPlayer(Player* currentPlayer,
+    virtual Player* selectPlayer(Player* currentPlayer,
                          std::vector<Player*> allPlayers);
 };
 

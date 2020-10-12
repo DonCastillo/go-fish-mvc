@@ -269,3 +269,8 @@ TEST(TestGoFish, isThereABook) {
     delete jim;
     delete gf;
 }
+
+TEST(TestGoFish, startGame) {
+
+    GoFish* gf = new GoFish(new GoFishUITesting());
+}
