@@ -208,8 +208,9 @@ TEST(TestGoFish, fish) {
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
 
     // fish to an empty deck
-    //gf->fish(new Player(3, "Gabe"));
-    //EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
+    gf->fish(gf->getPlayers()[0]);
+    EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
+
     delete gf;
 }
 
