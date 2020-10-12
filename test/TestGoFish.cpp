@@ -14,6 +14,7 @@ using ::testing::_;
 using ::testing::Return;
 using ::testing::Expectation;
 using ::testing::AtLeast;
+using ::testing::InSequence;
 
 /** collection of suit names */
 enum suits { Club, Diamond, Heart, Spade };
@@ -228,6 +229,7 @@ TEST(TestGoFish, askCard) {
     MockCard d(Club, Four);
     MockCard e(Diamond, Ace);
 
+    InSequence seq;
     jim.addCardHand(&a);
 
     // asking someone with an empty hand
