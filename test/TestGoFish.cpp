@@ -3,6 +3,7 @@
 #include "MockGoFish.h"
 #include "MockDeck.h"
 #include "MockPlayer.h"
+#include "MockCard.h"
 #include "GoFishUI.h"
 #include "GoFishUITesting.h"
 #include "GoFish.h"
@@ -221,6 +222,12 @@ TEST(TestGoFish, askCard) {
     //Player* pam = new Player(1, "Pam");
     MockPlayer jim(0, "Jim");
     MockPlayer pam(1, "Pam");
+    MockCard a(Club, Ace);
+    MockCard b(Club, Two);
+    MockCard c(Club, Three);
+    MockCard d(Club, Four);
+
+    jim.addCardHand(&a);
 
     // check if removecard is called
 
