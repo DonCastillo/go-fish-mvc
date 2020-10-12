@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "Randomize.h"
+#include <vector>
 
 
 TEST(TestRandomize, randomizeFromRange) {
@@ -29,4 +30,28 @@ TEST(TestRandomize, randomizeFromRange) {
     maxInt = 100;
     returnedInteger = Randomize::randomize(minInt, maxInt);
     EXPECT_TRUE(minInt <= returnedInteger && maxInt >= returnedInteger);
+}
+
+
+TEST(TestRandomize, randomizeFromIntegers) {
+    std::vector<int> ints;
+
+    // empty vector
+    EXPECT_EQ(Randomize::randomize(ints), -1);
+
+    // one element
+    ints.push_back(1);
+    EXPECT_EQ(Randomize::randomize(ints), 1);
+
+    // two elements
+    ints.push_back(2);
+    int returnedInteger = Randomize::randomize(ints);
+    EXPECT_TRUE(1 <= returnedInteger && 2 >= returnedInteger);
+
+    // more elements
+    ints.push_back(3);
+    ints.push_back(5);
+    ints.push_back(50);
+    returnedInteger = Randomize::randomize(ints);
+    EXPECT_TRUE(1 <= returnedInteger && 50 >= returnedInteger);
 }
