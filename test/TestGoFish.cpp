@@ -218,7 +218,7 @@ TEST(TestGoFish, fish) {
 
 
 TEST(TestGoFish, askCard) {
-    MockGoFish gf(new GoFish(new GoFishUITesting()));
+    MockGoFish gf(new GoFishUITesting());
     //Player* jim = new Player(0, "Jim");
     //Player* pam = new Player(1, "Pam");
     MockPlayer jim(0, "Jim");
@@ -255,7 +255,6 @@ TEST(TestGoFish, askCard) {
     .Times(1);   // executed once, one card rank matches
 
     EXPECT_TRUE(gf.askCard(&jim, &pam, &a));
-    delete gf;
 }
 
 
