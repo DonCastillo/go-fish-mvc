@@ -252,10 +252,10 @@ TEST(TestGoFish, isThereABook_CompleteBook) {
     MockCard c3(Spade, Ace);
     MockCard c4(Heart, Ace);
 
-    jim.addCardHand(&c1);
-    jim.addCardHand(&c2);
-    jim.addCardHand(&c3);
-    jim.addCardHand(&c4);
+    jim.addCardHand(new Card(Club, Ace));
+    jim.addCardHand(new Card(Diamond, Ace));
+    jim.addCardHand(new Card(Spade, Ace));
+    jim.addCardHand(new Card(Heart, Ace));
 
     EXPECT_CALL(jim, getCardHand())
     .Times(1);
