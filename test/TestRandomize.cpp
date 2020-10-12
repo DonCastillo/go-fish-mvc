@@ -1,6 +1,6 @@
+#include <vector>
 #include "gtest/gtest.h"
 #include "Randomize.h"
-#include <vector>
 
 
 TEST(TestRandomize, randomizeFromRange) {
