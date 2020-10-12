@@ -26,7 +26,7 @@ TEST(TestRandomize, randomizeFromRange) {
     EXPECT_TRUE(minInt <= returnedInteger && maxInt >= returnedInteger);
 
     minInt = 0;
-    maxInt = 100
+    maxInt = 100;
     returnedInteger = Randomize::randomize(minInt, maxInt);
     EXPECT_TRUE(minInt <= returnedInteger && maxInt >= returnedInteger);
 }
