@@ -244,6 +244,9 @@ TEST(TestGoFish, askCard) {
     EXPECT_CALL(pam, getCardHand())
     .Times(1);
 
+    EXPECT_CALL(pam, removeCardHand(_))
+    .Times(1);
+
     EXPECT_CALL(jim, addCardHand(_))
     .Times(1);   // executed once, one card rank matches
 
