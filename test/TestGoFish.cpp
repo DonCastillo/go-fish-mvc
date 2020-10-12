@@ -234,31 +234,22 @@ TEST(TestGoFish, askCard) {
     EXPECT_FALSE(gf->askCard(jim, pam, new Card(Club, Ace)));
 
 
+    // asking someone with one matching card at hand
+    pam->addCardHand(new Card(Diamond, Ace));
+    EXPECT_TRUE(gf->askCard(jim, pam, new Card(Club, Ace)));
 
+    // asking someone with three matching cards
+    pam->addCardHand(new Card(Diamond, Ace));
+    pam->addCardHand(new Card(Spade, Ace));
+    pam->addCardHand(new Card(Heart, Ace));
+    EXPECT_TRUE(gf->askCard(jim, pam, new Card(Club, Ace)));
 
-
-//    EXPECT_CALL(pam, getCardHand())
-//    .Times(1)
-//    .RetiresOnSaturation();
-//
-//    EXPECT_CALL(jim, addCardHand(_))
-//    .Times(0)  // never executed since no card is to be inserted
-//    .RetiresOnSaturation();
-//
-//    EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
-
-    // asking someone with one matching card rank
-//    pam->addCardHand(&e);
-//    EXPECT_CALL(pam, getCardHand())
-//    .Times(1);
-//
-//    EXPECT_CALL(pam, removeCardHand(_))
-//    .Times(1);
-//
-//    EXPECT_CALL(jim, addCardHand(_))
-//    .Times(1);   // executed once, one card rank matches
-//
-//    EXPECT_TRUE(gf.askCard(&jim, pam, &a));
+    // asking someone with nonempty non matching cards
+    pam->addCardHand(new Card(Club, Two));
+    pam->addCardHand(new Card(Club, Three));
+    pam->addCardHand(new Card(Club, Four));
+    EXPECT_FALSE(gf->askCard(jim, pam, new Card(Club, Ace)));
+    delete gf;
 }
 
 
