@@ -230,6 +230,15 @@ TEST(TestGoFish, askCard) {
     jim.addCardHand(&a);
 
     // check if removecard is called
+    EXPECT_CALL(pam, getCardHand())
+    .Times(0);
+
+    EXPECT_CALL(jim, addCardHand())
+    .Times(0);
+
+    //EXPECT_CALL(a, )
+
+    EXPECT_FALSE(gf->askCard(&jim, &pam, &a));
 
     // asking someone with empty hand
     //jim.addCardHand()
