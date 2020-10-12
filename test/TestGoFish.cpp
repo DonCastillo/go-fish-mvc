@@ -272,19 +272,11 @@ TEST(TestGoFish, isThereABook) {
 }
 
 TEST(TestGoFish, startGame) {
-    MockGoFishUITesting uiTesting;
+    GoFishUI* ui = new GoFishUI();
     MockDeck deck;
 
     // enter number of players
-//    EXPECT_CALL(uiTesting, enterNumberOfPlayers())
-//    .Times(1)
-//    .WillOnce(Return(2));
-
-    EXPECT_CALL(uiTesting, enterName())
-    .Times(2)
-    .WillOnce(Return("Dummy"));
-
-    GoFish* gf = new GoFish(&uiTesting);
+    GoFish* gf = new GoFish(ui);
     gf->setDeck(&deck);
     gf->startGame();
     delete gf;
