@@ -184,22 +184,26 @@ TEST(TestGoFish, fish) {
     GoFish* gf = new GoFish(new GoFishUITesting());
     gf->setDeck(new Deck());
 
+    Player* deangelo = new Player(0, "Deangelo");
+    gf->addPlayer(deangelo);
+
+
     // no player has not fished yet
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 52);
 
     // player fishes one card
-    gf->fish(new Player(0, "Deangelo"));
+    gf->fish(gf->getPlayers[0]);
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 51);
 
     // player fishes 10 times
     for (int i = 0; i < 10; ++i) {
-        gf->fish(new Player(1, "Rose"));
+        gf->fish(gf->getPlayers[0]);
     }
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 41);
 
     // player fishes all card left
     for (int i = 0; i < 41; ++i) {
-        gf->fish(new Player(2, "Robert"));
+        gf->fish(gf->getPlayers[0]);
     }
     EXPECT_EQ((gf->getDeck())->getDeck().size(), 0);
 
