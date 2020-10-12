@@ -277,10 +277,11 @@ TEST(TestGoFish, startGame) {
 
     // enter number of players
     EXPECT_CALL(uiTesting, enterNumberOfPlayers())
-    .Times(1);
+    .Times(1)
     .Return(2);
 
     GoFish* gf = new GoFish(&uiTesting);
     gf->setDeck(&deck);
     gf->startGame();
+    delete gf;
 }
