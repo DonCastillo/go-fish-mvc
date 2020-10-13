@@ -54,8 +54,6 @@ Card* Deck::getTopCard() {
         return topCard;
     }
     return topCard;
-    //Card* topCard = allCards.pop_back();
-    //return topCard;
 }
 
 /// clear or empty the deck
