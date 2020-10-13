@@ -29,6 +29,11 @@ class Randomize {
     */
     static int randomize(int minInt, int maxInt);
 
+    /*!
+       \brief gives random number
+       \param integers  a collection of integers
+       \return random integer from the collection of integers
+    */
     static int randomize(std::vector<int> integers);
 };
 
