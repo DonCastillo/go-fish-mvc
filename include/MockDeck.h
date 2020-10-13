@@ -1,3 +1,6 @@
+/*!
+   \file MockDeck class header
+*/
 #ifndef MOCKDECK_H_INCLUDED
 #define MOCKDECK_H_INCLUDED
 

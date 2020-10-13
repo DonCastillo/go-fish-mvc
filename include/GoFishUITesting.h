@@ -1,3 +1,11 @@
+/*!
+   \file GoFish UI Testing header class
+   \brief defines the member data and methods of GoFish UI Testing class
+          defines the UI for testing (no user input)
+   \author Don Castillo
+   \date 12/10/2020
+*/
+
 #ifndef GOFISHUITESTING_H_INCLUDED
 #define GOFISHUITESTING_H_INCLUDED
 #include "GoFish.h"

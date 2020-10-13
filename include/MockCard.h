@@ -1,3 +1,6 @@
+/*!
+   \file MockCard class header
+*/
 #ifndef MOCKCARD_H_INCLUDED
 #define MOCKCARD_H_INCLUDED
 

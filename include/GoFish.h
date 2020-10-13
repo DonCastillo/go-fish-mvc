@@ -1,3 +1,9 @@
+/*!
+   \file GoFish class header
+   \brief defines the member data and methods of the GoFish Controller
+   \author Don Castillo
+   \date 12/10/2020
+*/
 #ifndef GOFISH_H_INCLUDED
 #define GOFISH_H_INCLUDED
 #include <string>

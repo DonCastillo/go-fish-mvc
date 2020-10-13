@@ -1,3 +1,6 @@
+/*!
+   \file MockGoFish class header
+*/
 #ifndef MOCKGOFISH_H_INCLUDED
 #define MOCKGOFISH_H_INCLUDED
 

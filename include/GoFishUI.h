@@ -1,3 +1,9 @@
+/*!
+   \file GoFishUI class header
+   \brief defines the member data and methods of GoFish UI class
+   \author Don Castillo
+   \date 12/10/2020
+*/
 #ifndef GOFISHUI_H_INCLUDED
 #define GOFISHUI_H_INCLUDED
 #include "Player.h"

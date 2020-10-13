@@ -1,3 +1,6 @@
+/*!
+   \file MockPlayer class header
+*/
 #ifndef MOCKPLAYER_H_INCLUDED
 #define MOCKPLAYER_H_INCLUDED
 

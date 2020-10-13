@@ -1,3 +1,6 @@
+/*!
+   \file MockGoFishUITesting class header
+*/
 #ifndef MOCKGOFISHUITESTING_H_INCLUDED
 #define MOCKGOFISHUITESTING_H_INCLUDED
 
