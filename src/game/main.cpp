@@ -6,6 +6,5 @@ int main() {
     GoFish* gf = new GoFish(ui);
     gf->startGame();
 
-    delete ui;
     delete gf;
 }
