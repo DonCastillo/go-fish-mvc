@@ -64,7 +64,7 @@ class GoFish {
        \return game's deck
     */
     virtual Deck* getDeck();
-    
+
     /*!
        \brief sets the game's deck
        \param pDeck deck
