@@ -113,7 +113,7 @@ void GoFishUI::printPlayerHand(Player* pPlayer) {
 /// enter name
 std::string GoFishUI::enterName() {
     std::string name;
-    print("Enter Name: ");
+    print("Enter Name (No spaces in between): ");
     std::cin >> name;
     return name;
 }
@@ -121,7 +121,8 @@ std::string GoFishUI::enterName() {
 /// enter number of players
 int GoFishUI::enterNumberOfPlayers() {
     int numOfPlayers = 0;
-    print("How many players in this game?: ");
+    println("How many players in this game?");
+    println("(minimum of 2, maximum of 5): ");
     std::cin >> numOfPlayers;
     return numOfPlayers;
 }
