@@ -37,7 +37,6 @@ GoFish::~GoFish() {
 /// main game
 void GoFish::startGame() {
     int numOfPlayers = 0;
-    //ui = new GoFishUI();
     ui->printWelcome();
 
     // get num of players
@@ -264,7 +263,6 @@ bool GoFish::askCard(Player* p1, Player* p2, Card* targetCard) {
 
     // get all matching cards from requestee
     for (Card* c : p2->getCardHand()) {
-        //bool matchedSuit = c->getSuit() == targetCard->getSuit();
         bool matchedRank = c->getRank() == targetCard->getRank();
 
         if (matchedRank) {
